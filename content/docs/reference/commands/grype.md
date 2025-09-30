@@ -7,22 +7,9 @@ categories = ['reference']
 url = "docs/reference/commands/grype"
 +++
 
-### `grype version`
-
-```
-Application:         grype
-Version:             0.91.2
-BuildDate:           2025-04-25T17:20:02Z
-GitCommit:           7e6ba817350bdb922f35e4437aa01869cf0a8be0
-GitDescription:      v0.91.2
-Platform:            darwin/arm64
-GoVersion:           go1.24.2
-Compiler:            gc
-Syft Version:        v1.23.1
-Supported DB Schema: 6
-```
-
-### `grype help`
+{{< alert title="Note" >}}
+This documentation was generated from Grype version `0.100.0`.
+{{< /alert >}}
 
 ```
 A vulnerability scanner for container images, filesystems, and SBOMs.
@@ -44,9 +31,10 @@ You can also explicitly specify the scheme to use:
     grype registry:yourrepo/yourimage:tag        pull image directly from a registry (no container runtime required)
     grype purl:path/to/purl/file                 read a newline separated file of package URLs from a path on disk
     grype PURL                                   read a single package PURL directly (e.g. pkg:apk/openssl@3.2.1?distro=alpine-3.20.3)
+    grype CPE                                    read a single CPE directly (e.g. cpe:2.3:a:openssl:openssl:3.0.14:*:*:*:*:*)
 
 You can also pipe in Syft JSON directly:
-        syft yourimage:tag -o json | grype
+ syft yourimage:tag -o json | grype
 
 Usage:
   grype [IMAGE] [flags]
@@ -77,8 +65,9 @@ Flags:
       --platform string        an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
       --profile stringArray    configuration profiles to use
   -q, --quiet                  suppress all logging output
-  -s, --scope string           selection of layers to analyze, options=[squashed all-layers] (default "squashed")
+  -s, --scope string           selection of layers to analyze, options=[squashed all-layers deep-squashed] (default "squashed")
       --show-suppressed        show suppressed/ignored vulnerabilities in the output (only supported with table output format)
+      --sort-by string         sort the match results with the given strategy, options=[package severity epss risk kev vulnerability] (default "risk")
   -t, --template string        specify the path to a Go template file (requires 'template' output to be selected)
   -v, --verbose count          increase verbosity (-v = info, -vv = debug)
       --version                version for grype
@@ -87,9 +76,195 @@ Flags:
 Use "grype [command] --help" for more information about a command.
 ```
 
-### `grype db update`
+### `grype config`
+
+Show the grype configuration.
 
 ```
- ✔ Vulnerability DB                [updated]
-Vulnerability database updated to latest version!
+Usage:
+  grype config [flags]
+  grype config [command]
+
+Available Commands:
+  locations   shows all locations and the order in which grype will look for a configuration file
+
+Flags:
+  -h, --help   help for config
+      --load   load and validate the grype configuration
+
+```
+
+### `grype db check`
+
+Check to see if there is a database update available.
+
+```
+Usage:
+  grype db check [flags]
+
+Flags:
+  -h, --help            help for check
+  -o, --output string   format to display results (available=[text, json]) (default "text")
+
+```
+
+### `grype db delete`
+
+Delete the vulnerability database.
+
+```
+Usage:
+  grype db delete [flags]
+
+Flags:
+  -h, --help   help for delete
+
+```
+
+### `grype db import`
+
+Import a vulnerability database archive from a local FILE or URL.
+
+DB archives can be obtained from "<https://grype.anchore.io/databases>" (or running `db list`). If the URL has a `checksum` query parameter with a fully qualified digest (e.g. 'sha256:abc728...') then the archive/DB will be verified against this value.
+
+```
+Usage:
+  grype db import FILE | URL [flags]
+
+Flags:
+  -h, --help   help for import
+
+```
+
+### `grype db list`
+
+List all DBs available according to the listing URL.
+
+```
+Usage:
+  grype db list [flags]
+
+Flags:
+  -h, --help            help for list
+  -o, --output string   format to display results (available=[text, raw, json]) (default "text")
+
+```
+
+### `grype db providers`
+
+List vulnerability providers that are in the database.
+
+```
+Usage:
+  grype db providers [flags]
+
+Flags:
+  -h, --help            help for providers
+  -o, --output string   format to display results (available=[table, json]) (default "table")
+
+```
+
+### `grype db search`
+
+Search the DB for vulnerabilities or affected packages.
+
+```
+Usage:
+  grype db search [flags]
+  grype db search [command]
+
+Examples:
+
+  Search for affected packages by vulnerability ID:
+
+    $ grype db search --vuln ELSA-2023-12205
+
+  Search for affected packages by package name:
+
+    $ grype db search --pkg log4j
+
+  Search for affected packages by package name, filtering down to a specific vulnerability:
+
+    $ grype db search --pkg log4j --vuln CVE-2021-44228
+
+  Search for affected packages by PURL (note: version is not considered):
+
+    $ grype db search --pkg 'pkg:rpm/redhat/openssl' # or: '--ecosystem rpm --pkg openssl
+
+  Search for affected packages by CPE (note: version/update is not considered):
+
+    $ grype db search --pkg 'cpe:2.3:a:jetty:jetty_http_server:*:*:*:*:*:*:*:*'
+    $ grype db search --pkg 'cpe:/a:jetty:jetty_http_server'
+
+Available Commands:
+  vuln        Search for vulnerabilities within the DB (supports DB schema v6+ only)
+
+Flags:
+      --broad-cpe-matching       allow for specific package CPE attributes to match with '*' values on the vulnerability
+      --distro stringArray       refine to results with the given operating system (format: 'name', 'name@version', 'name@maj.min', 'name@codename')
+      --ecosystem string         ecosystem of the package to search within
+  -h, --help                     help for search
+      --limit int                limit the number of results returned, use 0 for no limit (default 5000)
+      --modified-after string    only show vulnerabilities originally published or modified since the given date (format: YYYY-MM-DD)
+  -o, --output string            format to display results (available=[table, json]) (default "table")
+      --pkg stringArray          package name/CPE/PURL to search for
+      --provider stringArray     only show vulnerabilities from the given provider
+      --published-after string   only show vulnerabilities originally published after the given date (format: YYYY-MM-DD)
+      --vuln stringArray         only show results for the given vulnerability ID
+
+```
+
+### `grype db status`
+
+Display database status and metadata.
+
+```
+Usage:
+  grype db status [flags]
+
+Flags:
+  -h, --help            help for status
+  -o, --output string   format to display results (available=[text, json]) (default "text")
+
+```
+
+### `grype db update`
+
+Download and install the latest vulnerability database.
+
+```
+Usage:
+  grype db update [flags]
+
+Flags:
+  -h, --help   help for update
+
+```
+
+### `grype explain`
+
+Ask grype to explain a set of findings.
+
+```
+Usage:
+  grype explain --id [VULNERABILITY ID] [flags]
+
+Flags:
+  -h, --help             help for explain
+      --id stringArray   CVE IDs to explain
+
+```
+
+### `grype version`
+
+Show version information.
+
+```
+Usage:
+  grype version [flags]
+
+Flags:
+  -h, --help            help for version
+  -o, --output string   the format to show the results (allowable: [text json]) (default "text")
+
 ```

@@ -1,26 +1,15 @@
 +++
 title = "Syft Command Line Reference"
 linkTitle = "Syft CLI"
-weight = 10
+weight = 20
 tags = ['syft']
 categories = ['reference']
 url = "docs/reference/commands/syft"
 +++
 
-### `syft version`
-
-```
-Application: syft
-Version:    1.24.0
-BuildDate:  2025-05-14T14:51:30Z
-GitCommit:  3c7018a853ab7b311db9ff70e1cf3113b46d9c0c
-GitDescription: v1.24.0
-Platform:   darwin/arm64
-GoVersion:  go1.24.3
-Compiler:   gc
-```
-
-### `syft help`
+{{< alert title="Note" >}}
+This documentation was generated from Syft version `1.33.0`.
+{{< /alert >}}
 
 ```
 Generate a packaged-based Software Bill Of Materials (SBOM) from container images and filesystems
@@ -85,6 +74,7 @@ Flags:
   -s, --scope string                              selection of layers to catalog, options=[squashed all-layers deep-squashed] (default "squashed")
       --select-catalogers stringArray             add, remove, and filter the catalogers to be used
       --source-name string                        set the name of the target being analyzed
+      --source-supplier string                    the organization that supplied the component, which often may be the manufacturer, distributor, or repackager
       --source-version string                     set the version of the target being analyzed
   -t, --template string                           specify the path to a Go template file
   -v, --verbose count                             increase verbosity (-v = info, -vv = debug)
@@ -93,11 +83,128 @@ Flags:
 Use "syft [command] --help" for more information about a command.
 ```
 
-### `syft scan`
+### `syft attest`
+
+Generate a packaged-based Software Bill Of Materials (SBOM) from a container image as the predicate of an in-toto attestation that will be uploaded to the image registry.
 
 ```
-Generate a packaged-based Software Bill Of Materials (SBOM) from container images and filesystems
+Usage:
+  syft attest --output [FORMAT] <IMAGE> [flags]
 
+Examples:
+  syft attest --output [FORMAT] alpine:latest            defaults to using images from a Docker daemon. If Docker is not present, the image is pulled directly from the registry
+
+  You can also explicitly specify the scheme to use:
+    syft attest docker:yourrepo/yourimage:tag            explicitly use the Docker daemon
+    syft attest podman:yourrepo/yourimage:tag            explicitly use the Podman daemon
+    syft attest registry:yourrepo/yourimage:tag          pull image directly from a registry (no container runtime required)
+    syft attest docker-archive:path/to/yourimage.tar     use a tarball from disk for archives created from "docker save"
+    syft attest oci-archive:path/to/yourimage.tar        use a tarball from disk for OCI archives (from Skopeo or otherwise)
+    syft attest oci-dir:path/to/yourimage                read directly from a path on disk for OCI layout directories (from Skopeo or otherwise)
+    syft attest singularity:path/to/yourimage.sif        read directly from a Singularity Image Format (SIF) container on disk
+
+
+Flags:
+      --base-path string                          base directory for scanning, no links will be followed above this directory, and all paths will be reported relative to this directory
+      --enrich stringArray                        enable package data enrichment from local and online sources (options: all, golang, java, javascript)
+      --exclude stringArray                       exclude paths from being scanned using a glob expression
+      --from stringArray                          specify the source behavior to use (e.g. docker, registry, oci-dir, ...)
+  -h, --help                                      help for attest
+  -k, --key string                                the key to use for the attestation
+  -o, --output stringArray                        report output format (<format>=<file> to output to a file), formats=[cyclonedx-json cyclonedx-xml github-json purls spdx-json spdx-tag-value syft-json syft-table syft-text template] (default [syft-json])
+      --override-default-catalogers stringArray   set the base set of catalogers to use (defaults to 'image' or 'directory' depending on the scan source)
+      --parallelism int                           number of cataloger workers to run in parallel
+      --platform string                           an optional platform specifier for container image sources (e.g. 'linux/arm64', 'linux/arm64/v8', 'arm64', 'linux')
+  -s, --scope string                              selection of layers to catalog, options=[squashed all-layers deep-squashed] (default "squashed")
+      --select-catalogers stringArray             add, remove, and filter the catalogers to be used
+      --source-name string                        set the name of the target being analyzed
+      --source-supplier string                    the organization that supplied the component, which often may be the manufacturer, distributor, or repackager
+      --source-version string                     set the version of the target being analyzed
+
+```
+
+### `syft cataloger list`
+
+List available catalogers.
+
+```
+Usage:
+  syft cataloger list [OPTIONS] [flags]
+
+Flags:
+  -h, --help                                      help for list
+  -o, --output string                             format to output the cataloger list (available: table, json)
+      --override-default-catalogers stringArray   override the default catalogers with an expression (default [all])
+      --select-catalogers stringArray             select catalogers with an expression
+  -s, --show-hidden                               show catalogers that have been de-selected
+
+```
+
+### `syft config`
+
+Show the syft configuration.
+
+```
+Usage:
+  syft config [flags]
+  syft config [command]
+
+Available Commands:
+  locations   shows all locations and the order in which syft will look for a configuration file
+
+Flags:
+  -h, --help   help for config
+      --load   load and validate the syft configuration
+
+```
+
+### `syft convert`
+
+[Experimental] Convert SBOM files to, and from, SPDX, CycloneDX and Syft's format. For more info about data loss between formats see <https://github.com/anchore/syft/wiki/format-conversion>.
+
+```
+Usage:
+  syft convert [SOURCE-SBOM] -o [FORMAT] [flags]
+
+Examples:
+  syft convert img.syft.json -o spdx-json                      convert a syft SBOM to spdx-json, output goes to stdout
+  syft convert img.syft.json -o cyclonedx-json=img.cdx.json    convert a syft SBOM to CycloneDX, output is written to the file "img.cdx.json"
+  syft convert - -o spdx-json                                  convert an SBOM from STDIN to spdx-json
+
+
+Flags:
+      --file string          file to write the default report output to (default is STDOUT) (DEPRECATED: use: --output FORMAT=PATH)
+  -h, --help                 help for convert
+  -o, --output stringArray   report output format (<format>=<file> to output to a file), formats=[cyclonedx-json cyclonedx-xml github-json purls spdx-json spdx-tag-value syft-json syft-table syft-text template] (default [syft-table])
+  -t, --template string      specify the path to a Go template file
+
+```
+
+### `syft login`
+
+Log in to a registry.
+
+```
+Usage:
+  syft login [OPTIONS] [SERVER] [flags]
+
+Examples:
+  # Log in to reg.example.com
+  syft login reg.example.com -u AzureDiamond -p hunter2
+
+Flags:
+  -h, --help              help for login
+  -p, --password string   Password
+      --password-stdin    Take the password from stdin
+  -u, --username string   Username
+
+```
+
+### `syft scan`
+
+Generate a packaged-based Software Bill Of Materials (SBOM) from container images and filesystems.
+
+```
 Usage:
   syft scan [SOURCE] [flags]
 
@@ -143,39 +250,22 @@ Flags:
   -s, --scope string                              selection of layers to catalog, options=[squashed all-layers deep-squashed] (default "squashed")
       --select-catalogers stringArray             add, remove, and filter the catalogers to be used
       --source-name string                        set the name of the target being analyzed
+      --source-supplier string                    the organization that supplied the component, which often may be the manufacturer, distributor, or repackager
       --source-version string                     set the version of the target being analyzed
   -t, --template string                           specify the path to a Go template file
 
-Global Flags:
-  -c, --config stringArray    syft configuration file(s) to use
-      --profile stringArray   configuration profiles to use
-  -q, --quiet                 suppress all logging output
-  -v, --verbose count         increase verbosity (-v = info, -vv = debug)
 ```
 
-### `syft convert`
+### `syft version`
+
+Show version information.
 
 ```
-[Experimental] Convert SBOM files to, and from, SPDX, CycloneDX and Syft's format. For more info about data loss between formats see https://github.com/anchore/syft/wiki/format-conversion
-
 Usage:
-  syft convert [SOURCE-SBOM] -o [FORMAT] [flags]
-
-Examples:
-  syft convert img.syft.json -o spdx-json                      convert a syft SBOM to spdx-json, output goes to stdout
-  syft convert img.syft.json -o cyclonedx-json=img.cdx.json    convert a syft SBOM to CycloneDX, output is written to the file "img.cdx.json"
-  syft convert - -o spdx-json                                  convert an SBOM from STDIN to spdx-json
-
+  syft version [flags]
 
 Flags:
-      --file string          file to write the default report output to (default is STDOUT) (DEPRECATED: use: --output FORMAT=PATH)
-  -h, --help                 help for convert
-  -o, --output stringArray   report output format (<format>=<file> to output to a file), formats=[cyclonedx-json cyclonedx-xml github-json purls spdx-json spdx-tag-value syft-json syft-table syft-text template] (default [syft-table])
-  -t, --template string      specify the path to a Go template file
+  -h, --help            help for version
+  -o, --output string   the format to show the results (allowable: [text json]) (default "text")
 
-Global Flags:
-  -c, --config stringArray    syft configuration file(s) to use
-      --profile stringArray   configuration profiles to use
-  -q, --quiet                 suppress all logging output
-  -v, --verbose count         increase verbosity (-v = info, -vv = debug)
 ```
