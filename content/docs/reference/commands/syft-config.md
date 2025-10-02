@@ -7,6 +7,19 @@ categories = ['reference']
 url = "docs/reference/commands/syft-config"
 +++
 
+{{< alert title="Note" >}}
+This documentation was generated from Syft version `1.33.0`.
+{{< /alert >}}
+
+Syft searches for configuration files in the following locations, in order:
+
+1. `./.syft.yaml` - current working directory
+2. `./.syft/config.yaml` - app subdirectory in current working directory
+3. `~/.syft.yaml` - home directory
+4. `$XDG_CONFIG_HOME/syft/config.yaml` - [XDG config directory](https://github.com/adrg/xdg?tab=readme-ov-file#default-locations)
+
+The configuration file can use either `.yaml` or `.yml` extensions. The first configuration file found will be used.
+
 ```yaml
 log:
   # suppress all logging output (env: SYFT_LOG_QUIET)

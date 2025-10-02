@@ -7,6 +7,19 @@ categories = ['reference']
 url = "docs/reference/commands/grype-config"
 +++
 
+{{< alert title="Note" >}}
+This documentation was generated from Grype version `0.100.0`.
+{{< /alert >}}
+
+Grype searches for configuration files in the following locations, in order:
+
+1. `./.grype.yaml` - current working directory
+2. `./.grype/config.yaml` - app subdirectory in current working directory
+3. `~/.grype.yaml` - home directory
+4. `$XDG_CONFIG_HOME/grype/config.yaml` - [XDG config directory](https://github.com/adrg/xdg?tab=readme-ov-file#default-locations)
+
+The configuration file can use either `.yaml` or `.yml` extensions. The first configuration file found will be used.
+
 ```yaml
 log:
   # suppress all logging output (env: GRYPE_LOG_QUIET)

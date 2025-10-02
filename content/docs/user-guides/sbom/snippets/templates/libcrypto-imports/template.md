@@ -1,0 +1,14 @@
+```go-text-template
+{{range .files -}}
+{{- if .executable}}
+{{- $path := .location.path}}
+{{- range .executable.importedLibraries}}
+{{- if eq . "libcrypto.so.1.1"}}
+{{$path}}
+{{break}}
+{{- end}}
+{{- end}}
+{{- end}}
+{{- end}}
+
+```

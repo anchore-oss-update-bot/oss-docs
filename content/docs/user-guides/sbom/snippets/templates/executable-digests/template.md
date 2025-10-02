@@ -1,0 +1,8 @@
+```go-text-template
+{{range .files -}}
+{{- if .executable}}
+{{.location.path}}: {{range .digests}}{{if eq .algorithm "sha256"}}{{.value}}{{end}}{{end}}
+{{end}}
+{{- end}}
+
+```
