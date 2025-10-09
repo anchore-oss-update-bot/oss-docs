@@ -26,8 +26,8 @@ Scan SBOMs or containers for licenses used:
 
 Reference information
 
-- [Syft command-line options](/docs/reference/commands/syft/)
-- [Grype command-line options](/docs/reference/commands/grype)
+- [Syft command-line options](/docs/reference/syft/cli)
+- [Grype command-line options](/docs/reference/grype/cli)
 - [Organizations/Projects using Anchore OSS](/docs/about/adopters/)
 
 OSS release notes:

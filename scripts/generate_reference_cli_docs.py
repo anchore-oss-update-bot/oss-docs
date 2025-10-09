@@ -109,7 +109,7 @@ linkTitle = "{tool_display} CLI"
 weight = 20
 tags = ['{tool_name.lower()}']
 categories = ['reference']
-url = "docs/reference/commands/{tool_name.lower()}"
+url = "docs/reference/{tool_name.lower()}/cli"
 +++
 
 """

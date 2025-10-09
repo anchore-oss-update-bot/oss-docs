@@ -63,7 +63,7 @@ For example, when you run `syft alpine:latest`, Syft will first check your local
 If Docker isn't available, it tries Podman, then Containerd, and finally attempts to pull directly from the registry.
 
 You can override this default behavior with the `default-image-pull-source` configuration option to always prefer a specific source.
-See [Configuration](/docs/reference/commands/syft-config) for more details.
+See [Configuration](/docs/reference/syft/configuration) for more details.
 
 ### Directory Sources
 

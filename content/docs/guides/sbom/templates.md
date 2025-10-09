@@ -16,7 +16,7 @@ Set the output format to `template` and specify the template file path:
 syft <image> -o template -t ./path/to/custom.tmpl
 ```
 
-You can also configure the template path in your [configuration file](/docs/reference/commands/syft-config/):
+You can also configure the template path in your [configuration file](/docs/reference/syft/configuration/):
 
 ```yaml
 #.syft.yaml
@@ -140,4 +140,4 @@ Long-term support for this legacy option is not guaranteed.
 - [Go template documentation](https://pkg.go.dev/text/template) - Template syntax reference
 - [Sprig function documentation](http://masterminds.github.io/sprig/) - Helper functions
 - [Output formats](/docs/guides/sbom/formats/) - Other output format options
-- [Configuration options](/docs/reference/commands/syft-config/) - Advanced settings
+- [Configuration options](/docs/reference/syft/configuration/) - Advanced settings

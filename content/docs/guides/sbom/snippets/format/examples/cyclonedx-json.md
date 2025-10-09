@@ -3,10 +3,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:5c511a3e-c100-4d87-b63a-79c9535d2cc1",
+  "serialNumber": "urn:uuid:ad79379e-ec73-4989-b6b7-31c113221b72",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-10-02T20:50:37Z",
+    "timestamp": "2025-10-09T14:08:19Z",
     "tools": { "components": [{ "type": "application", "author": "anchore", "name": "syft", "version": "1.33.0" }] },
     "component": {
       "bom-ref": "84d86520b9546322",

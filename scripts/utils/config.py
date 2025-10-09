@@ -34,7 +34,7 @@ class Paths:
     # content directories (output)
     content_dir: Path = project_root / "content"
     docs_dir: Path = content_dir / "docs"
-    user_guides_dir: Path = docs_dir / "user-guides"
+    user_guides_dir: Path = docs_dir / "guides"
     sbom_guides_dir: Path = user_guides_dir / "sbom"
     snippets_dir: Path = sbom_guides_dir / "snippets"
 

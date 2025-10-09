@@ -4,7 +4,7 @@ linkTitle = "Syft CLI"
 weight = 20
 tags = ['syft']
 categories = ['reference']
-url = "docs/reference/commands/syft"
+url = "docs/reference/syft/cli"
 +++
 
 {{< alert title="Note" >}}

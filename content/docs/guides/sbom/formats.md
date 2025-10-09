@@ -112,4 +112,4 @@ syft <source> \
 
 - Learn about [customizing output with templates](/docs/guides/sbom/templates) for specialized formats
 - Explore [supported sources](/docs/guides/sbom/sources) to understand what Syft can analyze
-- See [configuration options](/docs/reference/commands/syft-config) for advanced format settings
+- See [configuration options](/docs/reference/syft/configuration) for advanced format settings

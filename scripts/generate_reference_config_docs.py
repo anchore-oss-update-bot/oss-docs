@@ -84,7 +84,7 @@ linkTitle = "{tool_display} Default Config"
 weight = 25
 tags = ['{tool_name.lower()}']
 categories = ['reference']
-url = "docs/reference/commands/{tool_name.lower()}-config"
+url = "docs/reference/{tool_name.lower()}/configuration"
 +++
 
 """
