@@ -7,8 +7,12 @@ Supports Cobra-based CLIs (like Syft and Grype).
 import os
 import sys
 from collections import deque
+from pathlib import Path
 
 import click
+from utils.cache import get_cached_output, save_to_cache
+from utils.config import get_generated_comment, paths
+from utils.logging import setup_logging
 from utils.syft import run_syft
 
 
@@ -38,6 +42,17 @@ from utils.syft import run_syft
     multiple=True,
     help="Include specific commands even if they are parent commands (can be used multiple times)",
 )
+@click.option(
+    "--update",
+    is_flag=True,
+    help="Update the cache even if it already exists",
+)
+@click.option(
+    "-v",
+    "--verbose",
+    count=True,
+    help="Increase verbosity (use -v for info, -vv for debug)",
+)
 def main(
     image: str,
     output: str,
@@ -45,11 +60,15 @@ def main(
     app_name: str | None,
     include_all_cmds: bool,
     include_cmd: tuple[str, ...],
+    update: bool,
+    verbose: int,
 ) -> None:
     """Generate command reference documentation.
 
     IMAGE: Container image (e.g., anchore/syft:latest)
     """
+    logger = setup_logging(verbose, __file__)
+
     # Auto-detect tool and app names if not provided
     if not tool_name:
         # Extract tool name from image name (e.g., anchore/syft:latest -> syft)
@@ -63,7 +82,7 @@ def main(
     if not app_name:
         app_name = tool_name
 
-    print(f"Generating CLI docs for {tool_name} using image {image}...")
+    logger.info(f"Generating CLI docs for {tool_name} using image {image}...")
 
     # Create output directory if it doesn't exist
     output_dir = os.path.dirname(output)
@@ -78,16 +97,17 @@ def main(
             tool_name,
             include_all_cmds,
             list(include_cmd) if include_cmd else None,
+            update,
         )
 
         # Write to file
         with open(output, "w", encoding="utf-8") as f:
             f.write(content)
 
-        print(f"CLI docs generated successfully: {output}")
+        logger.info(f"CLI docs generated successfully: {output}")
 
     except Exception as e:
-        print(f"Error generating documentation: {e}", file=sys.stderr)
+        logger.error(f"Error generating documentation: {e}")
         sys.exit(1)
 
 
@@ -97,6 +117,7 @@ def generate_markdown_content(
     tool_name: str,
     include_all_cmds: bool = False,
     include_specific_cmds: list[str] | None = None,
+    update: bool = False,
 ) -> str:
     """Generate the complete markdown content."""
     # Prepare tool name for display
@@ -114,8 +135,11 @@ url = "docs/reference/{tool_name.lower()}/cli"
 
 """
 
+    # Add auto-generated comment
+    content += get_generated_comment("scripts/generate_reference_cli_docs.py", "html")
+
     # Add version info block at the top
-    version_info = get_version_info(image, app_name)
+    version_info = get_version_info(image, app_name, tool_name, update)
     # Extract just the version line for the info block
     version_lines = version_info.split("\n")
     app_version = "unknown"
@@ -139,11 +163,15 @@ This documentation was generated from {tool_display} version `{app_version}`.
 """
 
     # Add main help at the top without header (entire output in code block)
-    main_help = get_command_help(image, [])  # Empty cmd_parts for main help
+    main_help = get_command_help(
+        image, [], tool_name, update
+    )  # Empty cmd_parts for main help
     content += f"```\n{main_help}\n```\n\n"
 
     # Discover and add all subcommands
-    all_commands, leaf_commands = discover_all_commands(image, app_name)
+    all_commands, leaf_commands = discover_all_commands(
+        image, app_name, tool_name, update
+    )
 
     # Choose which commands to include based on flags
     if include_all_cmds:
@@ -171,7 +199,7 @@ This documentation was generated from {tool_display} version `{app_version}`.
         cmd_string = " ".join(cmd_path)
 
         help_output = get_command_help(
-            image, cmd_path
+            image, cmd_path, tool_name, update
         )  # Use cmd_path directly since container runs tool directly
         description, command_details = split_help_output(
             help_output, is_main_help=False
@@ -185,7 +213,30 @@ This documentation was generated from {tool_display} version `{app_version}`.
     return content
 
 
-def discover_all_commands(image: str, app_name: str):
+def get_cache_path_for_cli(tool_name: str, cmd_parts: list[str]) -> Path:
+    """
+    get cache file path for a CLI command output.
+
+    Args:
+        tool_name: tool name (e.g., "syft", "grype")
+        cmd_parts: command parts (e.g., ["db", "search"] or [] for main help)
+
+    Returns:
+        Path to cache file
+    """
+    if not cmd_parts:
+        # main help
+        cache_dir = paths.reference_cache_dir / tool_name / "cli" / "main"
+    else:
+        # subcommand help - use command path as directory structure
+        cache_dir = paths.reference_cache_dir / tool_name / "cli" / "/".join(cmd_parts)
+
+    return cache_dir / "output.txt"
+
+
+def discover_all_commands(
+    image: str, app_name: str, tool_name: str, update: bool = False
+):
     """Discover all commands recursively.
 
     Returns a tuple of (all_commands, leaf_commands) where:
@@ -206,7 +257,7 @@ def discover_all_commands(image: str, app_name: str):
             all_commands.append(path.copy())
 
         # Get subcommands
-        subcommands = get_subcommands(image, cmd_parts)
+        subcommands = get_subcommands(image, cmd_parts, tool_name, update)
 
         # If this command has subcommands, mark it as a parent
         if subcommands and path:
@@ -226,17 +277,27 @@ def discover_all_commands(image: str, app_name: str):
     return all_commands, leaf_commands
 
 
-def get_subcommands(image: str, cmd_parts):
+def get_subcommands(image: str, cmd_parts, tool_name: str, update: bool = False):
     """Extract subcommands from help output."""
-    stdout, stderr, returncode = run_syft(
-        syft_image=image,
-        args=cmd_parts + ["help"],
-    )
+    # check cache first
+    cache_path = get_cache_path_for_cli(tool_name, cmd_parts + ["help"])
+    cached = get_cached_output(cache_path, update)
 
-    if returncode != 0:
-        return []
+    if cached is not None:
+        lines = cached.split("\n")
+    else:
+        # run command
+        stdout, stderr, returncode = run_syft(
+            syft_image=image,
+            args=cmd_parts + ["help"],
+        )
 
-    lines = stdout.split("\n")
+        if returncode != 0:
+            return []
+
+        # save to cache
+        save_to_cache(cache_path, stdout)
+        lines = stdout.split("\n")
     in_commands_section = False
     commands = []
 
@@ -255,22 +316,48 @@ def get_subcommands(image: str, cmd_parts):
     return commands
 
 
-def get_version_info(image: str, app_name: str) -> str:
+def get_version_info(
+    image: str, app_name: str, tool_name: str, update: bool = False
+) -> str:
     """Get version information from the app."""
+    # check cache first
+    cache_path = get_cache_path_for_cli(tool_name, ["version"])
+    cached = get_cached_output(cache_path, update)
+
+    if cached is not None:
+        return cached.strip()
+
+    # run command
     stdout, stderr, returncode = run_syft(
         syft_image=image,
         args=["version"],
     )
+
     if returncode == 0:
+        # save to cache
+        save_to_cache(cache_path, stdout)
         return stdout.strip()
+
     raise RuntimeError(f"Failed to retrieve version info from the image '{image}'.")
 
 
-def get_command_help(image: str, cmd_parts) -> str:
+def get_command_help(
+    image: str, cmd_parts, tool_name: str, update: bool = False
+) -> str:
     """Get help output for a specific command."""
-    print(
-        "   ...Getting help output for command:",
-        " ".join(cmd_parts) if cmd_parts else "(main help)",
+    import logging
+
+    logger = logging.getLogger(__name__)
+
+    # check cache first
+    cache_path = get_cache_path_for_cli(tool_name, cmd_parts)
+    cached = get_cached_output(cache_path, update)
+
+    if cached is not None:
+        return cached.strip()
+
+    logger.debug(
+        f"Getting help output for command: {' '.join(cmd_parts) if cmd_parts else '(main help)'}"
     )
 
     for help_flag in ["--help"]:
@@ -284,6 +371,8 @@ def get_command_help(image: str, cmd_parts) -> str:
             args=full_cmd,
         )
         if returncode == 0 and stdout.strip():
+            # save to cache
+            save_to_cache(cache_path, stdout)
             return stdout.strip()
 
     raise RuntimeError(f"Failed to retrieve help for command: {' '.join(cmd_parts)}")

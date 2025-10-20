@@ -8,11 +8,13 @@ import shutil
 import subprocess
 import sys
 from pathlib import Path
+from typing import cast
 
 import click
 import yaml
 from utils.config import docker_images, paths, timeouts
-from utils.syft import run_syft_with_config
+from utils.logging import setup_logging
+from utils.sbom import get_or_generate_sbom
 
 
 @click.command()
@@ -31,12 +33,27 @@ from utils.syft import run_syft_with_config
     default=docker_images.syft,
     help=f"Syft Docker image to use (default: {docker_images.syft})",
 )
+@click.option(
+    "--update",
+    is_flag=True,
+    help="Update the SBOM cache even if it already exists",
+)
+@click.option(
+    "-v",
+    "--verbose",
+    count=True,
+    help="Increase verbosity (use -v for info, -vv for debug)",
+)
 def main(
     examples_dir: str,
     output_dir: str,
     syft_image: str,
+    update: bool,
+    verbose: int,
 ) -> None:
     """Generate jq query example documentation."""
+    logger = setup_logging(verbose, __file__)
+
     examples_path = Path(examples_dir)
     output_path = Path(output_dir)
 
@@ -44,21 +61,21 @@ def main(
     cache_dir = examples_path / "sbom-cache"
 
     if not examples_path.exists():
-        print(f"Error: Examples directory not found: {examples_path}", file=sys.stderr)
+        logger.error(f"Examples directory not found: {examples_path}")
         sys.exit(1)
 
     # Find all YAML example files
     example_files = sorted(examples_path.glob("*.yaml"))
     if not example_files:
-        print(f"Error: No .yaml files found in {examples_path}", file=sys.stderr)
+        logger.error(f"No .yaml files found in {examples_path}")
         sys.exit(1)
 
-    print(f"Found {len(example_files)} example(s) in {examples_path}")
-    print(f"Using Syft image: {syft_image}")
+    logger.info(f"Found {len(example_files)} example(s) in {examples_path}")
+    logger.debug(f"Using Syft image: {syft_image}")
 
     # Clean output directory to remove stale examples
     if output_path.exists():
-        print(f"Cleaning output directory: {output_path}")
+        logger.debug(f"Cleaning output directory: {output_path}")
         shutil.rmtree(output_path)
 
     # Create output and cache directories
@@ -68,7 +85,7 @@ def main(
     # Process each example
     for example_file in example_files:
         example_name = example_file.stem
-        print(f"\nProcessing: {example_name}")
+        logger.debug(f"Processing: {example_name}")
 
         try:
             generate_example(
@@ -77,13 +94,14 @@ def main(
                 output_dir=output_path,
                 cache_dir=cache_dir,
                 syft_image=syft_image,
+                update=update,
             )
-            print(f"  ✓ Generated {example_name}")
+            logger.debug(f"  ✓ Generated {example_name}")
         except Exception as e:
-            print(f"  ✗ Failed to generate {example_name}: {e}", file=sys.stderr)
+            logger.error(f"  ✗ Failed to generate {example_name}: {e}")
             sys.exit(1)
 
-    print(f"\n✓ All examples generated successfully in {output_path}")
+    logger.info(f"All examples generated successfully in {output_path}")
 
 
 def generate_example(
@@ -92,6 +110,7 @@ def generate_example(
     output_dir: Path,
     cache_dir: Path,
     syft_image: str,
+    update: bool = False,
 ) -> None:
     """Generate markdown files for a single jq query example."""
     # Load example definition
@@ -112,12 +131,17 @@ def generate_example(
     example_dir.mkdir(parents=True, exist_ok=True)
 
     # Generate or retrieve SBOM
-    sbom_json = get_or_generate_sbom(
-        image=image,
-        config=config,
-        cache_dir=cache_dir,
-        syft_image=syft_image,
-        examples_dir=example_file.parent,
+    config_file = example_file.parent / config if config else None
+    sbom_json = cast(
+        str,
+        get_or_generate_sbom(
+            image=image,
+            cache_dir=cache_dir,
+            syft_image=syft_image,
+            update=update,
+            config_file=config_file,
+            return_content=True,
+        ),
     )
 
     # Generate query.md - just the jq expression
@@ -154,57 +178,6 @@ def generate_example(
 
     output_md = f"```{output_format}\n{output}\n```\n"
     (example_dir / "output.md").write_text(output_md)
-
-
-def get_or_generate_sbom(
-    image: str,
-    config: str | None,
-    cache_dir: Path,
-    syft_image: str,
-    examples_dir: Path | None = None,
-) -> str:
-    """Get SBOM from cache or generate it using Syft."""
-    if examples_dir is None:
-        examples_dir = paths.jq_query_examples_dir
-
-    # create cache key from image and config
-    cache_key = f"{image.replace(':', '_').replace('/', '_')}"
-    if config:
-        cache_key += f"_{Path(config).stem}"
-    cache_file = cache_dir / f"{cache_key}.json"
-
-    # check cache
-    if cache_file.exists():
-        print(f"  Using cached SBOM: {cache_file}")
-        return cache_file.read_text()
-
-    # generate SBOM
-    print(f"  Generating SBOM for: {image}")
-    if config:
-        config_path = examples_dir / config
-        sbom_json = run_syft_with_config(
-            target_image=image,
-            config_file=config_path,
-            syft_image=syft_image,
-            output_format="syft-json",
-            timeout=timeouts.syft_scan_with_config,
-        )
-    else:
-        # import the base run_syft_scan for non-config runs
-        from utils.syft import run_syft_scan
-
-        sbom_json = run_syft_scan(
-            target_image=image,
-            syft_image=syft_image,
-            output_format="syft-json",
-            timeout=timeouts.syft_scan_with_config,
-        )
-
-    # save to cache
-    cache_file.write_text(sbom_json)
-    print(f"  Cached SBOM to: {cache_file}")
-
-    return sbom_json
 
 
 def run_jq_query(sbom_json: str, query: str) -> str:

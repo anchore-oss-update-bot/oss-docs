@@ -6,10 +6,13 @@ Creates markdown files with code fences for each format.
 
 import sys
 from pathlib import Path
+from typing import cast
 
 import click
-from utils.config import docker_images, paths, timeouts
-from utils.syft import run_syft_convert_format, run_syft_scan
+from utils.config import docker_images, get_generated_comment, paths
+from utils.logging import setup_logging
+from utils.sbom import get_or_generate_sbom
+from utils.syft import run_syft_convert_format
 
 # Format definitions: (format_name, file_extension, code_fence_language)
 FORMATS = [
@@ -42,9 +45,24 @@ FORMATS = [
     default=str(paths.format_examples_snippet_dir),
     help=f"Output directory for format examples (default: {paths.format_examples_snippet_dir})",
 )
-def main(image: str, syft_image: str, output_dir: str) -> None:
+@click.option(
+    "--update",
+    is_flag=True,
+    help="Update the SBOM cache even if it already exists",
+)
+@click.option(
+    "-v",
+    "--verbose",
+    count=True,
+    help="Increase verbosity (use -v for info, -vv for debug)",
+)
+def main(
+    image: str, syft_image: str, output_dir: str, update: bool, verbose: int
+) -> None:
     """Generate SBOM format examples using Syft."""
-    print(f"Generating format examples for {image} using {syft_image}...")
+    logger = setup_logging(verbose, __file__)
+
+    logger.info(f"Generating format examples for {image} using {syft_image}...")
 
     # Create output directory if it doesn't exist
     output_path = Path(output_dir)
@@ -56,15 +74,19 @@ def main(image: str, syft_image: str, output_dir: str) -> None:
     cache_dir.mkdir(parents=True, exist_ok=True)
 
     # Generate or retrieve SBOM from cache
-    sbom_file = get_or_generate_sbom(
-        image=image,
-        cache_dir=cache_dir,
-        syft_image=syft_image,
+    sbom_file = cast(
+        Path,
+        get_or_generate_sbom(
+            image=image,
+            cache_dir=cache_dir,
+            syft_image=syft_image,
+            update=update,
+        ),
     )
 
     # Generate examples for each format
     for format_name, _, fence_lang in FORMATS:
-        print(f"Generating {format_name} example...")
+        logger.debug(f"Generating {format_name} example...")
         try:
             generate_format_example(
                 sbom_file=sbom_file,
@@ -73,12 +95,14 @@ def main(image: str, syft_image: str, output_dir: str) -> None:
                 fence_lang=fence_lang,
                 output_path=output_path / f"{format_name}.md",
             )
-            print(f"  ✓ Generated {format_name}.md")
+            logger.debug(f"  ✓ Generated {format_name}.md")
         except Exception as e:
-            print(f"  ✗ Error generating {format_name}: {e}", file=sys.stderr)
+            logger.error(f"  ✗ Error generating {format_name}: {e}")
             sys.exit(1)
 
-    print(f"\nSuccessfully generated {len(FORMATS)} format examples in {output_path}")
+    logger.info(
+        f"Successfully generated {len(FORMATS)} format examples in {output_path}"
+    )
 
 
 def generate_format_example(
@@ -109,48 +133,20 @@ def generate_format_example(
 
 def create_markdown_content(fence_lang: str, output: str) -> str:
     """Create markdown content with code fence."""
+    # Add auto-generated comment
+    comment = get_generated_comment("scripts/generate_format_examples.py", "html")
+
     # Build the code fence opening
     if fence_lang:
         fence_start = f"```{fence_lang}"
     else:
         fence_start = "```"
 
-    content = f"""{fence_start}
+    content = f"""{comment}{fence_start}
 {output}
 ```
 """
     return content
-
-
-def get_or_generate_sbom(
-    image: str,
-    cache_dir: Path,
-    syft_image: str,
-) -> Path:
-    """Get SBOM from cache or generate it using Syft."""
-    # create cache key from image name
-    cache_key = image.replace(":", "_").replace("/", "_")
-    cache_file = cache_dir / f"{cache_key}.json"
-
-    # check cache
-    if cache_file.exists():
-        print(f"  Using cached SBOM: {cache_file}")
-        return cache_file
-
-    # generate SBOM
-    print(f"  Generating SBOM for: {image}")
-    sbom_json = run_syft_scan(
-        target_image=image,
-        syft_image=syft_image,
-        output_format="syft-json",
-        timeout=timeouts.syft_scan_default,
-    )
-
-    # save to cache
-    cache_file.write_text(sbom_json)
-    print(f"  Cached SBOM to: {cache_file}")
-
-    return cache_file
 
 
 if __name__ == "__main__":
