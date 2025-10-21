@@ -15,7 +15,6 @@ sidebar_badge = "alpine+"
 
 {{< readfile file="/content/docs/capabilities/snippets/ecosystem/apk/vulnerability.md" >}}
 
-
 ### Operating systems
 
 {{< readfile file="/content/docs/capabilities/snippets/ecosystem/apk/os.md" >}}
@@ -25,7 +24,6 @@ This database only includes vulnerabilities that have fixes available and does n
 The maintainers of the SecDB intend for the primary source of truth for disclosures to be the [National Vulnerability Database](https://nvd.nist.gov/developers/vulnerabilities) (NVD).
 
 This is true of other APK vulnerability data sources as well (such as Chainguard, Wolfi, and MinimOS).
-
 
 ## Next steps
 

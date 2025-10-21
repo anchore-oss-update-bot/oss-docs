@@ -370,7 +370,7 @@ svg use[href='#icon-dash'] {
 
 /* Abbr element containing help icon - remove default styling and set up tooltip positioning */
 .header-help {
-  position: relative;  /* position context for custom tooltip */
+  position: relative; /* position context for custom tooltip */
   text-decoration: none;
   border: none;
   cursor: help;
@@ -385,7 +385,7 @@ svg use[href='#icon-dash'] {
   height: 14px;
   opacity: 0.5;
   transition: opacity 0.2s ease;
-  pointer-events: none;  /* allow mouse events to pass through to abbr for tooltip */
+  pointer-events: none; /* allow mouse events to pass through to abbr for tooltip */
 }
 
 /* Brighten help icon on hover */
@@ -398,14 +398,13 @@ svg use[href='#icon-help'] {
   color: currentColor;
 }
 
-
 /* Custom Tooltips for Header Help Icons */
 
 /* Tooltip content */
 .header-help::after {
   content: attr(title);
   position: absolute;
-  bottom: calc(100% + 8px);  /* position above with gap */
+  bottom: calc(100% + 8px); /* position above with gap */
   left: 50%;
   transform: translateX(-50%);
 
@@ -421,7 +420,9 @@ svg use[href='#icon-help'] {
   max-width: 250px;
   width: max-content;
   text-align: left;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
 
   /* theme-aware colors */
   [data-bs-theme='light'] & {
@@ -438,12 +439,13 @@ svg use[href='#icon-help'] {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.2s ease, visibility 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
 
   /* layer above table */
   z-index: 1000;
 }
-
 
 /* Show tooltip on hover */
 .header-help:hover::after,
@@ -462,13 +464,13 @@ svg use[href='#icon-help'] {
 }
 
 /* Adjust positioning for tooltips near right edge */
-th:nth-last-child(-n+2) .header-help::after {
+th:nth-last-child(-n + 2) .header-help::after {
   left: auto;
   right: 0;
   transform: translateX(0);
 }
 
-th:nth-last-child(-n+2) .header-help::before {
+th:nth-last-child(-n + 2) .header-help::before {
   left: auto;
   right: 12px;
   transform: translateX(0);

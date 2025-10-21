@@ -20,7 +20,6 @@ sidebar_badge = "debian+"
 
 {{< readfile file="/content/docs/capabilities/snippets/ecosystem/dpkg/vulnerability.md" >}}
 
-
 ### Operating systems
 
 {{< readfile file="/content/docs/capabilities/snippets/ecosystem/dpkg/os.md" >}}

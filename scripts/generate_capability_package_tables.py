@@ -30,7 +30,7 @@ import re
 import shutil
 import sys
 from collections import defaultdict
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
@@ -42,7 +42,6 @@ from utils.data import (
     load_ecosystem_display_names,
 )
 from utils.logging import setup_logging
-
 
 # Header definitions for tooltips
 HEADER_DEFINITIONS = {
@@ -91,7 +90,6 @@ class CatalogerRow:
     # for special aggregated catalogers: class-to-pattern mappings
     # each tuple is (class_name, [pattern1, pattern2, ...])
     class_pattern_pairs: list[tuple[str, list[str]]] | None = None
-
 
 
 def determine_capability_support(capability: dict) -> CapabilitySupport:
@@ -379,9 +377,7 @@ def format_evidence(globs: list[str], paths: list[str], mimetypes: list[str]) ->
     return content
 
 
-def format_class_pattern_pills(
-    class_pattern_pairs: list[tuple[str, list[str]]]
-) -> str:
+def format_class_pattern_pills(class_pattern_pairs: list[tuple[str, list[str]]]) -> str:
     """
     format class-to-pattern mappings as two-toned pills.
 
@@ -658,8 +654,12 @@ def generate_app_config_snippet(
     html_lines.append('<table class="config-table syft-config-table">')
     html_lines.append("  <thead>")
     html_lines.append("    <tr>")
-    html_lines.append(f'      <th class="col-config-key">Configuration Key <abbr class="header-help" title="{HEADER_DEFINITIONS["configuration_key"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>')
-    html_lines.append(f'      <th class="col-description">Description <abbr class="header-help" title="{HEADER_DEFINITIONS["description"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>')
+    html_lines.append(
+        f'      <th class="col-config-key">Configuration Key <abbr class="header-help" title="{HEADER_DEFINITIONS["configuration_key"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>'
+    )
+    html_lines.append(
+        f'      <th class="col-description">Description <abbr class="header-help" title="{HEADER_DEFINITIONS["description"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>'
+    )
     html_lines.append("    </tr>")
     html_lines.append("  </thead>")
     html_lines.append("  <tbody>")
@@ -886,11 +886,21 @@ def generate_overview_table(
     html_lines.append('<table class="capability-table capability-table-overview">')
     html_lines.append("  <thead>")
     html_lines.append("    <tr>")
-    html_lines.append(f'      <th class="col-ecosystem">Ecosystem <abbr class="header-help" title="{HEADER_DEFINITIONS["ecosystem"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>')
-    html_lines.append(f'      <th class="col-cataloger">Cataloger + Evidence <abbr class="header-help" title="{HEADER_DEFINITIONS["cataloger"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>')
-    html_lines.append(f'      <th class="col-license">Licenses <abbr class="header-help" title="{HEADER_DEFINITIONS["licenses"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>')
-    html_lines.append(f'      <th class="col-dependency">Dependencies <abbr class="header-help" title="{HEADER_DEFINITIONS["dependencies"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>')
-    html_lines.append(f'      <th class="col-files">Files <abbr class="header-help" title="{HEADER_DEFINITIONS["files"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>')
+    html_lines.append(
+        f'      <th class="col-ecosystem">Ecosystem <abbr class="header-help" title="{HEADER_DEFINITIONS["ecosystem"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>'
+    )
+    html_lines.append(
+        f'      <th class="col-cataloger">Cataloger + Evidence <abbr class="header-help" title="{HEADER_DEFINITIONS["cataloger"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>'
+    )
+    html_lines.append(
+        f'      <th class="col-license">Licenses <abbr class="header-help" title="{HEADER_DEFINITIONS["licenses"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>'
+    )
+    html_lines.append(
+        f'      <th class="col-dependency">Dependencies <abbr class="header-help" title="{HEADER_DEFINITIONS["dependencies"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>'
+    )
+    html_lines.append(
+        f'      <th class="col-files">Files <abbr class="header-help" title="{HEADER_DEFINITIONS["files"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>'
+    )
     html_lines.append("    </tr>")
     html_lines.append("  </thead>")
     html_lines.append("  <tbody>")
@@ -998,18 +1008,38 @@ def generate_ecosystem_table(
     html_lines.append('<table class="capability-table capability-table-ecosystem">')
     html_lines.append("  <thead>")
     html_lines.append("    <tr>")
-    html_lines.append(f'      <th class="col-cataloger" rowspan="2">Cataloger + Evidence <abbr class="header-help" title="{HEADER_DEFINITIONS["cataloger"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>')
-    html_lines.append(f'      <th class="col-license" rowspan="2">License <abbr class="header-help" title="{HEADER_DEFINITIONS["license"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>')
-    html_lines.append(f'      <th colspan="3">Dependencies <abbr class="header-help" title="{HEADER_DEFINITIONS["dependencies"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>')
-    html_lines.append(f'      <th colspan="3">Package Manager Claims <abbr class="header-help" title="{HEADER_DEFINITIONS["package_manager_claims"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>')
+    html_lines.append(
+        f'      <th class="col-cataloger" rowspan="2">Cataloger + Evidence <abbr class="header-help" title="{HEADER_DEFINITIONS["cataloger"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>'
+    )
+    html_lines.append(
+        f'      <th class="col-license" rowspan="2">License <abbr class="header-help" title="{HEADER_DEFINITIONS["license"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>'
+    )
+    html_lines.append(
+        f'      <th colspan="3">Dependencies <abbr class="header-help" title="{HEADER_DEFINITIONS["dependencies"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>'
+    )
+    html_lines.append(
+        f'      <th colspan="3">Package Manager Claims <abbr class="header-help" title="{HEADER_DEFINITIONS["package_manager_claims"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>'
+    )
     html_lines.append("    </tr>")
     html_lines.append("    <tr>")
-    html_lines.append(f'      <th class="col-depth">Depth <abbr class="header-help" title="{HEADER_DEFINITIONS["depth"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>')
-    html_lines.append(f'      <th class="col-edges">Edges <abbr class="header-help" title="{HEADER_DEFINITIONS["edges"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>')
-    html_lines.append(f'      <th class="col-kinds">Kinds <abbr class="header-help" title="{HEADER_DEFINITIONS["kinds"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>')
-    html_lines.append(f'      <th class="col-files">Files <abbr class="header-help" title="{HEADER_DEFINITIONS["files"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>')
-    html_lines.append(f'      <th class="col-digests">Digests <abbr class="header-help" title="{HEADER_DEFINITIONS["digests"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>')
-    html_lines.append(f'      <th class="col-integrity-hash">Integrity Hash <abbr class="header-help" title="{HEADER_DEFINITIONS["integrity_hash"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>')
+    html_lines.append(
+        f'      <th class="col-depth">Depth <abbr class="header-help" title="{HEADER_DEFINITIONS["depth"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>'
+    )
+    html_lines.append(
+        f'      <th class="col-edges">Edges <abbr class="header-help" title="{HEADER_DEFINITIONS["edges"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>'
+    )
+    html_lines.append(
+        f'      <th class="col-kinds">Kinds <abbr class="header-help" title="{HEADER_DEFINITIONS["kinds"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>'
+    )
+    html_lines.append(
+        f'      <th class="col-files">Files <abbr class="header-help" title="{HEADER_DEFINITIONS["files"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>'
+    )
+    html_lines.append(
+        f'      <th class="col-digests">Digests <abbr class="header-help" title="{HEADER_DEFINITIONS["digests"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>'
+    )
+    html_lines.append(
+        f'      <th class="col-integrity-hash">Integrity Hash <abbr class="header-help" title="{HEADER_DEFINITIONS["integrity_hash"]}"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>'
+    )
     html_lines.append("    </tr>")
     html_lines.append("  </thead>")
     html_lines.append("  <tbody>")
