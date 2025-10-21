@@ -6,7 +6,7 @@ display_names:
   apk: APK
   binary: Binary
   bitnami: Bitnami
-  c++: C++
+  c++: C/C++
   conda: Conda
   dart: Dart
   dotnet: .NET

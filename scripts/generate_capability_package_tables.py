@@ -56,9 +56,9 @@ HEADER_DEFINITIONS = {
     "package_manager_claims": "Metadata and integrity information explicitly tracked by the package manager about packages and their files",
     "files": "Whether Syft can catalog the list of files that are part of a package installation",
     "digests": "Whether Syft can capture file checksums (digests/hashes) claimed by the package manager for individual files within a package",
-    "integrity_hash": "Whether Syft can capture a single package-level integrity hash used by package managers to verify the package archive itself",
+    "integrity_hash": "Whether Syft can capture a single package-level hash used by package managers to verify the package itself",
     "configuration_key": "The configuration field name used in Syft application configuration",
-    "description": "Explanation of what the configuration option does",
+    "description": "Explanation of what the configuration option controls",
 }
 
 

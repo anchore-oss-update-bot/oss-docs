@@ -85,5 +85,5 @@ Syft can extract various package manager metadata beyond basic package informati
 ## Next steps
 
 - Explore capabilities for specific ecosystems using the navigation menu
-- Learn about [Syft package analysis]({{< ref "/docs/guides/sbom" >}})
-- Learn about [Grype vulnerability scanning]({{< ref "/docs/guides/vulnerability" >}})
+- Learn about [Syft package analysis]({{< ref "docs/guides/sbom" >}})
+- Learn about [Grype vulnerability scanning]({{< ref "docs/guides/vulnerability" >}})

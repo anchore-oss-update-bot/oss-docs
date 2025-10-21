@@ -21,5 +21,5 @@ sidebar_badge = "arch"
 
 ## Next steps
 
-- [Syft package analysis]({{< ref "/docs/guides/sbom" >}})
-- [Grype vulnerability scanning]({{< ref "/docs/guides/vulnerability" >}})
+- [Syft package analysis]({{< ref "docs/guides/sbom" >}})
+- [Grype vulnerability scanning]({{< ref "docs/guides/vulnerability" >}})

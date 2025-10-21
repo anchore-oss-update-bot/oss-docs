@@ -87,5 +87,5 @@ This may produce false positives. Use properly versioned builds when possible.
 
 ## Next steps
 
-- [Syft package analysis]({{< ref "/docs/guides/sbom" >}})
-- [Grype vulnerability scanning]({{< ref "/docs/guides/vulnerability" >}})
+- [Syft package analysis]({{< ref "docs/guides/sbom" >}})
+- [Grype vulnerability scanning]({{< ref "docs/guides/vulnerability" >}})

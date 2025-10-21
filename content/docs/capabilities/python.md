@@ -19,7 +19,7 @@ type = "docs"
 
 ## Next steps
 
-- [Syft Python cataloging documentation]({{< ref "/docs/guides/sbom" >}})
-- [Grype vulnerability matching]({{< ref "/docs/guides/vulnerability" >}})
+- [Syft Python cataloging documentation]({{< ref "docs/guides/sbom" >}})
+- [Grype vulnerability matching]({{< ref "docs/guides/vulnerability" >}})
 - [GitHub Security Advisories database](https://github.com/advisories)
 - [Python Package Index (PyPI)](https://pypi.org/)

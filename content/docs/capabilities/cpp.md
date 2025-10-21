@@ -1,6 +1,6 @@
 +++
-title = "C++"
-description = "C++ package analysis and vulnerability scanning capabilities"
+title = "C/C++"
+description = "C/C++ package analysis and vulnerability scanning capabilities"
 weight = 60
 type = "docs"
 +++
@@ -17,5 +17,5 @@ type = "docs"
 
 ## Next steps
 
-- [Syft package analysis]({{< ref "/docs/guides/sbom" >}})
-- [Grype vulnerability scanning]({{< ref "/docs/guides/vulnerability" >}})
+- [Syft package analysis]({{< ref "docs/guides/sbom" >}})
+- [Grype vulnerability scanning]({{< ref "docs/guides/vulnerability" >}})

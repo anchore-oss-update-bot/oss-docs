@@ -6,11 +6,11 @@
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
   "name": "busybox",
-  "documentNamespace": "https://anchore.com/syft/image/busybox-4b9bf1f4-14a1-4822-ad4e-92e22e177f4b",
+  "documentNamespace": "https://anchore.com/syft/image/busybox-54b76706-535c-4fc9-aec7-fe06db26a66d",
   "creationInfo": {
     "licenseListVersion": "3.27",
     "creators": ["Organization: Anchore, Inc", "Tool: syft-1.33.0"],
-    "created": "2025-10-21T19:32:00Z"
+    "created": "2025-10-21T20:56:24Z"
   },
   "packages": [
     {
