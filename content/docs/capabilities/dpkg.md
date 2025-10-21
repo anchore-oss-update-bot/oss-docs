@@ -11,9 +11,15 @@ sidebar_badge = "debian+"
 
 {{< readfile file="/content/docs/capabilities/snippets/ecosystem/dpkg/package.md" >}}
 
+**Notable capabilities:**
+
+- **OPKG compatibility**: Syft supports OpenWrt's OPKG package manager format using the same cataloger.
+- **Distroless images**: Syft automatically detects and supports Google distroless images that use `/var/lib/dpkg/status.d/`.
+
 ## Vulnerability scanning
 
 {{< readfile file="/content/docs/capabilities/snippets/ecosystem/dpkg/vulnerability.md" >}}
+
 
 ### Operating systems
 
