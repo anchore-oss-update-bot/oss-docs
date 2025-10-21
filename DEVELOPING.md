@@ -22,6 +22,11 @@ Or if you want to run all validations:
 make validate
 ```
 
+If you want to make a new doc page, you can use claude with the `/doc:new` command to generate a first draft.
+This requires the syft/grype/grype-db/vunnel/grant repos to be checked out as siblings to the current repo dir.
+
+Any intermediate work from agents when using the slash commands is stored in `drafts/` in a session directory.
+
 ## AI Tooling
 
 Use these slash commands with claude code:
@@ -39,6 +44,7 @@ Use these slash commands with claude code:
 | ---------------------- | ------------------------------- | --------------------------------------------------------- |
 | **doc-writer**         | Create new content from scratch | Starting a new documentation page                         |
 | **accuracy-validator** | Verify technical claims         | Want to ensure documentation matches actual tool behavior |
+| **snippet-generator**  | Generate real code examples     | Need working CLI outputs, jq queries, or config examples  |
 | **doc-style-checker**  | Check style guide compliance    | Want consistent tone, voice, and formatting               |
 | **structure-guide**    | Validate document organization  | Need help with heading hierarchy, links, and sections     |
 
