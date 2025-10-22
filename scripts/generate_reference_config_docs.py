@@ -122,7 +122,7 @@ url = "docs/reference/{tool_name.lower()}/configuration"
 
     # Add version header
     content += f"""{{{{< alert title="Note" >}}}}
-This documentation was generated from {tool_display} version `{app_version}`.
+This documentation was generated with {tool_display} version `{app_version}`.
 {{{{< /alert >}}}}
 
 """
@@ -169,6 +169,8 @@ def get_config_locations_section(app_name: str, tool_display: str) -> str:
 4. `$XDG_CONFIG_HOME/{app_name}/config.yaml` - [XDG config directory](https://github.com/adrg/xdg?tab=readme-ov-file#default-locations)
 
 The configuration file can use either `.yaml` or `.yml` extensions. The first configuration file found will be used.
+
+For general information about how config and environment variables are handled, see the [Configuration Reference](/docs/reference/configuration) section.
 
 """
 

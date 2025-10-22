@@ -20,7 +20,7 @@ Grant is not currently available for Windows
 
 {{< tabpane lang="bash" >}}
 {{% tab header="Platform:" disabled=true /%}}
-{{% tab header="Linux (and macOS)"  %}}curl -sSfL <https://get.anchore.io/grant> | sudo sh -s -- -b /usr/local/bin{{% /tab %}}
+{{% tab header="Linux (and macOS)"  %}}curl -sSfL https://get.anchore.io/grant | sudo sh -s -- -b /usr/local/bin{{% /tab %}}
 {{% tab header="macOS" %}}brew install grant{{% /tab %}}
 {{< /tabpane >}}
 

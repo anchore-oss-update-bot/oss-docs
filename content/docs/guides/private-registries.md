@@ -101,7 +101,7 @@ Add credential helpers to your `config.json`:
 
 When the tools access these registries, they execute the corresponding helper program (for example, `docker-credential-gcr`, or more generically `docker-credential-NAME` where NAME is the config value) to obtain credentials.
 
-{{< alert color="info" title="Note" >}}
+{{< alert color="primary" title="Note" >}}
 If both `credHelpers` and `auths` are configured for the same registry, `credHelpers` takes precedence.
 {{< /alert >}}
 

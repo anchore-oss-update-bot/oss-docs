@@ -7,7 +7,7 @@
   <thead>
     <tr>
       <th class="col-config-key">Configuration Key <abbr class="header-help" title="The configuration field name used in Syft application configuration"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>
-      <th class="col-description">Description <abbr class="header-help" title="Explanation of what the configuration option does"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>
+      <th class="col-description">Description <abbr class="header-help" title="Explanation of what the configuration option controls"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>
     </tr>
   </thead>
   <tbody>

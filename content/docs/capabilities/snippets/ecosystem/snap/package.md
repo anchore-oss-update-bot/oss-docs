@@ -16,7 +16,7 @@
       <th class="col-kinds">Kinds <abbr class="header-help" title="Types of dependencies captured (runtime = required at runtime, dev = development dependencies)"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>
       <th class="col-files">Files <abbr class="header-help" title="Whether Syft can catalog the list of files that are part of a package installation"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>
       <th class="col-digests">Digests <abbr class="header-help" title="Whether Syft can capture file checksums (digests/hashes) claimed by the package manager for individual files within a package"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>
-      <th class="col-integrity-hash">Integrity Hash <abbr class="header-help" title="Whether Syft can capture a single package-level integrity hash used by package managers to verify the package archive itself"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>
+      <th class="col-integrity-hash">Integrity Hash <abbr class="header-help" title="Whether Syft can capture a single package-level hash used by package managers to verify the package itself"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>
     </tr>
   </thead>
   <tbody>

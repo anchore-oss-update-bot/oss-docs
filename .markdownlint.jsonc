@@ -19,6 +19,7 @@
     "front_matter_title": "^title\\s*="
   },
   "MD033": false,
+  "MD034": false, // allow bare URLs, otherwise the getting-started guide will break the installation steps
   "MD040": false,
   "MD041": false,
   "MD046": {

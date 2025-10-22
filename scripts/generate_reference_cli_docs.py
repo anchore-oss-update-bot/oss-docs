@@ -157,7 +157,7 @@ url = "docs/reference/{tool_name.lower()}/cli"
                 break
 
     content += f"""{{{{< alert title="Note" >}}}}
-This documentation was generated from {tool_display} version `{app_version}`.
+This documentation was generated with {tool_display} version `{app_version}`.
 {{{{< /alert >}}}}
 
 """

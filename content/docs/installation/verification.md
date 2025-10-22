@@ -16,7 +16,7 @@ Verifying your downloads ensures that:
 
 All release artifacts include checksums, and the checksum file itself is cryptographically signed using cosign for verification.
 
-{{< alert color="info" title="Note" >}}
+{{< alert color="primary" title="Note" >}}
 Installation scripts support automatic verification using the `-v` flag if you have cosign installed. This performs the same verification steps outlined below.
 {{< /alert >}}
 
