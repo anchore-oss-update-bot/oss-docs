@@ -28,7 +28,7 @@
       <td class="col-kinds value">runtime, dev</td>
       <td class="col-files indicator"></td>
       <td class="col-digests indicator"></td>
-      <td class="col-integrity-hash indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-integrity-hash indicator"><span class="capability-icon-wrapper" data-evidence="GolangBinaryBuildinfoEntry.H1Digest"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-cataloger"><div class="cataloger-name">go-module-file-cataloger</div><div class="evidence-patterns"><code>go.mod</code></div></td>
@@ -38,7 +38,7 @@
       <td class="col-kinds value">runtime, dev</td>
       <td class="col-files indicator"></td>
       <td class="col-digests indicator"></td>
-      <td class="col-integrity-hash indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-integrity-hash indicator"><span class="capability-icon-wrapper" data-evidence="• GolangModuleEntry.H1Digest&#10;• GolangSourceEntry.H1Digest"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
   </tbody>
 </table>

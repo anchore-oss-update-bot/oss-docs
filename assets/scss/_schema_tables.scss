@@ -1,0 +1,185 @@
+/* Schema Reference Tables - Documentation for JSON Schema Types */
+
+/* Base table styles */
+.schema-table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1.5rem 0;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.schema-table thead th {
+  box-shadow: 0 3px 6px rgba(29, 78, 216, 0.4);
+  padding: 0.625rem 0.5rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  white-space: nowrap;
+  vertical-align: top;
+}
+
+/* Body styles */
+.schema-table tbody td {
+  padding: 0.5rem 0.5rem;
+  vertical-align: top;
+  font-size: 0.875rem;
+
+  [data-bs-theme='light'] & {
+    color: #4b5563;
+  }
+  [data-bs-theme='dark'] & {
+    color: #d1d5db;
+  }
+}
+
+/* Code elements within tables */
+.schema-table code {
+  padding: 0.0625rem 0.25rem;
+  border-radius: 3px;
+  font-size: 0.8125rem;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  white-space: nowrap;
+
+  [data-bs-theme='light'] & {
+    background-color: #f9fafb;
+    color: #1f2937;
+    border: 1px solid #e5e7eb;
+  }
+  [data-bs-theme='dark'] & {
+    background-color: #1f2937;
+    color: #e5e7eb;
+    border: 1px solid #374151;
+  }
+}
+
+/* Column-specific widths for 4-column layout */
+.schema-table .col-field-name {
+  width: 20%;
+  min-width: 120px;
+  font-weight: 500;
+}
+
+.schema-table .col-type {
+  width: 15%;
+  min-width: 100px;
+}
+
+.schema-table .col-required {
+  width: 10%;
+  min-width: 80px;
+  text-align: center;
+}
+
+.schema-table .col-description {
+  width: 55%;
+  min-width: 200px;
+  white-space: normal;
+  line-height: 1.6;
+}
+
+/* Soft vertical separation */
+.schema-table th,
+.schema-table td {
+  border-left: 1px solid rgba(209, 213, 219, 0.6);
+}
+
+/* Type column - allow wrapping for complex types */
+.schema-table .col-type {
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .schema-table {
+    font-size: 0.875rem;
+  }
+
+  .schema-table thead th {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.8125rem;
+  }
+
+  .schema-table tbody td {
+    padding: 0.75rem 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .schema-table {
+    font-size: 0.8125rem;
+    margin: 1.5rem 0;
+  }
+
+  /* Adjust column widths for smaller screens */
+  .schema-table .col-field-name {
+    width: 25%;
+  }
+
+  .schema-table .col-type {
+    width: 20%;
+  }
+
+  .schema-table .col-required {
+    width: 10%;
+  }
+
+  .schema-table .col-description {
+    width: 45%;
+  }
+}
+
+/* Type section headings */
+h3[id] {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+
+  [data-bs-theme='light'] & {
+    border-bottom: 2px solid #e5e7eb;
+  }
+  [data-bs-theme='dark'] & {
+    border-bottom: 2px solid #374151;
+  }
+}
+
+/* Related type headings - shown under ecosystem types (not h4 to avoid TOC overflow) */
+p.related-type {
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.25rem;
+  font-size: 1rem;
+
+  [data-bs-theme='light'] & {
+    color: #6b7280;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  [data-bs-theme='dark'] & {
+    color: #9ca3af;
+    border-bottom: 1px solid #374151;
+  }
+}
+
+/* Type description paragraphs (above tables) */
+.schema-table + p,
+h3 + p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+
+  [data-bs-theme='light'] & {
+    color: #4b5563;
+  }
+  [data-bs-theme='dark'] & {
+    color: #d1d5db;
+  }
+}

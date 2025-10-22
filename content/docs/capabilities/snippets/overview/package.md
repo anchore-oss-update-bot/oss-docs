@@ -18,14 +18,14 @@
       <td class="col-cataloger"><div class="cataloger-name">alpm-db-cataloger</div><div class="evidence-patterns"><code>var/lib/pacman/local/**/desc</code></div></td>
       <td class="col-license indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
       <td class="col-dependency indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
-      <td class="col-files indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-files indicator"><span class="capability-icon-wrapper" data-evidence="AlpmDBEntry.Files"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-ecosystem">APK</td>
       <td class="col-cataloger"><div class="cataloger-name">apk-db-cataloger</div><div class="evidence-patterns"><code>lib/apk/db/installed</code></div></td>
       <td class="col-license indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
       <td class="col-dependency indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
-      <td class="col-files indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-files indicator"><span class="capability-icon-wrapper" data-evidence="ApkDBEntry.Files"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-ecosystem" rowspan="3">Binary</td>
@@ -51,7 +51,7 @@
       <td class="col-cataloger"><div class="cataloger-name">bitnami-cataloger</div><div class="evidence-patterns"><code>/opt/bitnami/**/.spdx-*.spdx</code></div></td>
       <td class="col-license indicator"></td>
       <td class="col-dependency indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
-      <td class="col-files indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-files indicator"><span class="capability-icon-wrapper" data-evidence="BitnamiSBOMEntry.Files"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-ecosystem" rowspan="3">C/C++</td>
@@ -77,7 +77,7 @@
       <td class="col-cataloger"><div class="cataloger-name">conda-meta-cataloger</div><div class="evidence-patterns"><code>conda-meta/*.json</code></div></td>
       <td class="col-license indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
       <td class="col-dependency indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
-      <td class="col-files indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-files indicator"><span class="capability-icon-wrapper" data-evidence="• CondaMetaPackage.Files&#10;• CondaMetaPackage.PathsData.Paths"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-ecosystem" rowspan="2">Dart</td>
@@ -97,13 +97,13 @@
       <td class="col-cataloger"><div class="cataloger-name">deb-archive-cataloger</div><div class="evidence-patterns"><code>*.deb</code></div></td>
       <td class="col-license indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
       <td class="col-dependency indicator"></td>
-      <td class="col-files indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-files indicator"><span class="capability-icon-wrapper" data-evidence="DpkgArchiveEntry.Files"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-cataloger"><div class="cataloger-name">dpkg-db-cataloger</div><div class="evidence-patterns"><code>lib/dpkg/status</code>, <code>lib/dpkg/status.d/*</code>, <code>lib/opkg/info/*.control</code>, <code>lib/opkg/status</code></div></td>
       <td class="col-license indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
       <td class="col-dependency indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
-      <td class="col-files indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-files indicator"><span class="capability-icon-wrapper" data-evidence="DpkgDBEntry.Files"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-ecosystem">Elixir</td>
@@ -218,7 +218,7 @@
       <td class="col-cataloger"><div class="cataloger-name">java-jvm-cataloger</div><div class="evidence-patterns"><code>release</code></div></td>
       <td class="col-license indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
       <td class="col-dependency indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
-      <td class="col-files indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-files indicator"><span class="capability-icon-wrapper" data-evidence="JavaVMInstallation.Files"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-cataloger"><div class="cataloger-name">java-pom-cataloger</div><div class="evidence-patterns"><code>*pom.xml</code></div></td>
@@ -301,7 +301,7 @@
       <td class="col-cataloger"><div class="cataloger-name">nix-store-cataloger</div><div class="evidence-patterns"><code>nix/store/*</code>, <code>nix/store/*.drv</code></div></td>
       <td class="col-license indicator"></td>
       <td class="col-dependency indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
-      <td class="col-files indicator"><svg class="capability-icon"><use href="#icon-gear"/></svg></td>
+      <td class="col-files indicator"><span class="capability-icon-wrapper" data-evidence="NixStoreEntry.Files"><svg class="capability-icon"><use href="#icon-gear"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-ecosystem">OCaml</td>
@@ -346,7 +346,7 @@
       <td class="col-cataloger"><div class="cataloger-name">portage-cataloger</div><div class="evidence-patterns"><code>var/db/pkg/*/*/CONTENTS</code></div></td>
       <td class="col-license indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
       <td class="col-dependency indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
-      <td class="col-files indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-files indicator"><span class="capability-icon-wrapper" data-evidence="PortageEntry.Files"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-ecosystem">Prolog</td>
@@ -360,7 +360,7 @@
       <td class="col-cataloger"><div class="cataloger-name">python-installed-package-cataloger</div><div class="evidence-patterns"><code>*.egg-info</code>, <code>*dist-info/METADATA</code>, <code>*egg-info/PKG-INFO</code>, <code>*DIST-INFO/METADATA</code>, <code>*EGG-INFO/PKG-INFO</code></div></td>
       <td class="col-license indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
       <td class="col-dependency indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
-      <td class="col-files indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-files indicator"><span class="capability-icon-wrapper" data-evidence="PythonPackage.Files"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-cataloger"><div class="cataloger-name">python-package-cataloger</div><div class="evidence-patterns"><code>uv.lock</code></div></td>
@@ -404,7 +404,7 @@
       <td class="col-cataloger"><div class="cataloger-name">rpm-archive-cataloger</div><div class="evidence-patterns"><code>*.rpm</code></div></td>
       <td class="col-license indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
       <td class="col-dependency indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
-      <td class="col-files indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-files indicator"><span class="capability-icon-wrapper" data-evidence="RpmArchive.Files"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-cataloger"><div class="cataloger-name">rpm-db-cataloger</div><div class="evidence-patterns"><code>var/lib/rpmmanifest/container-manifest-2</code></div></td>
@@ -416,7 +416,7 @@
       <td class="col-cataloger"><div class="cataloger-name">rpm-db-cataloger</div><div class="evidence-patterns"><code>{var/lib,usr/share,usr/lib/sysimage}/rpm/{Packages,Packages.db,rpmdb.sqlite}</code></div></td>
       <td class="col-license indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
       <td class="col-dependency indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
-      <td class="col-files indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-files indicator"><span class="capability-icon-wrapper" data-evidence="RpmDBEntry.Files"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-ecosystem" rowspan="3">Ruby</td>
@@ -429,13 +429,13 @@
       <td class="col-cataloger"><div class="cataloger-name">ruby-gemspec-cataloger</div><div class="evidence-patterns"><code>*.gemspec</code></div></td>
       <td class="col-license indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
       <td class="col-dependency indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
-      <td class="col-files indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-files indicator"><span class="capability-icon-wrapper" data-evidence="RubyGemspec.Files"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-cataloger"><div class="cataloger-name">ruby-installed-gemspec-cataloger</div><div class="evidence-patterns"><code>specifications/**/*.gemspec</code></div></td>
       <td class="col-license indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
       <td class="col-dependency indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
-      <td class="col-files indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-files indicator"><span class="capability-icon-wrapper" data-evidence="RubyGemspec.Files"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-ecosystem" rowspan="2">Rust</td>

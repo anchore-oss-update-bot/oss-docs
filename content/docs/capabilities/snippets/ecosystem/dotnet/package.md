@@ -48,7 +48,7 @@
       <td class="col-kinds value">runtime, dev, build</td>
       <td class="col-files indicator"></td>
       <td class="col-digests indicator"></td>
-      <td class="col-integrity-hash indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-integrity-hash indicator"><span class="capability-icon-wrapper" data-evidence="DotnetPackagesLockEntry.ContentHash"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-cataloger"><div class="cataloger-name">dotnet-portable-executable-cataloger</div><div class="evidence-patterns"><code>*.dll</code>, <code>*.exe</code></div></td>

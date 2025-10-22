@@ -486,3 +486,78 @@ th:first-child .header-help::before {
   left: 12px;
   transform: translateX(0);
 }
+
+/* Evidence Tooltips for Capability Icons */
+
+/* Capability icon wrapper with evidence - set up tooltip positioning */
+.capability-icon-wrapper[data-evidence] {
+  position: relative;
+  cursor: help;
+  display: inline-block; /* needed for proper positioning */
+}
+
+/* Tooltip content */
+.capability-icon-wrapper[data-evidence]::after {
+  content: attr(data-evidence);
+  position: absolute;
+  bottom: calc(100% + 8px); /* position above with gap */
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* styling - match header help tooltips */
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+  white-space: pre-line; /* preserve line breaks for bullet list */
+  max-width: 300px;
+  width: max-content;
+  text-align: left;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+  /* theme-aware colors */
+  [data-bs-theme='light'] & {
+    background-color: #1f2937;
+    color: #f9fafb;
+  }
+  [data-bs-theme='dark'] & {
+    background-color: #f9fafb;
+    color: #1f2937;
+    border: 1px solid #e5e7eb;
+  }
+
+  /* hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+
+  /* layer above table */
+  z-index: 1000;
+}
+
+/* Show tooltip on hover */
+.capability-icon-wrapper[data-evidence]:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Adjust positioning for tooltips in cells near right edge */
+td:nth-last-child(-n + 2) .capability-icon-wrapper[data-evidence]::after {
+  left: auto;
+  right: 0;
+  transform: translateX(0);
+}
+
+/* Adjust positioning for tooltips in cells near left edge */
+td:first-child .capability-icon-wrapper[data-evidence]::after {
+  left: 0;
+  transform: translateX(0);
+}

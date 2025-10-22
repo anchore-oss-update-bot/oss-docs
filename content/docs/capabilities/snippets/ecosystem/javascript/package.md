@@ -38,7 +38,7 @@
       <td class="col-kinds value">runtime, dev</td>
       <td class="col-files indicator"></td>
       <td class="col-digests indicator"></td>
-      <td class="col-integrity-hash indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-integrity-hash indicator"><span class="capability-icon-wrapper" data-evidence="YarnLockEntry.Integrity"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-cataloger"><div class="cataloger-name">javascript-lock-cataloger</div><div class="evidence-patterns"><code>package-lock.json</code></div></td>
@@ -48,7 +48,7 @@
       <td class="col-kinds value">runtime</td>
       <td class="col-files indicator"></td>
       <td class="col-digests indicator"></td>
-      <td class="col-integrity-hash indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-integrity-hash indicator"><span class="capability-icon-wrapper" data-evidence="NpmPackageLockEntry.Integrity"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-cataloger"><div class="cataloger-name">javascript-package-cataloger</div><div class="evidence-patterns"><code>package.json</code></div></td>

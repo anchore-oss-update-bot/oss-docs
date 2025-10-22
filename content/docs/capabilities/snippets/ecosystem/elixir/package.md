@@ -28,7 +28,7 @@
       <td class="col-kinds value">runtime, dev</td>
       <td class="col-files indicator"></td>
       <td class="col-digests indicator"></td>
-      <td class="col-integrity-hash indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-integrity-hash indicator"><span class="capability-icon-wrapper" data-evidence="• ElixirMixLockEntry.PkgHash&#10;• ElixirMixLockEntry.PkgHashExt"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
   </tbody>
 </table>

@@ -73,6 +73,7 @@ class CapabilitySupport:
     supported: bool  # true if capability is supported (default=true or non-empty)
     conditional: bool  # true if support depends on configuration
     default_value: Any  # the actual default value from the cataloger
+    evidence: list[str]  # evidence field paths in syft package metadata
 
 
 @dataclass
@@ -104,6 +105,7 @@ def determine_capability_support(capability: dict) -> CapabilitySupport:
     """
     default_value = capability.get("default")
     has_conditions = "conditions" in capability
+    evidence = capability.get("evidence", [])
 
     # determine if capability is supported based on default value
     if isinstance(default_value, bool):
@@ -117,6 +119,7 @@ def determine_capability_support(capability: dict) -> CapabilitySupport:
         supported=supported,
         conditional=has_conditions,
         default_value=default_value,
+        evidence=evidence,
     )
 
 
@@ -771,6 +774,29 @@ def clean_glob_pattern(pattern: str) -> str:
     return pattern.removeprefix("**/")
 
 
+def format_evidence_for_tooltip(evidence: list[str]) -> str:
+    """
+    format evidence field paths for tooltip display.
+
+    Args:
+        evidence: list of evidence field paths (e.g., ['AlpmDBEntry.Files'])
+
+    Returns:
+        formatted string for tooltip:
+        - empty string if no evidence
+        - single path if one item
+        - bullet list with line breaks if multiple items
+    """
+    if not evidence:
+        return ""
+
+    if len(evidence) == 1:
+        return evidence[0]
+
+    # format as bullet list with line breaks for multiple items
+    return "&#10;".join(f"• {path}" for path in evidence)
+
+
 def get_svg_icon(icon_type: str) -> str:
     """
     get SVG icon HTML for a capability indicator.
@@ -794,16 +820,33 @@ def get_capability_indicator_svg(cap_support: CapabilitySupport | None) -> str:
         cap_support: CapabilitySupport object or None
 
     Returns:
-        HTML string with SVG icon, or empty string if not supported
+        HTML string with SVG icon (with data-evidence attribute if evidence exists), or empty string if not supported
     """
     if cap_support is None:
         return ""
-    elif cap_support.conditional:
-        return get_svg_icon("gear")
+
+    # determine icon type
+    if cap_support.conditional:
+        icon_type = "gear"
     elif cap_support.supported:
-        return get_svg_icon("check")
+        icon_type = "check"
     else:
         return ""
+
+    # format evidence for tooltip if present
+    evidence_attr = ""
+    if cap_support.evidence:
+        formatted_evidence = format_evidence_for_tooltip(cap_support.evidence)
+        if formatted_evidence:
+            # escape quotes in evidence for HTML attribute
+            escaped_evidence = formatted_evidence.replace('"', "&quot;")
+            evidence_attr = f' data-evidence="{escaped_evidence}"'
+
+    # wrap SVG in span when evidence exists (SVG elements don't support ::after pseudo-elements)
+    if evidence_attr:
+        return f'<span class="capability-icon-wrapper"{evidence_attr}><svg class="capability-icon"><use href="#icon-{icon_type}"/></svg></span>'
+    else:
+        return f'<svg class="capability-icon"><use href="#icon-{icon_type}"/></svg>'
 
 
 def has_any_dependency_support(
@@ -836,6 +879,7 @@ def has_any_dependency_support(
             supported=has_support,
             conditional=has_conditional,
             default_value=None,
+            evidence=[],  # aggregated dependency support has no specific evidence
         )
 
     return None

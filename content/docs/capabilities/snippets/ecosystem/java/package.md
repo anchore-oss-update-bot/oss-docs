@@ -38,7 +38,7 @@
       <td class="col-kinds value">runtime, dev</td>
       <td class="col-files indicator"></td>
       <td class="col-digests indicator"></td>
-      <td class="col-integrity-hash indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-integrity-hash indicator"><span class="capability-icon-wrapper" data-evidence="JavaArchive.ArchiveDigests"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-cataloger"><div class="cataloger-name">java-archive-cataloger</div><div class="evidence-patterns"><code>*.zip</code></div></td>
@@ -48,7 +48,7 @@
       <td class="col-kinds value">runtime, dev</td>
       <td class="col-files indicator"></td>
       <td class="col-digests indicator"></td>
-      <td class="col-integrity-hash indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-integrity-hash indicator"><span class="capability-icon-wrapper" data-evidence="JavaArchive.ArchiveDigests"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-cataloger"><div class="cataloger-name">java-archive-cataloger</div><div class="evidence-patterns"><code>*.tar</code>, <code>*.tar.gz</code>, <code>*.tgz</code>, <code>*.tar.bz</code>, <code>*.tar.bz2</code>, <code>*.tbz</code>, <code>*.tbz2</code>, <code>*.tar.br</code>, <code>*.tbr</code>, <code>*.tar.lz4</code>, <code>*.tlz4</code>, <code>*.tar.sz</code>, <code>*.tsz</code>, <code>*.tar.xz</code>, <code>*.txz</code>, <code>*.tar.zst</code>, <code>*.tzst</code>, <code>*.tar.zstd</code>, <code>*.tzstd</code></div></td>
@@ -58,7 +58,7 @@
       <td class="col-kinds value">runtime, dev</td>
       <td class="col-files indicator"></td>
       <td class="col-digests indicator"></td>
-      <td class="col-integrity-hash indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-integrity-hash indicator"><span class="capability-icon-wrapper" data-evidence="JavaArchive.ArchiveDigests"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-cataloger"><div class="cataloger-name">java-gradle-lockfile-cataloger</div><div class="evidence-patterns"><code>gradle.lockfile*</code></div></td>
@@ -76,7 +76,7 @@
       <td class="col-depth value">transitive</td>
       <td class="col-edges value"></td>
       <td class="col-kinds value">runtime, dev</td>
-      <td class="col-files indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-files indicator"><span class="capability-icon-wrapper" data-evidence="JavaVMInstallation.Files"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
       <td class="col-digests indicator"></td>
       <td class="col-integrity-hash indicator"></td>
     </tr>

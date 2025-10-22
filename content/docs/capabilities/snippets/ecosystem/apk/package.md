@@ -26,9 +26,9 @@
       <td class="col-depth value">direct</td>
       <td class="col-edges value">complete</td>
       <td class="col-kinds value">runtime</td>
-      <td class="col-files indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
-      <td class="col-digests indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
-      <td class="col-integrity-hash indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-files indicator"><span class="capability-icon-wrapper" data-evidence="ApkDBEntry.Files"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
+      <td class="col-digests indicator"><span class="capability-icon-wrapper" data-evidence="ApkDBEntry.Files[].Digest"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
+      <td class="col-integrity-hash indicator"><span class="capability-icon-wrapper" data-evidence="ApkDBEntry.Checksum"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
   </tbody>
 </table>

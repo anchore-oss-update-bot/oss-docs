@@ -127,7 +127,7 @@ Flags:
 
 Import a vulnerability database archive from a local FILE or URL.
 
-DB archives can be obtained from "<https://grype.anchore.io/databases>" (or running `db list`). If the URL has a `checksum` query parameter with a fully qualified digest (e.g. 'sha256:abc728...') then the archive/DB will be verified against this value.
+DB archives can be obtained from "https://grype.anchore.io/databases" (or running `db list`). If the URL has a `checksum` query parameter with a fully qualified digest (e.g. 'sha256:abc728...') then the archive/DB will be verified against this value.
 
 ```
 Usage:

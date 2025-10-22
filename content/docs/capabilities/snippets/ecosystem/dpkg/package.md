@@ -26,8 +26,8 @@
       <td class="col-depth value"></td>
       <td class="col-edges value"></td>
       <td class="col-kinds value"></td>
-      <td class="col-files indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
-      <td class="col-digests indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-files indicator"><span class="capability-icon-wrapper" data-evidence="DpkgArchiveEntry.Files"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
+      <td class="col-digests indicator"><span class="capability-icon-wrapper" data-evidence="DpkgArchiveEntry.Files[].Digest"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
       <td class="col-integrity-hash indicator"></td>
     </tr>
     <tr>
@@ -36,8 +36,8 @@
       <td class="col-depth value">transitive</td>
       <td class="col-edges value">complete</td>
       <td class="col-kinds value">runtime</td>
-      <td class="col-files indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
-      <td class="col-digests indicator"><svg class="capability-icon"><use href="#icon-check"/></svg></td>
+      <td class="col-files indicator"><span class="capability-icon-wrapper" data-evidence="DpkgDBEntry.Files"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
+      <td class="col-digests indicator"><span class="capability-icon-wrapper" data-evidence="DpkgDBEntry.Files[].Digest"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
       <td class="col-integrity-hash indicator"></td>
     </tr>
   </tbody>

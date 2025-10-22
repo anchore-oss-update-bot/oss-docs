@@ -43,6 +43,9 @@ class Paths:
     user_guides_dir: Path = docs_dir / "guides"
     sbom_guides_dir: Path = user_guides_dir / "sbom"
     snippets_dir: Path = sbom_guides_dir / "snippets"
+    reference_dir: Path = docs_dir / "reference"
+    syft_reference_dir: Path = reference_dir / "syft"
+    json_reference_dir: Path = syft_reference_dir / "json"
 
     # snippet subdirectories
     templates_snippet_dir: Path = snippets_dir / "templates"
@@ -53,6 +56,10 @@ class Paths:
 
     # snippet files
     format_versions_snippet: Path = format_snippet_dir / "versions.md"
+
+    # external repositories (for reference doc generation)
+    syft_repo_root: Path = project_root.parent / "syft"
+    default_schema_file: Path = syft_repo_root / "schema" / "json" / "schema-latest.json"
 
 
 @dataclass(frozen=True)
