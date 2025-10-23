@@ -284,6 +284,7 @@ def run_syft_convert_format(
     output_format: str,
     syft_image: str = docker_images.syft,
     timeout: int = timeouts.syft_scan_default,
+    env_vars: dict[str, str] | None = None,
 ) -> str:
     """
     run Syft convert to convert an SBOM to a different output format.
@@ -293,6 +294,7 @@ def run_syft_convert_format(
         output_format: output format (e.g., "json", "cyclonedx-json", "spdx-json")
         syft_image: Syft Docker image to use (default: from config)
         timeout: command timeout in seconds (default: from config)
+        env_vars: environment variables to pass to container (e.g., {"SYFT_FORMAT_PRETTY": "true"})
 
     Returns:
         Syft output as string in the requested format
@@ -318,6 +320,7 @@ def run_syft_convert_format(
             syft_image=syft_image,
             args=args,
             timeout=timeout,
+            env_vars=env_vars,
             volumes=volumes,
         )
 

@@ -1,7 +1,7 @@
 {
   "catalogers": [
     {
-      "ecosystem": "alpm",
+      "ecosystem": "arch",
       "name": "alpm-db-cataloger",
       "type": "generic",
       "patterns": [
@@ -9,6 +9,12 @@
           "method": "glob",
           "criteria": [
             "**/var/lib/pacman/local/**/desc"
+          ],
+          "package_types": [
+            "alpm"
+          ],
+          "json_schema_types": [
+            "AlpmDbEntry"
           ],
           "capabilities": [
             {
@@ -63,6 +69,12 @@
           "method": "glob",
           "criteria": [
             "**/lib/apk/db/installed"
+          ],
+          "package_types": [
+            "apk"
+          ],
+          "json_schema_types": [
+            "ApkDbEntry"
           ],
           "capabilities": [
             {
@@ -131,6 +143,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -149,6 +167,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -164,6 +188,12 @@
               "cpes": [],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -181,6 +211,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -198,6 +234,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -215,6 +257,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -233,6 +281,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -250,6 +304,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -267,6 +327,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -284,6 +350,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -301,6 +373,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -318,6 +396,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -335,6 +419,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -352,6 +442,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -369,6 +465,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -386,6 +488,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -403,6 +511,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -420,6 +534,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -437,6 +557,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -454,6 +580,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -472,6 +604,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -491,6 +629,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -508,6 +652,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -525,6 +675,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -542,6 +698,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -559,6 +721,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -576,6 +744,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -593,6 +767,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -610,6 +790,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -627,6 +813,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -644,6 +836,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -661,6 +859,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -678,6 +882,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -695,6 +905,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -712,6 +928,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -729,6 +951,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -746,6 +974,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -764,6 +998,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -781,6 +1021,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -798,6 +1044,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -815,6 +1067,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -832,6 +1090,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -849,6 +1113,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -866,6 +1136,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -883,6 +1159,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -900,6 +1182,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -917,6 +1205,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -934,6 +1228,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -951,6 +1251,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -968,6 +1274,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -985,6 +1297,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -1002,6 +1320,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -1019,6 +1343,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -1036,6 +1366,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -1053,6 +1389,12 @@
               ],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -1068,6 +1410,12 @@
               "cpes": [],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         },
         {
@@ -1083,6 +1431,12 @@
               "cpes": [],
               "type": "BinaryPkg"
             }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         }
       ],
@@ -1130,6 +1484,13 @@
             "application/x-elf",
             "application/x-sharedlib",
             "application/vnd.microsoft.portable-executable"
+          ],
+          "package_types": [
+            "binary",
+            "rpm"
+          ],
+          "json_schema_types": [
+            "ElfBinaryPackageNoteJsonPayload"
           ]
         }
       ],
@@ -1175,6 +1536,12 @@
             "**/*.dll",
             "**/*.exe"
           ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "PeBinary"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -1217,6 +1584,12 @@
           "method": "glob",
           "criteria": [
             "/opt/bitnami/**/.spdx-*.spdx"
+          ],
+          "package_types": [
+            "bitnami"
+          ],
+          "json_schema_types": [
+            "BitnamiSbomEntry"
           ],
           "capabilities": [
             {
@@ -1274,6 +1647,12 @@
             "application/vnd.microsoft.portable-executable",
             "application/x-executable"
           ],
+          "package_types": [
+            "rust-crate"
+          ],
+          "json_schema_types": [
+            "RustCargoAuditEntry"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -1321,6 +1700,12 @@
           "method": "glob",
           "criteria": [
             "**/Cargo.lock"
+          ],
+          "package_types": [
+            "rust-crate"
+          ],
+          "json_schema_types": [
+            "RustCargoLockEntry"
           ],
           "capabilities": [
             {
@@ -1375,6 +1760,12 @@
           "criteria": [
             "**/Podfile.lock"
           ],
+          "package_types": [
+            "pod"
+          ],
+          "json_schema_types": [
+            "CocoaPodfileLockEntry"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -1427,6 +1818,12 @@
             "**/Package.resolved",
             "**/.package.resolved"
           ],
+          "package_types": [
+            "swift"
+          ],
+          "json_schema_types": [
+            "SwiftPackageManagerLockEntry"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -1475,6 +1872,13 @@
           "criteria": [
             "**/conan.lock"
           ],
+          "package_types": [
+            "conan"
+          ],
+          "json_schema_types": [
+            "CConanLockEntry",
+            "CConanLockV2Entry"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -1516,6 +1920,12 @@
           "method": "glob",
           "criteria": [
             "**/conanfile.txt"
+          ],
+          "package_types": [
+            "conan"
+          ],
+          "json_schema_types": [
+            "CConanFileEntry"
           ],
           "capabilities": [
             {
@@ -1564,6 +1974,12 @@
           "criteria": [
             "**/conaninfo.txt"
           ],
+          "package_types": [
+            "conan"
+          ],
+          "json_schema_types": [
+            "CConanInfoEntry"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -1610,6 +2026,12 @@
           "method": "glob",
           "criteria": [
             "**/conda-meta/*.json"
+          ],
+          "package_types": [
+            "conda"
+          ],
+          "json_schema_types": [
+            "CondaMetadataEntry"
           ],
           "capabilities": [
             {
@@ -1666,6 +2088,12 @@
             "**/pubspec.yml",
             "**/pubspec.yaml"
           ],
+          "package_types": [
+            "dart-pub"
+          ],
+          "json_schema_types": [
+            "DartPubspec"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -1713,6 +2141,12 @@
           "criteria": [
             "**/pubspec.lock"
           ],
+          "package_types": [
+            "dart-pub"
+          ],
+          "json_schema_types": [
+            "DartPubspecLockEntry"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -1753,7 +2187,7 @@
       ]
     },
     {
-      "ecosystem": "dpkg",
+      "ecosystem": "debian",
       "name": "dpkg-db-cataloger",
       "type": "generic",
       "patterns": [
@@ -1764,6 +2198,12 @@
             "**/lib/dpkg/status.d/*",
             "**/lib/opkg/info/*.control",
             "**/lib/opkg/status"
+          ],
+          "package_types": [
+            "deb"
+          ],
+          "json_schema_types": [
+            "DpkgDbEntry"
           ],
           "capabilities": [
             {
@@ -1810,7 +2250,7 @@
       ]
     },
     {
-      "ecosystem": "dpkg",
+      "ecosystem": "debian",
       "name": "deb-archive-cataloger",
       "type": "generic",
       "patterns": [
@@ -1818,6 +2258,12 @@
           "method": "glob",
           "criteria": [
             "**/*.deb"
+          ],
+          "package_types": [
+            "deb"
+          ],
+          "json_schema_types": [
+            "DpkgArchiveEntry"
           ],
           "capabilities": [
             {
@@ -1869,6 +2315,14 @@
             "**/*.deps.json",
             "**/*.dll",
             "**/*.exe"
+          ],
+          "package_types": [
+            "dotnet",
+            "npm"
+          ],
+          "json_schema_types": [
+            "DotnetDepsEntry",
+            "DotnetPortableExecutableEntry"
           ]
         }
       ],
@@ -1917,6 +2371,12 @@
           "method": "glob",
           "criteria": [
             "**/*.deps.json"
+          ],
+          "package_types": [
+            "dotnet"
+          ],
+          "json_schema_types": [
+            "DotnetDepsEntry"
           ]
         }
       ],
@@ -1965,6 +2425,12 @@
           "method": "glob",
           "criteria": [
             "**/packages.lock.json"
+          ],
+          "package_types": [
+            "dotnet"
+          ],
+          "json_schema_types": [
+            "DotnetPackagesLockEntry"
           ],
           "capabilities": [
             {
@@ -2019,6 +2485,12 @@
           "criteria": [
             "**/*.dll",
             "**/*.exe"
+          ],
+          "package_types": [
+            "dotnet"
+          ],
+          "json_schema_types": [
+            "DotnetPortableExecutableEntry"
           ]
         }
       ],
@@ -2088,6 +2560,12 @@
           "criteria": [
             "**/mix.lock"
           ],
+          "package_types": [
+            "hex"
+          ],
+          "json_schema_types": [
+            "ElixirMixLockEntry"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -2141,6 +2619,9 @@
           "criteria": [
             "**/*.app"
           ],
+          "package_types": [
+            "erlang-otp"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -2188,6 +2669,12 @@
           "method": "glob",
           "criteria": [
             "**/rebar.lock"
+          ],
+          "package_types": [
+            "hex"
+          ],
+          "json_schema_types": [
+            "ErlangRebarLockEntry"
           ],
           "capabilities": [
             {
@@ -2242,6 +2729,12 @@
             "**/.github/workflows/*.yaml",
             "**/.github/workflows/*.yml"
           ],
+          "package_types": [
+            "github-action-workflow"
+          ],
+          "json_schema_types": [
+            "GithubActionsUseStatement"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -2286,6 +2779,12 @@
             "**/.github/actions/*/action.yml",
             "**/.github/actions/*/action.yaml"
           ],
+          "package_types": [
+            "github-action"
+          ],
+          "json_schema_types": [
+            "GithubActionsUseStatement"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -2322,6 +2821,12 @@
           "criteria": [
             "**/.github/workflows/*.yaml",
             "**/.github/workflows/*.yml"
+          ],
+          "package_types": [
+            "github-action"
+          ],
+          "json_schema_types": [
+            "GithubActionsUseStatement"
           ],
           "capabilities": [
             {
@@ -2370,6 +2875,12 @@
             "application/x-sharedlib",
             "application/vnd.microsoft.portable-executable",
             "application/x-executable"
+          ],
+          "package_types": [
+            "go-module"
+          ],
+          "json_schema_types": [
+            "GoModuleBuildinfoEntry"
           ],
           "capabilities": [
             {
@@ -2476,6 +2987,13 @@
           "method": "glob",
           "criteria": [
             "**/go.mod"
+          ],
+          "package_types": [
+            "go-module"
+          ],
+          "json_schema_types": [
+            "GoModuleEntry",
+            "GoSourceEntry"
           ],
           "capabilities": [
             {
@@ -2593,7 +3111,10 @@
             "**/*.kar",
             "**/*.lpkg"
           ],
-          "comment": "JAR-based archives - always active"
+          "comment": "JAR-based archives - always active",
+          "package_types": [
+            "java-archive"
+          ]
         },
         {
           "method": "glob",
@@ -2607,7 +3128,10 @@
               }
             }
           ],
-          "comment": "ZIP archives require indexed archive support"
+          "comment": "ZIP archives require indexed archive support",
+          "package_types": [
+            "java-archive"
+          ]
         },
         {
           "method": "glob",
@@ -2639,7 +3163,10 @@
               }
             }
           ],
-          "comment": "TAR archives require unindexed archive support"
+          "comment": "TAR archives require unindexed archive support",
+          "package_types": [
+            "java-archive"
+          ]
         }
       ],
       "capabilities": [
@@ -2735,6 +3262,12 @@
           "criteria": [
             "**/gradle.lockfile*"
           ],
+          "package_types": [
+            "java-archive"
+          ],
+          "json_schema_types": [
+            "JavaArchive"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -2783,6 +3316,12 @@
           "method": "glob",
           "criteria": [
             "*pom.xml"
+          ],
+          "package_types": [
+            "java-archive"
+          ],
+          "json_schema_types": [
+            "JavaArchive"
           ]
         }
       ],
@@ -2831,6 +3370,12 @@
           "method": "glob",
           "criteria": [
             "**/release"
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "JavaJvmInstallation"
           ],
           "capabilities": [
             {
@@ -2887,6 +3432,9 @@
             "application/x-elf",
             "application/x-sharedlib",
             "application/vnd.microsoft.portable-executable"
+          ],
+          "package_types": [
+            "graalvm-native-image"
           ]
         }
       ],
@@ -2938,6 +3486,9 @@
           "criteria": [
             "**/cabal.project.freeze"
           ],
+          "package_types": [
+            "hackage"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -2979,6 +3530,12 @@
           "method": "glob",
           "criteria": [
             "**/stack.yaml.lock"
+          ],
+          "package_types": [
+            "hackage"
+          ],
+          "json_schema_types": [
+            "HaskellHackageStackLockEntry"
           ],
           "capabilities": [
             {
@@ -3024,6 +3581,12 @@
           "method": "glob",
           "criteria": [
             "**/stack.yaml"
+          ],
+          "package_types": [
+            "hackage"
+          ],
+          "json_schema_types": [
+            "HaskellHackageStackEntry"
           ],
           "capabilities": [
             {
@@ -3077,6 +3640,12 @@
             "**/Cellar/*/*/.brew/*.rb",
             "**/Library/Taps/*/*/Formula/*.rb"
           ],
+          "package_types": [
+            "homebrew"
+          ],
+          "json_schema_types": [
+            "HomebrewFormula"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -3120,6 +3689,9 @@
           "criteria": [
             "**/pnpm-lock.yaml"
           ],
+          "package_types": [
+            "npm"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -3160,6 +3732,12 @@
           "method": "glob",
           "criteria": [
             "**/yarn.lock"
+          ],
+          "package_types": [
+            "npm"
+          ],
+          "json_schema_types": [
+            "JavascriptYarnLockEntry"
           ],
           "capabilities": [
             {
@@ -3205,6 +3783,12 @@
           "method": "glob",
           "criteria": [
             "**/package-lock.json"
+          ],
+          "package_types": [
+            "npm"
+          ],
+          "json_schema_types": [
+            "JavascriptNpmPackageLockEntry"
           ],
           "capabilities": [
             {
@@ -3277,6 +3861,12 @@
           "criteria": [
             "**/package.json"
           ],
+          "package_types": [
+            "npm"
+          ],
+          "json_schema_types": [
+            "JavascriptNpmPackage"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -3329,6 +3919,14 @@
             "**/vmlinuz",
             "**/vmlinuz-*",
             "**/lib/modules/**/*.ko"
+          ],
+          "package_types": [
+            "linux-kernel",
+            "linux-kernel-module"
+          ],
+          "json_schema_types": [
+            "LinuxKernelArchive",
+            "LinuxKernelModule"
           ]
         }
       ],
@@ -3383,6 +3981,12 @@
           "criteria": [
             "**/*.rockspec"
           ],
+          "package_types": [
+            "lua-rocks"
+          ],
+          "json_schema_types": [
+            "LuarocksPackage"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -3431,6 +4035,12 @@
             "**/nix/var/nix/db/db.sqlite",
             "**/nix/store/*",
             "**/nix/store/*.drv"
+          ],
+          "package_types": [
+            "nix"
+          ],
+          "json_schema_types": [
+            "NixStoreEntry"
           ]
         }
       ],
@@ -3483,6 +4093,12 @@
           "criteria": [
             "**/nix/store/*",
             "**/nix/store/*.drv"
+          ],
+          "package_types": [
+            "nix"
+          ],
+          "json_schema_types": [
+            "NixStoreEntry"
           ]
         }
       ],
@@ -3556,6 +4172,12 @@
           "criteria": [
             "**/*opam"
           ],
+          "package_types": [
+            "opam"
+          ],
+          "json_schema_types": [
+            "OpamPackage"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -3602,6 +4224,12 @@
           "method": "glob",
           "criteria": [
             "**/installed.json"
+          ],
+          "package_types": [
+            "php-composer"
+          ],
+          "json_schema_types": [
+            "PhpComposerInstalledEntry"
           ],
           "capabilities": [
             {
@@ -3652,6 +4280,12 @@
           "criteria": [
             "**/composer.lock"
           ],
+          "package_types": [
+            "php-composer"
+          ],
+          "json_schema_types": [
+            "PhpComposerLockEntry"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -3701,6 +4335,12 @@
             "**/php*/**/*.so",
             "**/php-fpm*",
             "**/apache*/**/libphp*.so"
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
           ]
         }
       ],
@@ -3749,6 +4389,12 @@
           "criteria": [
             "**/php/.registry/**/*.reg"
           ],
+          "package_types": [
+            "php-pear"
+          ],
+          "json_schema_types": [
+            "PhpPearEntry"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -3796,6 +4442,12 @@
           "criteria": [
             "**/php/.registry/.channel.*/*.reg"
           ],
+          "package_types": [
+            "php-pecl"
+          ],
+          "json_schema_types": [
+            "PhpPeclEntry"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -3834,7 +4486,7 @@
       ]
     },
     {
-      "ecosystem": "portage",
+      "ecosystem": "gentoo",
       "name": "portage-cataloger",
       "type": "generic",
       "patterns": [
@@ -3842,6 +4494,12 @@
           "method": "glob",
           "criteria": [
             "**/var/db/pkg/*/*/CONTENTS"
+          ],
+          "package_types": [
+            "portage"
+          ],
+          "json_schema_types": [
+            "PortageDbEntry"
           ],
           "capabilities": [
             {
@@ -3900,6 +4558,12 @@
             "**/*DIST-INFO/METADATA",
             "**/*EGG-INFO/PKG-INFO"
           ],
+          "package_types": [
+            "python"
+          ],
+          "json_schema_types": [
+            "PythonPackage"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -3953,6 +4617,12 @@
           "criteria": [
             "**/uv.lock"
           ],
+          "package_types": [
+            "python"
+          ],
+          "json_schema_types": [
+            "PythonUvLockEntry"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -3995,6 +4665,9 @@
           "criteria": [
             "**/setup.py"
           ],
+          "package_types": [
+            "python"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -4032,6 +4705,12 @@
           "method": "glob",
           "criteria": [
             "**/Pipfile.lock"
+          ],
+          "package_types": [
+            "python"
+          ],
+          "json_schema_types": [
+            "PythonPipfileLockEntry"
           ],
           "capabilities": [
             {
@@ -4077,6 +4756,12 @@
           "criteria": [
             "**/poetry.lock"
           ],
+          "package_types": [
+            "python"
+          ],
+          "json_schema_types": [
+            "PythonPoetryLockEntry"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -4118,6 +4803,12 @@
           "method": "glob",
           "criteria": [
             "**/*requirements*.txt"
+          ],
+          "package_types": [
+            "python"
+          ],
+          "json_schema_types": [
+            "PythonPipRequirementsEntry"
           ],
           "capabilities": [
             {
@@ -4172,6 +4863,12 @@
           "criteria": [
             "**/DESCRIPTION"
           ],
+          "package_types": [
+            "R-package"
+          ],
+          "json_schema_types": [
+            "RDescription"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -4214,6 +4911,12 @@
           "method": "glob",
           "criteria": [
             "**/*.rpm"
+          ],
+          "package_types": [
+            "rpm"
+          ],
+          "json_schema_types": [
+            "RpmArchive"
           ],
           "capabilities": [
             {
@@ -4268,6 +4971,12 @@
           "criteria": [
             "**/var/lib/rpmmanifest/container-manifest-2"
           ],
+          "package_types": [
+            "rpm"
+          ],
+          "json_schema_types": [
+            "RpmDbEntry"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -4308,6 +5017,12 @@
           "method": "glob",
           "criteria": [
             "**/{var/lib,usr/share,usr/lib/sysimage}/rpm/{Packages,Packages.db,rpmdb.sqlite}"
+          ],
+          "package_types": [
+            "rpm"
+          ],
+          "json_schema_types": [
+            "RpmDbEntry"
           ],
           "capabilities": [
             {
@@ -4363,6 +5078,9 @@
           "criteria": [
             "**/Gemfile.lock"
           ],
+          "package_types": [
+            "gem"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -4411,6 +5129,12 @@
           "method": "glob",
           "criteria": [
             "**/*.gemspec"
+          ],
+          "package_types": [
+            "gem"
+          ],
+          "json_schema_types": [
+            "RubyGemspec"
           ],
           "capabilities": [
             {
@@ -4461,6 +5185,12 @@
           "method": "glob",
           "criteria": [
             "**/specifications/**/*.gemspec"
+          ],
+          "package_types": [
+            "gem"
+          ],
+          "json_schema_types": [
+            "RubyGemspec"
           ],
           "capabilities": [
             {
@@ -4523,6 +5253,12 @@
             "**/*.spdx.*",
             "**/*.spdx"
           ],
+          "package_types": [
+            "apk"
+          ],
+          "json_schema_types": [
+            "ApkDbEntry"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -4566,6 +5302,12 @@
           "criteria": [
             "**/snap/snapcraft.yaml"
           ],
+          "package_types": [
+            "deb"
+          ],
+          "json_schema_types": [
+            "SnapEntry"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -4601,6 +5343,12 @@
           "method": "glob",
           "criteria": [
             "**/snap/manifest.yaml"
+          ],
+          "package_types": [
+            "deb"
+          ],
+          "json_schema_types": [
+            "SnapEntry"
           ],
           "capabilities": [
             {
@@ -4638,6 +5386,12 @@
           "criteria": [
             "**/doc/linux-modules-*/changelog.Debian.gz"
           ],
+          "package_types": [
+            "deb"
+          ],
+          "json_schema_types": [
+            "SnapEntry"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -4674,6 +5428,12 @@
           "criteria": [
             "**/usr/share/snappy/dpkg.yaml"
           ],
+          "package_types": [
+            "deb"
+          ],
+          "json_schema_types": [
+            "SnapEntry"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -4709,6 +5469,12 @@
           "method": "glob",
           "criteria": [
             "**/meta/snap.yaml"
+          ],
+          "package_types": [
+            "deb"
+          ],
+          "json_schema_types": [
+            "SnapEntry"
           ],
           "capabilities": [
             {
@@ -4752,6 +5518,12 @@
           "method": "glob",
           "criteria": [
             "**/pack.pl"
+          ],
+          "package_types": [
+            "swiplpack"
+          ],
+          "json_schema_types": [
+            "SwiplpackPackage"
           ],
           "capabilities": [
             {
@@ -4801,6 +5573,12 @@
           "criteria": [
             "**/.terraform.lock.hcl"
           ],
+          "package_types": [
+            "terraform"
+          ],
+          "json_schema_types": [
+            "TerraformLockProviderEntry"
+          ],
           "capabilities": [
             {
               "name": "license",
@@ -4847,6 +5625,12 @@
           "method": "glob",
           "criteria": [
             "**/wp-content/plugins/*/*.php"
+          ],
+          "package_types": [
+            "wordpress-plugin"
+          ],
+          "json_schema_types": [
+            "WordpressPluginEntry"
           ],
           "capabilities": [
             {

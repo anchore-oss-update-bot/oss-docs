@@ -14,12 +14,19 @@
           "path": "/bin/[",
           "layerID": "sha256:6aba5e0d32d91e3e923854dcb30588dc4112bfa1dae82b89535ad31d322a7b19",
           "accessPath": "/bin/busybox",
-          "annotations": { "evidence": "primary" }
+          "annotations": {
+            "evidence": "primary"
+          }
         }
       ],
       "licenses": [],
       "language": "",
-      "cpes": [{ "cpe": "cpe:2.3:a:busybox:busybox:1.37.0:*:*:*:*:*:*:*", "source": "nvd-cpe-dictionary" }],
+      "cpes": [
+        {
+          "cpe": "cpe:2.3:a:busybox:busybox:1.37.0:*:*:*:*:*:*:*",
+          "source": "nvd-cpe-dictionary"
+        }
+      ],
       "purl": "pkg:generic/busybox@1.37.0",
       "metadataType": "binary-signature",
       "metadata": {
@@ -30,7 +37,9 @@
               "path": "/bin/[",
               "layerID": "sha256:6aba5e0d32d91e3e923854dcb30588dc4112bfa1dae82b89535ad31d322a7b19",
               "accessPath": "/bin/busybox",
-              "annotations": { "evidence": "primary" }
+              "annotations": {
+                "evidence": "primary"
+              }
             }
           }
         ]
@@ -42,7 +51,9 @@
       "parent": "74d9294c42941b37",
       "child": "de0bf36b25443562",
       "type": "evident-by",
-      "metadata": { "kind": "primary" }
+      "metadata": {
+        "kind": "primary"
+      }
     },
     {
       "parent": "cddc8af5547af9de5e6fb66b36d66ef7418561204e1255ae528d0b2c919d09a3",
@@ -66,8 +77,14 @@
         "size": 1119784
       },
       "digests": [
-        { "algorithm": "sha1", "value": "99f9c7cb06f6f8f074b5c16245f295e33844855a" },
-        { "algorithm": "sha256", "value": "8a4212147744cedcf7f679c81921942c81eb3b8d356bbb2b08b51336b2fe8add" }
+        {
+          "algorithm": "sha1",
+          "value": "99f9c7cb06f6f8f074b5c16245f295e33844855a"
+        },
+        {
+          "algorithm": "sha256",
+          "value": "8a4212147744cedcf7f679c81921942c81eb3b8d356bbb2b08b51336b2fe8add"
+        }
       ],
       "executable": {
         "format": "elf",
@@ -357,7 +374,9 @@
     "version": "1.33.0",
     "configuration": {
       "catalogers": {
-        "requested": { "default": ["image", "file"] },
+        "requested": {
+          "default": ["image", "file"]
+        },
         "used": [
           "alpm-db-cataloger",
           "apk-db-cataloger",
@@ -394,13 +413,21 @@
           "wordpress-plugins-cataloger"
         ]
       },
-      "data-generation": { "generate-cpes": true },
+      "data-generation": {
+        "generate-cpes": true
+      },
       "files": {
-        "content": { "globs": null, "skip-files-above-size": 0 },
+        "content": {
+          "globs": null,
+          "skip-files-above-size": 0
+        },
         "hashers": ["sha-1", "sha-256"],
         "selection": "owned-by-package"
       },
-      "licenses": { "coverage": 75, "include-content": "none" },
+      "licenses": {
+        "coverage": 75,
+        "include-content": "none"
+      },
       "packages": {
         "binary": [
           "python-binary",
@@ -468,7 +495,11 @@
         "golang": {
           "local-mod-cache-dir": "/go/pkg/mod",
           "local-vendor-dir": "",
-          "main-module-version": { "from-build-settings": true, "from-contents": false, "from-ld-flags": true },
+          "main-module-version": {
+            "from-build-settings": true,
+            "from-contents": false,
+            "from-ld-flags": true
+          },
           "proxies": ["https://proxy.golang.org", "direct"],
           "search-local-mod-cache-licenses": false,
           "search-local-vendor-licenses": false,
@@ -489,16 +520,24 @@
           "npm-base-url": "https://registry.npmjs.org",
           "search-remote-licenses": false
         },
-        "linux-kernel": { "catalog-modules": true },
-        "nix": { "capture-owned-files": false },
-        "python": { "guess-unpinned-requirements": false }
+        "linux-kernel": {
+          "catalog-modules": true
+        },
+        "nix": {
+          "capture-owned-files": false
+        },
+        "python": {
+          "guess-unpinned-requirements": false
+        }
       },
       "relationships": {
         "exclude-binary-packages-with-file-ownership-overlap": true,
         "package-file-ownership": true,
         "package-file-ownership-overlap": true
       },
-      "search": { "scope": "squashed" }
+      "search": {
+        "scope": "squashed"
+      }
     }
   },
   "schema": {

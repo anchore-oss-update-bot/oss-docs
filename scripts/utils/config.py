@@ -59,7 +59,7 @@ class Paths:
 
     # external repositories (for reference doc generation)
     syft_repo_root: Path = project_root.parent / "syft"
-    default_schema_file: Path = syft_repo_root / "schema" / "json" / "schema-latest.json"
+    default_schema_dir: Path = syft_repo_root / "schema" / "json"
 
 
 @dataclass(frozen=True)
@@ -91,6 +91,55 @@ class Timeouts:
     docker_command: int = 10
 
 
+@dataclass(frozen=True)
+class ReferenceDocWeights:
+    """weight values for reference documentation ordering in Hugo sidebar.
+
+    lower weights appear first in navigation.
+    each tool has a 10-number range to allow future expansion.
+    """
+
+    # syft documentation weights (10-19)
+    syft_cli: int = 10
+    syft_config: int = 11
+    syft_json_schema: int = 12
+
+    # grype documentation weights (20-29)
+    grype_cli: int = 20
+    grype_config: int = 21
+
+    # grant documentation weights (30-39)
+    grant_cli: int = 30
+    grant_config: int = 31
+
+    def get_weight(self, tool_name: str, doc_type: str) -> int:
+        """
+        get weight for a specific tool and documentation type.
+
+        Args:
+            tool_name: tool name ("syft", "grype", or "grant")
+            doc_type: documentation type ("cli", "config", or "json_schema")
+
+        Returns:
+            weight value for Hugo front matter
+
+        Raises:
+            ValueError: if tool_name or doc_type is invalid
+        """
+        tool = tool_name.lower()
+        dtype = doc_type.lower()
+
+        field_name = f"{tool}_{dtype}"
+
+        if hasattr(self, field_name):
+            return getattr(self, field_name)
+
+        raise ValueError(
+            f"Unknown tool/doc_type combination: {tool_name}/{doc_type}. "
+            f"Valid tools: syft, grype, grant. Valid doc types: cli, config, json_schema"
+        )
+
+
 def get_generated_comment(script_path: str, format_type: str = "html") -> str:
     """
     generate an auto-generated comment for the specified format type.
@@ -119,3 +168,10 @@ def get_generated_comment(script_path: str, format_type: str = "html") -> str:
 paths = Paths()
 docker_images = DockerImages()
 timeouts = Timeouts()
+reference_weights = ReferenceDocWeights()
+
+# schema processing configuration
+min_schema_major_version = 15
+
+# types to exclude from all schema documentation
+excluded_schema_types = {"MicrosoftKbPatch"}

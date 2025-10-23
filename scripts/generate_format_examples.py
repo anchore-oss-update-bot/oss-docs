@@ -122,6 +122,7 @@ def generate_format_example(
         sbom_file=sbom_file,
         output_format=format_name,
         syft_image=syft_image,
+        env_vars={"SYFT_FORMAT_PRETTY": "true"},
     )
 
     if not output:

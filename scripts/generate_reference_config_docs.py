@@ -10,7 +10,7 @@ from pathlib import Path
 
 import click
 from utils.cache import get_cached_output, save_to_cache
-from utils.config import get_generated_comment, paths
+from utils.config import get_generated_comment, paths, reference_weights
 from utils.logging import setup_logging
 from utils.syft import run_syft
 
@@ -99,10 +99,11 @@ def generate_markdown_content(
     tool_display = tool_name.title()
 
     # Generate front matter
+    weight = reference_weights.get_weight(tool_name, "config")
     content = f"""+++
 title = "{tool_display} Default Configuration"
 linkTitle = "{tool_display} Default Config"
-weight = 25
+weight = {weight}
 tags = ['{tool_name.lower()}']
 categories = ['reference']
 url = "docs/reference/{tool_name.lower()}/configuration"

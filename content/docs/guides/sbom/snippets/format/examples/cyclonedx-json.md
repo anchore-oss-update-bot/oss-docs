@@ -5,11 +5,20 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.6.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.6",
-  "serialNumber": "urn:uuid:01933daf-4f0a-4673-bbd0-384834250b91",
+  "serialNumber": "urn:uuid:16b64a7f-f004-4dc8-9901-15800a374335",
   "version": 1,
   "metadata": {
-    "timestamp": "2025-10-22T20:37:15Z",
-    "tools": { "components": [{ "type": "application", "author": "anchore", "name": "syft", "version": "1.33.0" }] },
+    "timestamp": "2025-10-23T01:25:11Z",
+    "tools": {
+      "components": [
+        {
+          "type": "application",
+          "author": "anchore",
+          "name": "syft",
+          "version": "1.33.0"
+        }
+      ]
+    },
     "component": {
       "bom-ref": "84d86520b9546322",
       "type": "container",
@@ -26,14 +35,26 @@
       "cpe": "cpe:2.3:a:busybox:busybox:1.37.0:*:*:*:*:*:*:*",
       "purl": "pkg:generic/busybox@1.37.0",
       "properties": [
-        { "name": "syft:package:foundBy", "value": "binary-classifier-cataloger" },
-        { "name": "syft:package:type", "value": "binary" },
-        { "name": "syft:package:metadataType", "value": "binary-signature" },
+        {
+          "name": "syft:package:foundBy",
+          "value": "binary-classifier-cataloger"
+        },
+        {
+          "name": "syft:package:type",
+          "value": "binary"
+        },
+        {
+          "name": "syft:package:metadataType",
+          "value": "binary-signature"
+        },
         {
           "name": "syft:location:0:layerID",
           "value": "sha256:6aba5e0d32d91e3e923854dcb30588dc4112bfa1dae82b89535ad31d322a7b19"
         },
-        { "name": "syft:location:0:path", "value": "/bin/[" }
+        {
+          "name": "syft:location:0:path",
+          "value": "/bin/["
+        }
       ]
     },
     {
@@ -42,13 +63,32 @@
       "name": "busybox",
       "version": "1.37.0",
       "description": "BusyBox v1.37.0",
-      "swid": { "tagId": "busybox", "name": "busybox", "version": "1.37.0" },
+      "swid": {
+        "tagId": "busybox",
+        "name": "busybox",
+        "version": "1.37.0"
+      },
       "properties": [
-        { "name": "syft:distro:extendedSupport", "value": "false" },
-        { "name": "syft:distro:id", "value": "busybox" },
-        { "name": "syft:distro:idLike:0", "value": "busybox" },
-        { "name": "syft:distro:prettyName", "value": "BusyBox v1.37.0" },
-        { "name": "syft:distro:versionID", "value": "1.37.0" }
+        {
+          "name": "syft:distro:extendedSupport",
+          "value": "false"
+        },
+        {
+          "name": "syft:distro:id",
+          "value": "busybox"
+        },
+        {
+          "name": "syft:distro:idLike:0",
+          "value": "busybox"
+        },
+        {
+          "name": "syft:distro:prettyName",
+          "value": "BusyBox v1.37.0"
+        },
+        {
+          "name": "syft:distro:versionID",
+          "value": "1.37.0"
+        }
       ]
     },
     {
@@ -56,8 +96,14 @@
       "type": "file",
       "name": "/bin/[",
       "hashes": [
-        { "alg": "SHA-1", "content": "99f9c7cb06f6f8f074b5c16245f295e33844855a" },
-        { "alg": "SHA-256", "content": "8a4212147744cedcf7f679c81921942c81eb3b8d356bbb2b08b51336b2fe8add" }
+        {
+          "alg": "SHA-1",
+          "content": "99f9c7cb06f6f8f074b5c16245f295e33844855a"
+        },
+        {
+          "alg": "SHA-256",
+          "content": "8a4212147744cedcf7f679c81921942c81eb3b8d356bbb2b08b51336b2fe8add"
+        }
       ]
     }
   ]

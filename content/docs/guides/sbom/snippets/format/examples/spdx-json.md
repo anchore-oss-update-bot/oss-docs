@@ -6,11 +6,11 @@
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
   "name": "busybox",
-  "documentNamespace": "https://anchore.com/syft/image/busybox-3ffd6303-74b8-4b09-8b55-251e04e63c34",
+  "documentNamespace": "https://anchore.com/syft/image/busybox-5c53b32e-ffbc-4b4a-a34e-6717808cf391",
   "creationInfo": {
     "licenseListVersion": "3.27",
     "creators": ["Organization: Anchore, Inc", "Tool: syft-1.33.0"],
-    "created": "2025-10-22T20:37:16Z"
+    "created": "2025-10-23T01:25:11Z"
   },
   "packages": [
     {
@@ -45,7 +45,10 @@
       "downloadLocation": "NOASSERTION",
       "filesAnalyzed": false,
       "checksums": [
-        { "algorithm": "SHA256", "checksumValue": "cddc8af5547af9de5e6fb66b36d66ef7418561204e1255ae528d0b2c919d09a3" }
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "cddc8af5547af9de5e6fb66b36d66ef7418561204e1255ae528d0b2c919d09a3"
+        }
       ],
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "NOASSERTION",
@@ -66,8 +69,14 @@
       "SPDXID": "SPDXRef-File-bin---de0bf36b25443562",
       "fileTypes": ["APPLICATION", "BINARY"],
       "checksums": [
-        { "algorithm": "SHA1", "checksumValue": "99f9c7cb06f6f8f074b5c16245f295e33844855a" },
-        { "algorithm": "SHA256", "checksumValue": "8a4212147744cedcf7f679c81921942c81eb3b8d356bbb2b08b51336b2fe8add" }
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "99f9c7cb06f6f8f074b5c16245f295e33844855a"
+        },
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "8a4212147744cedcf7f679c81921942c81eb3b8d356bbb2b08b51336b2fe8add"
+        }
       ],
       "licenseConcluded": "NOASSERTION",
       "licenseInfoInFiles": ["NOASSERTION"],
@@ -77,7 +86,12 @@
     {
       "fileName": "bin/getconf",
       "SPDXID": "SPDXRef-File-bin-getconf-b240ee11665506ce",
-      "checksums": [{ "algorithm": "SHA1", "checksumValue": "0000000000000000000000000000000000000000" }],
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "0000000000000000000000000000000000000000"
+        }
+      ],
       "licenseConcluded": "NOASSERTION",
       "licenseInfoInFiles": ["NOASSERTION"],
       "copyrightText": "NOASSERTION",
@@ -86,7 +100,12 @@
     {
       "fileName": "lib/ld-linux-aarch64.so.1",
       "SPDXID": "SPDXRef-File-lib-ld-linux-aarch64.so.1-48a6e9fa63c5f6cc",
-      "checksums": [{ "algorithm": "SHA1", "checksumValue": "0000000000000000000000000000000000000000" }],
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "0000000000000000000000000000000000000000"
+        }
+      ],
       "licenseConcluded": "NOASSERTION",
       "licenseInfoInFiles": ["NOASSERTION"],
       "copyrightText": "NOASSERTION",
@@ -95,7 +114,12 @@
     {
       "fileName": "lib/libc.so.6",
       "SPDXID": "SPDXRef-File-lib-libc.so.6-a2dc8cb35e1e0485",
-      "checksums": [{ "algorithm": "SHA1", "checksumValue": "0000000000000000000000000000000000000000" }],
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "0000000000000000000000000000000000000000"
+        }
+      ],
       "licenseConcluded": "NOASSERTION",
       "licenseInfoInFiles": ["NOASSERTION"],
       "copyrightText": "NOASSERTION",
@@ -104,7 +128,12 @@
     {
       "fileName": "lib/libm.so.6",
       "SPDXID": "SPDXRef-File-lib-libm.so.6-8746a5a87ab9e597",
-      "checksums": [{ "algorithm": "SHA1", "checksumValue": "0000000000000000000000000000000000000000" }],
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "0000000000000000000000000000000000000000"
+        }
+      ],
       "licenseConcluded": "NOASSERTION",
       "licenseInfoInFiles": ["NOASSERTION"],
       "copyrightText": "NOASSERTION",
@@ -113,7 +142,12 @@
     {
       "fileName": "lib/libnss_compat.so.2",
       "SPDXID": "SPDXRef-File-lib-libnss-compat.so.2-75835d9334e3cd14",
-      "checksums": [{ "algorithm": "SHA1", "checksumValue": "0000000000000000000000000000000000000000" }],
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "0000000000000000000000000000000000000000"
+        }
+      ],
       "licenseConcluded": "NOASSERTION",
       "licenseInfoInFiles": ["NOASSERTION"],
       "copyrightText": "NOASSERTION",
@@ -122,7 +156,12 @@
     {
       "fileName": "lib/libnss_dns.so.2",
       "SPDXID": "SPDXRef-File-lib-libnss-dns.so.2-a75d014485c88e79",
-      "checksums": [{ "algorithm": "SHA1", "checksumValue": "0000000000000000000000000000000000000000" }],
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "0000000000000000000000000000000000000000"
+        }
+      ],
       "licenseConcluded": "NOASSERTION",
       "licenseInfoInFiles": ["NOASSERTION"],
       "copyrightText": "NOASSERTION",
@@ -131,7 +170,12 @@
     {
       "fileName": "lib/libnss_files.so.2",
       "SPDXID": "SPDXRef-File-lib-libnss-files.so.2-b5abc725c65d58cf",
-      "checksums": [{ "algorithm": "SHA1", "checksumValue": "0000000000000000000000000000000000000000" }],
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "0000000000000000000000000000000000000000"
+        }
+      ],
       "licenseConcluded": "NOASSERTION",
       "licenseInfoInFiles": ["NOASSERTION"],
       "copyrightText": "NOASSERTION",
@@ -140,7 +184,12 @@
     {
       "fileName": "lib/libnss_hesiod.so.2",
       "SPDXID": "SPDXRef-File-lib-libnss-hesiod.so.2-8570ef9dff59aa56",
-      "checksums": [{ "algorithm": "SHA1", "checksumValue": "0000000000000000000000000000000000000000" }],
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "0000000000000000000000000000000000000000"
+        }
+      ],
       "licenseConcluded": "NOASSERTION",
       "licenseInfoInFiles": ["NOASSERTION"],
       "copyrightText": "NOASSERTION",
@@ -149,7 +198,12 @@
     {
       "fileName": "lib/libpthread.so.0",
       "SPDXID": "SPDXRef-File-lib-libpthread.so.0-585855f0b92c8232",
-      "checksums": [{ "algorithm": "SHA1", "checksumValue": "0000000000000000000000000000000000000000" }],
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "0000000000000000000000000000000000000000"
+        }
+      ],
       "licenseConcluded": "NOASSERTION",
       "licenseInfoInFiles": ["NOASSERTION"],
       "copyrightText": "NOASSERTION",
@@ -158,7 +212,12 @@
     {
       "fileName": "lib/libresolv.so.2",
       "SPDXID": "SPDXRef-File-lib-libresolv.so.2-ee8c205846a71e54",
-      "checksums": [{ "algorithm": "SHA1", "checksumValue": "0000000000000000000000000000000000000000" }],
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "0000000000000000000000000000000000000000"
+        }
+      ],
       "licenseConcluded": "NOASSERTION",
       "licenseInfoInFiles": ["NOASSERTION"],
       "copyrightText": "NOASSERTION",

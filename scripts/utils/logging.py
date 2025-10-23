@@ -37,8 +37,8 @@ def setup_logging(verbosity: int = 0, script_name: str | None = None) -> logging
     }
     log_level = level_map.get(verbosity, logging.DEBUG)
 
-    # create rich console for stderr output
-    console = Console(stderr=True)
+    # create rich console for stdout output to be able to easily grep
+    console = Console(stderr=False)
 
     # configure rich handler with clean formatting
     rich_handler = RichHandler(

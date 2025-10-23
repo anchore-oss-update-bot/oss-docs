@@ -1,7 +1,7 @@
 +++
 title = "Syft Command Line Reference"
 linkTitle = "Syft CLI"
-weight = 20
+weight = 10
 tags = ['syft']
 categories = ['reference']
 url = "docs/reference/syft/cli"

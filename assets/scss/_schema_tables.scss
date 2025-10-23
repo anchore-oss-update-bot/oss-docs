@@ -62,26 +62,36 @@
   }
 }
 
-/* Column-specific widths for 4-column layout */
+/* Required field indicator icon */
+.schema-table .required-icon {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-left: 4px;
+  vertical-align: middle;
+
+  [data-bs-theme='light'] & {
+    color: #dc2626;
+  }
+  [data-bs-theme='dark'] & {
+    color: #ef4444;
+  }
+}
+
+/* Column-specific widths for 3-column layout */
 .schema-table .col-field-name {
-  width: 20%;
+  width: 15%;
   min-width: 120px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .schema-table .col-type {
-  width: 15%;
-  min-width: 100px;
-}
-
-.schema-table .col-required {
   width: 10%;
-  min-width: 80px;
-  text-align: center;
+  min-width: 50px;
 }
 
 .schema-table .col-description {
-  width: 55%;
+  width: 60%;
   min-width: 200px;
   white-space: normal;
   line-height: 1.6;
@@ -123,19 +133,15 @@
 
   /* Adjust column widths for smaller screens */
   .schema-table .col-field-name {
-    width: 25%;
+    width: 28%;
   }
 
   .schema-table .col-type {
-    width: 20%;
-  }
-
-  .schema-table .col-required {
-    width: 10%;
+    width: 22%;
   }
 
   .schema-table .col-description {
-    width: 45%;
+    width: 50%;
   }
 }
 

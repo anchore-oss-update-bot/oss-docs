@@ -1,7 +1,7 @@
 +++
 title = "Syft Default Configuration"
 linkTitle = "Syft Default Config"
-weight = 25
+weight = 11
 tags = ['syft']
 categories = ['reference']
 url = "docs/reference/syft/configuration"
