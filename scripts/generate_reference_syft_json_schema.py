@@ -1129,7 +1129,7 @@ def generate_type_section_html(
             # handle special ecosystem types link
             if field["type"] == "ECOSYSTEM_TYPES_LINK":
                 html_lines.append(
-                    '      <td class="col-type"><em><a href="#ecosystem-types">see Ecosystem Types section</a></em></td>'
+                    '      <td class="col-type"><em><a href="#ecosystem-specific-types">see the Ecosystem Specific Types section</a></em></td>'
                 )
             else:
                 # linkify type references and wrap in code tags
