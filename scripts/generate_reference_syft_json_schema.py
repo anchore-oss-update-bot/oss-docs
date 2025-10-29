@@ -36,13 +36,82 @@ from pathlib import Path
 from typing import Any
 
 import click
-from utils.config import (
-    excluded_schema_types,
-    get_generated_comment,
-    min_schema_major_version,
-    paths,
+from utils import config, log
+from utils.constants import CSSClasses
+
+
+@click.command()
+@click.option(
+    "--schema-dir",
+    type=click.Path(exists=True, path_type=Path),
+    default=config.paths.default_schema_dir,
+    help="Directory containing Syft JSON schema files",
 )
-from utils.logging import setup_logging
+@click.option(
+    "--update",
+    is_flag=True,
+    help="Update documentation even if output files already exist",
+)
+@click.option(
+    "-v",
+    "--verbose",
+    count=True,
+    help="Increase verbosity (use -v for info, -vv for debug)",
+)
+def main(schema_dir: Path, update: bool, verbose: int) -> None:
+    """Generate JSON schema reference documentation from Syft schema files.
+
+    Processes all schema files in the specified directory, selecting the latest
+    patch version for each major version >= {config.min_schema_major_version}.
+    """
+    logger = log.setup(verbose, __file__)
+
+    # scan directory for schema files
+    all_schemas = scan_schema_directory(schema_dir, logger)
+
+    # select schemas to process (latest patch per major version >= min)
+    selected = select_schemas_to_process(
+        all_schemas, config.min_schema_major_version, logger
+    )
+
+    if not selected:
+        logger.error("No schemas selected for processing")
+        sys.exit(1)
+
+    # determine highest major version for "latest" badge
+    highest_major = max(selected.keys())
+    logger.info(
+        f"Highest major version: v{highest_major} (will receive 'latest' badge)"
+    )
+
+    # process each selected schema
+    for major, (schema_path, full_version) in sorted(selected.items(), reverse=True):
+        output_file = config.paths.json_reference_dir / f"{major}.md"
+
+        # check if output already exists
+        if output_file.exists() and not update:
+            logger.info(
+                f"Output file already exists: {output_file} "
+                f"(use --update to regenerate)"
+            )
+            continue
+
+        # load schema
+        schema_data = load_json_schema(schema_path, major, logger)
+
+        # determine if this is the latest version
+        is_latest = major == highest_major
+
+        # generate documentation
+        generate_schema_documentation(
+            schema_data,
+            full_version,
+            config.paths.json_reference_dir,
+            is_latest,
+            logger,
+        )
+
+    logger.info("Generation complete!")
 
 
 def parse_schema_filename(filename: str) -> tuple[int, int, int] | None:
@@ -106,7 +175,9 @@ def scan_schema_directory(
             continue
 
         schemas.append((file_path, version))
-        logger.debug(f"Found schema {file_path.name}: v{version[0]}.{version[1]}.{version[2]}")
+        logger.debug(
+            f"Found schema {file_path.name}: v{version[0]}.{version[1]}.{version[2]}"
+        )
 
     if not schemas:
         logger.error(f"No valid schema files found in {dir_path}")
@@ -286,7 +357,7 @@ def load_ecosystem_types_from_catalogers() -> set[str]:
         cataloger has 'AlpmDbEntry' -> returns 'AlpmDbEntry'
         cataloger has 'ApkDbEntry' -> returns 'ApkDbEntry'
     """
-    cataloger_data = json.loads(paths.cataloger_cache_file.read_text())
+    cataloger_data = json.loads(config.paths.cataloger_cache_file.read_text())
 
     json_schema_types = set()
     for cataloger in cataloger_data.get("catalogers", []):
@@ -383,7 +454,9 @@ def _categorize_using_cataloger_data(
     """
     # load ecosystem types from cataloger metadata
     cataloger_ecosystem_types = load_ecosystem_types_from_catalogers()
-    logger.debug(f"Loaded {len(cataloger_ecosystem_types)} json_schema_types from cataloger data")
+    logger.debug(
+        f"Loaded {len(cataloger_ecosystem_types)} json_schema_types from cataloger data"
+    )
 
     # match cataloger types against schema types (case-insensitive)
     # cataloger has: AlpmDbEntry, schema has: AlpmDbEntry
@@ -398,14 +471,20 @@ def _categorize_using_cataloger_data(
             schema_type_name = schema_type_names_lower[cataloger_type_lower]
             ecosystem_types.add(schema_type_name)
             matched_count += 1
-            logger.debug(f"  Matched cataloger type '{cataloger_type}' to schema type '{schema_type_name}'")
+            logger.debug(
+                f"  Matched cataloger type '{cataloger_type}' to schema type '{schema_type_name}'"
+            )
 
-    logger.debug(f"Matched {matched_count}/{len(cataloger_ecosystem_types)} cataloger types to schema types")
+    logger.debug(
+        f"Matched {matched_count}/{len(cataloger_ecosystem_types)} cataloger types to schema types"
+    )
     logger.debug(f"Final ecosystem types count: {len(ecosystem_types)}")
 
     # find all types referenced by each ecosystem type
     ecosystem_refs = {}
-    ecosystem_related_types = set()  # types that are referenced by ecosystems and share prefix
+    ecosystem_related_types = (
+        set()
+    )  # types that are referenced by ecosystems and share prefix
 
     for eco_type in ecosystem_types:
         if eco_type not in all_defs:
@@ -433,11 +512,15 @@ def _categorize_using_cataloger_data(
             if ref_prefix == eco_prefix:
                 # shares prefix, so it's also an ecosystem type
                 ecosystem_related_types.add(ref_type)
-                logger.debug(f"  Type '{ref_type}' shares prefix '{ref_prefix}' with '{eco_type}' → ecosystem type")
+                logger.debug(
+                    f"  Type '{ref_type}' shares prefix '{ref_prefix}' with '{eco_type}' → ecosystem type"
+                )
 
     # add prefix-matched types to ecosystem_types
     ecosystem_types.update(ecosystem_related_types)
-    logger.debug(f"Added {len(ecosystem_related_types)} prefix-matched types to ecosystem types")
+    logger.debug(
+        f"Added {len(ecosystem_related_types)} prefix-matched types to ecosystem types"
+    )
 
     # truly_core_types = everything that's not an ecosystem type or Document
     truly_core_types = set()
@@ -447,7 +530,9 @@ def _categorize_using_cataloger_data(
         if type_name not in ecosystem_types:
             truly_core_types.add(type_name)
 
-    logger.debug(f"Total ecosystem types (including prefix-matched): {len(ecosystem_types)}")
+    logger.debug(
+        f"Total ecosystem types (including prefix-matched): {len(ecosystem_types)}"
+    )
     logger.debug(f"Total truly_core_types: {len(truly_core_types)}")
     logger.debug(f"Ecosystem types sample: {sorted(ecosystem_types)[:10]}...")
     logger.debug(f"Core types sample: {sorted(truly_core_types)[:10]}...")
@@ -487,9 +572,7 @@ def _build_categorization_from_core_types(
     ecosystem_related = {}
     for eco_type, refs in ecosystem_refs.items():
         # filter out truly core types from ecosystem-related types
-        ecosystem_specific_refs = [
-            ref for ref in refs if ref not in truly_core_types
-        ]
+        ecosystem_specific_refs = [ref for ref in refs if ref not in truly_core_types]
         if ecosystem_specific_refs:
             ecosystem_related[eco_type] = sorted(ecosystem_specific_refs)
 
@@ -497,7 +580,9 @@ def _build_categorization_from_core_types(
     sample_ecosystems = list(ecosystem_related.keys())[:3]
     for eco_type in sample_ecosystems:
         related = ecosystem_related.get(eco_type, [])
-        logger.debug(f"Ecosystem {eco_type} has {len(related)} related types: {related[:5]}...")
+        logger.debug(
+            f"Ecosystem {eco_type} has {len(related)} related types: {related[:5]}..."
+        )
 
     # core types include truly core types AND types not referenced by any ecosystem
     all_ecosystem_specific_refs = set()
@@ -600,8 +685,8 @@ def compute_type_categories(
         }
     """
     # use data-driven categorization from cataloger metadata
-    truly_core_types, cataloger_ecosystem_types, ecosystem_refs = _categorize_using_cataloger_data(
-        all_defs, ecosystem_types, logger
+    truly_core_types, cataloger_ecosystem_types, ecosystem_refs = (
+        _categorize_using_cataloger_data(all_defs, ecosystem_types, logger)
     )
 
     # build categorization structure from core types
@@ -619,7 +704,7 @@ def categorize_definitions(schema: dict, logger) -> dict[str, Any]:
     related types are types ONLY referenced by ecosystem types.
     core types are everything else (including shared types used by both).
 
-    filters out types in excluded_schema_types from all categories.
+    filters out types in config.excluded_schema_types from all categories.
 
     Args:
         schema: parsed JSON schema dict
@@ -666,17 +751,21 @@ def categorize_definitions(schema: dict, logger) -> dict[str, Any]:
     core_types = [
         t
         for t in (categories["core_only"] + categories["shared"])
-        if t != "Document" and t not in excluded_schema_types
+        if t != "Document" and t not in config.excluded_schema_types
     ]
 
     # filter excluded types from ecosystem types
-    filtered_ecosystem_types = [t for t in ecosystem_types if t not in excluded_schema_types]
+    filtered_ecosystem_types = [
+        t for t in ecosystem_types if t not in config.excluded_schema_types
+    ]
 
     # filter excluded types from ecosystem_related (both keys and values)
     filtered_ecosystem_related = {}
     for eco_type, related_types in categories["ecosystem_related"].items():
-        if eco_type not in excluded_schema_types:
-            filtered_related = [t for t in related_types if t not in excluded_schema_types]
+        if eco_type not in config.excluded_schema_types:
+            filtered_related = [
+                t for t in related_types if t not in config.excluded_schema_types
+            ]
             if filtered_related:
                 filtered_ecosystem_related[eco_type] = filtered_related
 
@@ -790,12 +879,16 @@ def expand_type_reference(type_spec: Any, all_defs: dict) -> str:
             options = type_spec["anyOf"]
             # filter out null types for cleaner display
             non_null_options = [
-                opt for opt in options if not (isinstance(opt, dict) and opt.get("type") == "null")
+                opt
+                for opt in options
+                if not (isinstance(opt, dict) and opt.get("type") == "null")
             ]
             if len(non_null_options) == 1:
                 return expand_type_reference(non_null_options[0], all_defs)
             elif non_null_options:
-                option_types = [expand_type_reference(opt, all_defs) for opt in non_null_options]
+                option_types = [
+                    expand_type_reference(opt, all_defs) for opt in non_null_options
+                ]
                 return " | ".join(option_types)
 
         # handle oneOf unions
@@ -948,11 +1041,12 @@ def shorten_type_string(type_str: str) -> str:
     # apply replacements as whole-word substitutions
     # use word boundaries to avoid replacing parts of custom type names
     import re
+
     result = type_str
     for long_name, short_name in replacements.items():
         # match whole word (not part of another word)
         # negative lookbehind/lookahead to ensure not part of a type name
-        pattern = r'\b' + re.escape(long_name) + r'\b'
+        pattern = r"\b" + re.escape(long_name) + r"\b"
         result = re.sub(pattern, short_name, result)
 
     return result
@@ -980,15 +1074,15 @@ def should_replace_field_with_link(
         any_of = field_spec.get("anyOf", [])
         # if there are many options (more than just null), this is the ecosystem union
         non_null_options = [
-            opt for opt in any_of if not (isinstance(opt, dict) and opt.get("type") == "null")
+            opt
+            for opt in any_of
+            if not (isinstance(opt, dict) and opt.get("type") == "null")
         ]
         return len(non_null_options) > 5  # arbitrary threshold
     return False
 
 
-def parse_definition(
-    def_name: str, def_schema: dict, all_defs: dict
-) -> dict[str, Any]:
+def parse_definition(def_name: str, def_schema: dict, all_defs: dict) -> dict[str, Any]:
     """
     parse a schema definition to extract structured information.
 
@@ -1005,7 +1099,9 @@ def parse_definition(
     """
     result = {
         "name": def_name,
-        "description": clean_type_description(def_name, def_schema.get("description", "")),
+        "description": clean_type_description(
+            def_name, def_schema.get("description", "")
+        ),
         "fields": [],
     }
 
@@ -1080,7 +1176,7 @@ def generate_type_section_html(
 
     # generate markdown h2 header with custom anchor ID
     anchor_id = section_title.lower().replace(" ", "-")
-    html_lines.append(f'## {section_title} {{#{anchor_id}}}\n')
+    html_lines.append(f"## {section_title} {{#{anchor_id}}}\n")
 
     for type_name in type_names:
         type_def = all_defs.get(type_name)
@@ -1095,22 +1191,26 @@ def generate_type_section_html(
             continue
 
         # type heading with anchor (markdown h3)
-        html_lines.append(f'### `{type_name}` {{#{type_name.lower()}}}\n')
+        html_lines.append(f"### `{type_name}` {{#{type_name.lower()}}}\n")
 
         # type description (if exists)
         if parsed["description"]:
-            html_lines.append(f'<p>{parsed["description"]}</p>\n')
+            html_lines.append(f"<p>{parsed['description']}</p>\n")
 
         # table header
         show_descriptions = has_field_descriptions(parsed["fields"])
 
-        html_lines.append('<table class="schema-table">')
+        html_lines.append(f'<table class="{CSSClasses.SCHEMA_TABLE}">')
         html_lines.append("  <thead>")
         html_lines.append("    <tr>")
-        html_lines.append('      <th class="col-field-name">Field Name</th>')
-        html_lines.append('      <th class="col-type">Type</th>')
+        html_lines.append(
+            f'      <th class="{CSSClasses.COL_FIELD_NAME}">Field Name</th>'
+        )
+        html_lines.append(f'      <th class="{CSSClasses.COL_TYPE}">Type</th>')
         if show_descriptions:
-            html_lines.append('      <th class="col-description">Description</th>')
+            html_lines.append(
+                f'      <th class="{CSSClasses.COL_DESCRIPTION}">Description</th>'
+            )
         html_lines.append("    </tr>")
         html_lines.append("  </thead>")
         html_lines.append("  <tbody>")
@@ -1119,28 +1219,28 @@ def generate_type_section_html(
         for field in parsed["fields"]:
             html_lines.append("    <tr>")
             # add required icon outside code block for required fields
-            field_name_html = f'<code>{field["name"]}</code>'
+            field_name_html = f"<code>{field['name']}</code>"
             if field["required"]:
-                field_name_html += '<svg class="required-icon"><use xlink:href="#icon-required"></use></svg>'
+                field_name_html += f'<svg class="{CSSClasses.REQUIRED_ICON}"><use xlink:href="#icon-required"></use></svg>'
             html_lines.append(
-                f'      <td class="col-field-name">{field_name_html}</td>'
+                f'      <td class="{CSSClasses.COL_FIELD_NAME}">{field_name_html}</td>'
             )
 
             # handle special ecosystem types link
             if field["type"] == "ECOSYSTEM_TYPES_LINK":
                 html_lines.append(
-                    '      <td class="col-type"><em><a href="#ecosystem-specific-types">see the Ecosystem Specific Types section</a></em></td>'
+                    f'      <td class="{CSSClasses.COL_TYPE}"><em><a href="#ecosystem-specific-types">see the Ecosystem Specific Types section</a></em></td>'
                 )
             else:
                 # linkify type references and wrap in code tags
                 linked_type = linkify_type_string(field["type"], documented_types)
                 html_lines.append(
-                    f'      <td class="col-type"><code>{linked_type}</code></td>'
+                    f'      <td class="{CSSClasses.COL_TYPE}"><code>{linked_type}</code></td>'
                 )
 
             if show_descriptions:
                 html_lines.append(
-                    f'      <td class="col-description">{field["description"]}</td>'
+                    f'      <td class="{CSSClasses.COL_DESCRIPTION}">{field["description"]}</td>'
                 )
             html_lines.append("    </tr>")
 
@@ -1167,23 +1267,29 @@ def generate_type_section_html(
 
                 # related type heading with markdown h4
                 html_lines.append(
-                    f'#### `{related_type_name}` {{#{related_type_name.lower()}}}\n'
+                    f"#### `{related_type_name}` {{#{related_type_name.lower()}}}\n"
                 )
 
                 # type description (if exists)
                 if related_parsed["description"]:
-                    html_lines.append(f'<p>{related_parsed["description"]}</p>\n')
+                    html_lines.append(f"<p>{related_parsed['description']}</p>\n")
 
                 # table (same structure as main types)
-                related_show_descriptions = has_field_descriptions(related_parsed["fields"])
+                related_show_descriptions = has_field_descriptions(
+                    related_parsed["fields"]
+                )
 
-                html_lines.append('<table class="schema-table">')
+                html_lines.append(f'<table class="{CSSClasses.SCHEMA_TABLE}">')
                 html_lines.append("  <thead>")
                 html_lines.append("    <tr>")
-                html_lines.append('      <th class="col-field-name">Field Name</th>')
-                html_lines.append('      <th class="col-type">Type</th>')
+                html_lines.append(
+                    f'      <th class="{CSSClasses.COL_FIELD_NAME}">Field Name</th>'
+                )
+                html_lines.append(f'      <th class="{CSSClasses.COL_TYPE}">Type</th>')
                 if related_show_descriptions:
-                    html_lines.append('      <th class="col-description">Description</th>')
+                    html_lines.append(
+                        f'      <th class="{CSSClasses.COL_DESCRIPTION}">Description</th>'
+                    )
                 html_lines.append("    </tr>")
                 html_lines.append("  </thead>")
                 html_lines.append("  <tbody>")
@@ -1191,21 +1297,21 @@ def generate_type_section_html(
                 for field in related_parsed["fields"]:
                     html_lines.append("    <tr>")
                     # add required icon outside code block for required fields
-                    field_name_html = f'<code>{field["name"]}</code>'
+                    field_name_html = f"<code>{field['name']}</code>"
                     if field["required"]:
-                        field_name_html += '<svg class="required-icon"><use xlink:href="#icon-required"></use></svg>'
+                        field_name_html += f'<svg class="{CSSClasses.REQUIRED_ICON}"><use xlink:href="#icon-required"></use></svg>'
                     html_lines.append(
-                        f'      <td class="col-field-name">{field_name_html}</td>'
+                        f'      <td class="{CSSClasses.COL_FIELD_NAME}">{field_name_html}</td>'
                     )
                     # linkify type references
                     linked_type = linkify_type_string(field["type"], documented_types)
                     html_lines.append(
-                        f'      <td class="col-type"><code>{linked_type}</code></td>'
+                        f'      <td class="{CSSClasses.COL_TYPE}"><code>{linked_type}</code></td>'
                     )
 
                     if related_show_descriptions:
                         html_lines.append(
-                            f'      <td class="col-description">{field["description"]}</td>'
+                            f'      <td class="{CSSClasses.COL_DESCRIPTION}">{field["description"]}</td>'
                         )
                     html_lines.append("    </tr>")
 
@@ -1267,7 +1373,9 @@ def generate_schema_documentation(
     front_matter_lines.append("+++")
 
     # generate comment (after front matter)
-    comment = get_generated_comment("scripts/generate_reference_syft_json_schema.py", "html")
+    comment = config.get_generated_comment(
+        "scripts/generate_reference_syft_json_schema.py", "html"
+    )
     comment += "<!-- markdownlint-disable MD013 MD033 -->\n"
 
     # generate content sections
@@ -1275,7 +1383,7 @@ def generate_schema_documentation(
 
     # document section (single type, no h3 to avoid redundant "Document" heading)
     doc_html = []
-    doc_html.append('## Document {#document}\n')
+    doc_html.append("## Document {#document}\n")
 
     # get and parse Document definition
     doc_def = all_defs.get("Document")
@@ -1284,19 +1392,23 @@ def generate_schema_documentation(
 
         # type description (if exists)
         if parsed["description"]:
-            doc_html.append(f'<p>{parsed["description"]}</p>\n')
+            doc_html.append(f"<p>{parsed['description']}</p>\n")
 
         # generate table (same structure as in generate_type_section_html)
         if parsed["fields"]:
             show_descriptions = has_field_descriptions(parsed["fields"])
 
-            doc_html.append('<table class="schema-table">')
+            doc_html.append(f'<table class="{CSSClasses.SCHEMA_TABLE}">')
             doc_html.append("  <thead>")
             doc_html.append("    <tr>")
-            doc_html.append('      <th class="col-field-name">Field Name</th>')
-            doc_html.append('      <th class="col-type">Type</th>')
+            doc_html.append(
+                f'      <th class="{CSSClasses.COL_FIELD_NAME}">Field Name</th>'
+            )
+            doc_html.append(f'      <th class="{CSSClasses.COL_TYPE}">Type</th>')
             if show_descriptions:
-                doc_html.append('      <th class="col-description">Description</th>')
+                doc_html.append(
+                    f'      <th class="{CSSClasses.COL_DESCRIPTION}">Description</th>'
+                )
             doc_html.append("    </tr>")
             doc_html.append("  </thead>")
             doc_html.append("  <tbody>")
@@ -1304,21 +1416,21 @@ def generate_schema_documentation(
             for field in parsed["fields"]:
                 doc_html.append("    <tr>")
                 # add required icon outside code block for required fields
-                field_name_html = f'<code>{field["name"]}</code>'
+                field_name_html = f"<code>{field['name']}</code>"
                 if field["required"]:
-                    field_name_html += '<svg class="required-icon"><use xlink:href="#icon-required"></use></svg>'
+                    field_name_html += f'<svg class="{CSSClasses.REQUIRED_ICON}"><use xlink:href="#icon-required"></use></svg>'
                 doc_html.append(
-                    f'      <td class="col-field-name">{field_name_html}</td>'
+                    f'      <td class="{CSSClasses.COL_FIELD_NAME}">{field_name_html}</td>'
                 )
                 # linkify type references
                 linked_type = linkify_type_string(field["type"], documented_types)
                 doc_html.append(
-                    f'      <td class="col-type"><code>{linked_type}</code></td>'
+                    f'      <td class="{CSSClasses.COL_TYPE}"><code>{linked_type}</code></td>'
                 )
 
                 if show_descriptions:
                     doc_html.append(
-                        f'      <td class="col-description">{field["description"]}</td>'
+                        f'      <td class="{CSSClasses.COL_DESCRIPTION}">{field["description"]}</td>'
                     )
                 doc_html.append("    </tr>")
 
@@ -1357,72 +1469,6 @@ def generate_schema_documentation(
         f.write("\n".join(content_lines))
 
     logger.info(f"Generated {output_file}")
-
-
-@click.command()
-@click.option(
-    "--schema-dir",
-    type=click.Path(exists=True, path_type=Path),
-    default=paths.default_schema_dir,
-    help="Directory containing Syft JSON schema files",
-)
-@click.option(
-    "--update",
-    is_flag=True,
-    help="Update documentation even if output files already exist",
-)
-@click.option(
-    "-v",
-    "--verbose",
-    count=True,
-    help="Increase verbosity (use -v for info, -vv for debug)",
-)
-def main(schema_dir: Path, update: bool, verbose: int) -> None:
-    """Generate JSON schema reference documentation from Syft schema files.
-
-    Processes all schema files in the specified directory, selecting the latest
-    patch version for each major version >= {min_schema_major_version}.
-    """
-    logger = setup_logging(verbose, __file__)
-
-    # scan directory for schema files
-    all_schemas = scan_schema_directory(schema_dir, logger)
-
-    # select schemas to process (latest patch per major version >= min)
-    selected = select_schemas_to_process(all_schemas, min_schema_major_version, logger)
-
-    if not selected:
-        logger.error("No schemas selected for processing")
-        sys.exit(1)
-
-    # determine highest major version for "latest" badge
-    highest_major = max(selected.keys())
-    logger.info(f"Highest major version: v{highest_major} (will receive 'latest' badge)")
-
-    # process each selected schema
-    for major, (schema_path, full_version) in sorted(selected.items(), reverse=True):
-        output_file = paths.json_reference_dir / f"{major}.md"
-
-        # check if output already exists
-        if output_file.exists() and not update:
-            logger.info(
-                f"Output file already exists: {output_file} "
-                f"(use --update to regenerate)"
-            )
-            continue
-
-        # load schema
-        schema_data = load_json_schema(schema_path, major, logger)
-
-        # determine if this is the latest version
-        is_latest = (major == highest_major)
-
-        # generate documentation
-        generate_schema_documentation(
-            schema_data, full_version, paths.json_reference_dir, is_latest, logger
-        )
-
-    logger.info("Generation complete!")
 
 
 if __name__ == "__main__":

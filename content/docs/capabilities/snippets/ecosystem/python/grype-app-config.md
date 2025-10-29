@@ -5,8 +5,8 @@
 <table class="config-table grype-config-table">
   <thead>
     <tr>
-      <th class="col-config-key">Configuration Key <abbr class="header-help" title="The configuration field name used in Grype application configuration"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>
-      <th class="col-description">Description <abbr class="header-help" title="Explanation of what the configuration option controls"><svg class="capability-icon header-help-icon"><use href="#icon-help"/></svg></abbr></th>
+      <th class="col-config-key"><abbr class="header-help" title="The configuration field name used in Syft/Grype application configuration">Configuration Key</abbr></th>
+      <th class="col-description"><abbr class="header-help" title="Explanation of what the configuration option controls">Description</abbr></th>
     </tr>
   </thead>
   <tbody>
