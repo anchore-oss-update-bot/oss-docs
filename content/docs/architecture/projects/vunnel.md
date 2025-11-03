@@ -21,7 +21,7 @@ flowchart LR
         other_data((("...")))
     end
 
-    subgraph vunnel["Vunnel"]
+    subgraph vunnel["<b>Vunnel</b>"]
         alpine_provider[Alpine Provider]
         rhel_provider[RHEL Provider]
         nvd_provider[NVD Provider]
@@ -29,10 +29,10 @@ flowchart LR
     end
 
     subgraph output[ ]
-        alpine_out[(./data/alpine/)]
-        rhel_out[(./data/rhel/)]
-        nvd_out[(./data/nvd/)]
-        other_out[(...)]
+        alpine_out[./data/alpine/]
+        rhel_out[./data/rhel/]
+        nvd_out[./data/nvd/]
+        other_out[...]
     end
 
     alpine_data -->|download| alpine_provider
@@ -44,7 +44,7 @@ flowchart LR
     nvd_provider -->|write| nvd_out
 
 
-    style vunnel fill:#e3f2fd,stroke:#64b5f6,stroke-width:1px
+    vunnel:::Application
 
     style other_data fill:none,stroke:none
     style other_provider fill:none,stroke:none
@@ -52,16 +52,22 @@ flowchart LR
     style output fill:none,stroke:none
     style input fill:none,stroke:none
 
-    style alpine_provider fill:#fff
-    style rhel_provider fill:#fff
-    style nvd_provider fill:#fff
-    style alpine_out fill:#fff
-    style rhel_out fill:#fff
-    style nvd_out fill:#fff
+    alpine_data:::ExternalSource@{ shape: cloud }
+    rhel_data:::ExternalSource@{ shape: cloud }
+    nvd_data:::ExternalSource@{ shape: cloud }
+    
+    alpine_provider:::Provider
+    rhel_provider:::Provider
+    nvd_provider:::Provider
+    
+    alpine_out:::Database@{ shape: db }
+    rhel_out:::Database@{ shape: db }
+    nvd_out:::Database@{ shape: db }
 
-    alpine_data@{ shape: cloud }
-    rhel_data@{ shape: cloud }
-    nvd_data@{ shape: cloud }
+    classDef ExternalSource stroke-width:1px, stroke-dasharray:none, stroke:#424242, fill:#f0f8ff, color:#000000
+    classDef Application fill:#e1ffe1,stroke:#424242,stroke-width:1px
+    classDef Provider fill:#none,stroke:#424242,stroke-width:1px
+    classDef Database stroke-width:1px, stroke-dasharray:none, stroke:#424242, fill:#fff9c4, color:#000000
 ```
 
 Conceptually, one or more invocations of Vunnel will produce a single data directory which Grype DB uses to create a Grype database:
@@ -76,16 +82,16 @@ flowchart LR
     end
 
     subgraph data[ ]
-        alpine_data[(./data/alpine/)]
-        rhel_data[(./data/rhel/)]
-        nvd_data[(./data/nvd/)]
-        other_data[(...)]
+        alpine_data[./data/alpine/]
+        rhel_data[./data/rhel/]
+        nvd_data[./data/nvd/]
+        other_data[...]
     end
 
     db_processor[Grype-DB]
 
     subgraph db_out[ ]
-        sqlite_db[(vulnerability.db<br/><small>sqlite</small>)]
+        sqlite_db[vulnerability.db<br/><small>sqlite</small>]
     end
 
     vunnel_alpine -->|write| alpine_data
@@ -98,10 +104,15 @@ flowchart LR
 
     db_processor -->|write| sqlite_db
 
-    style db_processor fill:#e8f5e9,stroke:#66bb6a,stroke-width:1px
-    style vunnel_alpine fill:#e3f2fd,stroke:#64b5f6,stroke-width:1px
-    style vunnel_rhel fill:#e3f2fd,stroke:#64b5f6,stroke-width:1px
-    style vunnel_nvd fill:#e3f2fd,stroke:#64b5f6,stroke-width:1px
+    db_processor:::Application
+    vunnel_alpine:::Application
+    vunnel_rhel:::Application
+    vunnel_nvd:::Application
+    sqlite_db:::Database@{ shape: db }
+    
+    alpine_data:::Database@{ shape: db }
+    rhel_data:::Database@{ shape: db }
+    nvd_data:::Database@{ shape: db }
 
     style vunnel_other fill:none,stroke:none
     style other_data fill:none,stroke:none
@@ -109,10 +120,8 @@ flowchart LR
     style data fill:none,stroke:none
     style db_out fill:none,stroke:none
 
-    style alpine_data fill:#fff
-    style rhel_data fill:#fff
-    style nvd_data fill:#fff
-    style sqlite_db fill:#fff9c4,stroke:#fdd835,stroke-width:1px
+    classDef Application fill:#e1ffe1,stroke:#424242,stroke-width:1px
+    classDef Database stroke-width:1px, stroke-dasharray:none, stroke:#424242, fill:#fff9c4, color:#000000
 ```
 
 ## Integration with Grype DB
@@ -148,19 +157,21 @@ flowchart LR
     vunnel_nvd -->|write| data_out
     vunnel_other -.->|write| data_out
 
-    style pull fill:#e8f5e9,stroke:#66bb6a,stroke-width:1px
-    style vunnel_alpine fill:#e3f2fd,stroke:#64b5f6,stroke-width:1px
-    style vunnel_rhel fill:#e3f2fd,stroke:#64b5f6,stroke-width:1px
-    style vunnel_nvd fill:#e3f2fd,stroke:#64b5f6,stroke-width:1px
-    style vunnel_other fill:#e3f2fd,stroke:#64b5f6,stroke-width:1px
+    pull:::Application
+    vunnel_alpine:::Application
+    vunnel_rhel:::Application
+    vunnel_nvd:::Application
+    vunnel_other:::Application
+
+    config:::AnalysisInput@{ shape: document }
+    data_out:::Database@{ shape: db }
 
     style vunnel_runs fill:none,stroke:none
     style data fill:none,stroke:none
 
-    style config fill:#fff
-    style data_out fill:#fff
-
-    config@{ shape: document }
+    classDef AnalysisInput stroke-width:1px, stroke-dasharray:none, stroke:#424242, fill:#f0f8ff, color:#000000
+    classDef Application fill:#e1ffe1,stroke:#424242,stroke-width:1px
+    classDef Database stroke-width:1px, stroke-dasharray:none, stroke:#424242, fill:#fff9c4, color:#000000
 ```
 
 ### grype-db build
@@ -180,13 +191,15 @@ flowchart LR
     data_in -->|read| build
     build -->|write| db
 
-    style build fill:#e8f5e9,stroke:#66bb6a,stroke-width:1px
+    build:::Application
+    data_in:::Database@{ shape: db }
+    db:::Database@{ shape: db }
 
     style data fill:none,stroke:none
     style db_out fill:none,stroke:none
 
-    style data_in fill:#fff
-    style db fill:#fff9c4,stroke:#fdd835,stroke-width:1px
+    classDef Application fill:#e1ffe1,stroke:#424242,stroke-width:1px
+    classDef Database stroke-width:1px, stroke-dasharray:none, stroke:#424242, fill:#fff9c4, color:#000000
 ```
 
 ### grype-db package
@@ -206,15 +219,15 @@ flowchart LR
     db -->|read| package
     package -->|write| archive
 
-    style package fill:#e8f5e9,stroke:#66bb6a,stroke-width:1px
+    package:::Application
+    db:::Database@{ shape: db }
+    archive:::Database@{ shape: document }
 
     style db_in fill:none,stroke:none
     style archive_out fill:none,stroke:none
 
-    style db fill:#fff9c4,stroke:#fdd835,stroke-width:1px
-    style archive fill:#fff
-
-    archive@{ shape: document }
+    classDef Application fill:#e1ffe1,stroke:#424242,stroke-width:1px
+    classDef Database stroke-width:1px, stroke-dasharray:none, stroke:#424242, fill:#fff9c4, color:#000000
 ```
 
 For more information about how Grype DB uses Vunnel see the [Grype DB Architecture](/docs/architecture/grype-db) page.

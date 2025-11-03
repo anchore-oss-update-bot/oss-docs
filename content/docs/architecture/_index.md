@@ -11,23 +11,32 @@ Anchore's open source security tooling consists of several interconnected tools 
 The Anchore OSS ecosystem includes five main tools that, at the 30,000 ft view, work together as follows:
 
 ```mermaid
+---
+config:
+  layout: dagre
+  look: handDrawn
+  theme: default
+  flowchart: 
+    curve: linear
+---
 flowchart TD
-    vunnel[[***Vunnel***<br/>Downloads and normalizes<br/>security feeds]]
-    grypedb[[***Grype DB***<br/>Converts feeds to<br/>SQLite database]]
-    syft[[***Syft***<br/>Generates SBOMs from<br/>scan targets]]
-    grype[[***Grype***<br/>Matches vulnerabilities<br/>from SBOM + database]]
-    grant[[***Grant***<br/>Analyzes licenses<br/>from SBOM]]
+    vunnel["***Vunnel***<br><small>Downloads and normalizes<br>security feeds</small>"]:::Ash 
+    grypedb["***Grype DB***<br><small>Converts feeds to<br>SQLite database</small>"]:::Ash
+    grype["***Grype***<br><small>Matches vulnerabilities<br>from SBOM + database</small>"]:::Ash
+    syft["***Syft***<br><small>Generates SBOMs from<br>scan targets</small>"]:::Ash
+    grant["***Grant***<br><small>Analyzes licenses<br>from SBOM</small>"]:::Ash
 
-    vunnel --> grypedb
-    grypedb --> grype
-    syft --> grype
-    syft --> grant
+    vunnel --> grypedb --> grype
+    syft --> grype & grant
 
-    style vunnel fill:#e0e0e0
-    style grypedb fill:#e0e0e0
-    style syft fill:#e0e0e0
-    style grype fill:#e0e0e0
-    style grant fill:#e0e0e0
+    vunnel@{ shape: event}
+    grypedb@{ shape: event}
+    grype@{ shape: event}
+    syft@{ shape: event}
+    grant@{ shape: event}
+
+    classDef Ash stroke-width:1px, stroke-dasharray:none, stroke:#424242, fill:#e1ffe1, color:#000000
+
 ```
 
 Zooming in to the 20,000 ft view, here's how data flows through the same system:
@@ -36,54 +45,75 @@ Zooming in to the 20,000 ft view, here's how data flows through the same system:
 ---
 config:
   layout: dagre
+  look: handDrawn
+  theme: default
+  flowchart: 
+    curve: linear
 ---
-flowchart LR
- subgraph anchore["Anchore Infrastructure"]
-        feed1["NVD Feed"]
-        feed2["Alpine Feed"]
-        feed3["... (20+ feeds)"]
-        vunnel[["Vunnel"]]
-        grypedb[["Grype DB"]]
-        cache["Daily<br>Database"]
+flowchart TB
+
+  feed1["NVD Feed"]
+  feed2["Alpine Feed"]
+  feed3["... (20+ feeds)"]
+
+  subgraph anchore["<b>Anchore Infrastructure</b>"]
+    vunnel["Vunnel"]
+    grypedb["Grype DB"]
+    cache["Daily DB"]
+    vunnel --> grypedb --> cache
   end
- subgraph user["User Environment"]
-        download["grype db update<br>or auto-update"]
-        local["Local DB<br>Cache"]
-        targets["Image, filesystem,<br>PURLs, directory,<br>..."]
-        syft[["Syft"]]
-        sbom["SBOM"]
-        grype[["Grype"]]
-        vulns["Vulnerability+Package<br>Matches"]
-        grant[["Grant"]]
-        licenses["License Compliance<br>Report"]
-  end
-    feed1 --> vunnel
-    feed2 --> vunnel
-    feed3 -.-> vunnel
-    vunnel --> grypedb
-    grypedb --> cache
-    cache -. Download .-> download
-    download --> local
-    targets --> syft
-    syft --> sbom
-    local --> grype
-    sbom --> grype
+ 
+
+  subgraph user["<b>User Environment</b>"]
+    targets["Image, filesystem,<br>PURLs, directory, ..."]
+    local["DB Cache"]
+    
+    syft["Syft"]
+    sbom["SBOM"]
+    
+    targets --> syft --> sbom
+    
+    grype["Grype"]
+    vulns["Vulnerability+Package<br>Matches"]
+    grant["Grant"]
+    licenses["License Compliance<br>Report"]
+    
     grype --> vulns
-    sbom --> grant
     grant --> licenses
-    cache@{ shape: db}
-    local@{ shape: db}
-    sbom@{ shape: doc}
-    vulns@{ shape: doc}
-    licenses@{ shape: doc}
-    style anchore fill:#e1f5ff
-    style user fill:#f0f0f0
-    style vunnel fill:#e1ffe1
-    style grypedb fill:#e1ffe1
-    style syft fill:#e1ffe1
-    style grype fill:#e1ffe1
-    style grant fill:#e1ffe1
-    style sbom fill:#fff9c4
-    style vulns fill:#fff9c4
-    style licenses fill:#fff9c4
+    
+    sbom --> grype
+    sbom --> grant
+    local --> grype
+  end
+  
+  feed1 --> vunnel
+  feed2 --> vunnel
+  feed3 -.-> vunnel
+  
+  cache -. "<i>download</i>" .-> local
+  
+  feed1:::ExternalSource@{ shape: cloud}
+  feed2:::ExternalSource@{ shape: cloud}
+  feed3:::ExternalSource@{ shape: cloud}
+  vunnel:::Application@{ shape: event}
+  grypedb:::Application@{ shape: event}
+  grype:::Application@{ shape: event}
+  syft:::Application@{ shape: event}
+  grant:::Application@{ shape: event}
+  
+  targets:::AnalysisInput
+  cache:::Database@{ shape: db}
+  local:::Database@{ shape: db}
+  sbom:::Document@{ shape: doc}
+  vulns:::Document@{ shape: doc}
+  licenses:::Document@{ shape: doc}
+  
+  style anchore fill:none, stroke:#333333, stroke-width:2px, stroke-dasharray:5 5
+  style user fill:none, stroke:#333333, stroke-width:2px, stroke-dasharray:5 5
+  
+  classDef AnalysisInput stroke-width:1px, stroke-dasharray:none, stroke:#424242, fill:#f0f8ff, color:#000000
+  classDef ExternalSource stroke-width:1px, stroke-dasharray:none, stroke:#424242, fill:#f0f8ff, color:#000000
+  classDef Application stroke-width:1px, stroke-dasharray:none, stroke:#424242, fill:#e1ffe1, color:#000000
+  classDef Document stroke-width:1px, stroke-dasharray:none, stroke:#424242, fill:#fff9c4, color:#000000
+  classDef Database stroke-width:1px, stroke-dasharray:none, stroke:#424242, fill:#fff9c4, color:#000000
 ```
