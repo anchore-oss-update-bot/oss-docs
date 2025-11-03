@@ -1,5 +1,9 @@
 // Sidebar and table of contents styles
 
+footer {
+  display: block !important;
+}
+
 // sidebar links
 .td-sidebar-nav {
   a {
@@ -72,14 +76,15 @@
   border-right: none !important;
 }
 
-// prevent horizontal scrollbar from negative margins
 #td-sidebar-menu {
-  overflow-x: hidden;
+  overflow-x: hidden; // prevent horizontal scrollbar from negative margins
+  height: auto; // prevent scrolling to bottom of screen causing the sidebar to unstick
 }
 
 // remove vertical border between main content and right sidebar (TOC)
 .td-sidebar-toc {
   border-left: none !important;
+  height: auto; // prevent scrolling to bottom of screen causing the sidebar to unstick
 }
 
 // improved sidebar spacing and typography
