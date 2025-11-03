@@ -55,11 +55,11 @@ flowchart LR
     alpine_data:::ExternalSource@{ shape: cloud }
     rhel_data:::ExternalSource@{ shape: cloud }
     nvd_data:::ExternalSource@{ shape: cloud }
-    
+
     alpine_provider:::Provider
     rhel_provider:::Provider
     nvd_provider:::Provider
-    
+
     alpine_out:::Database@{ shape: db }
     rhel_out:::Database@{ shape: db }
     nvd_out:::Database@{ shape: db }
@@ -109,7 +109,7 @@ flowchart LR
     vunnel_rhel:::Application
     vunnel_nvd:::Application
     sqlite_db:::Database@{ shape: db }
-    
+
     alpine_data:::Database@{ shape: db }
     rhel_data:::Database@{ shape: db }
     nvd_data:::Database@{ shape: db }

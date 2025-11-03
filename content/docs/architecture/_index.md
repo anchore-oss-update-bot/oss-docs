@@ -16,11 +16,11 @@ config:
   layout: dagre
   look: handDrawn
   theme: default
-  flowchart: 
+  flowchart:
     curve: linear
 ---
 flowchart TD
-    vunnel["***Vunnel***<br><small>Downloads and normalizes<br>security feeds</small>"]:::Ash 
+    vunnel["***Vunnel***<br><small>Downloads and normalizes<br>security feeds</small>"]:::Ash
     grypedb["***Grype DB***<br><small>Converts feeds to<br>SQLite database</small>"]:::Ash
     grype["***Grype***<br><small>Matches vulnerabilities<br>from SBOM + database</small>"]:::Ash
     syft["***Syft***<br><small>Generates SBOMs from<br>scan targets</small>"]:::Ash
@@ -47,7 +47,7 @@ config:
   layout: dagre
   look: handDrawn
   theme: default
-  flowchart: 
+  flowchart:
     curve: linear
 ---
 flowchart TB
@@ -62,36 +62,36 @@ flowchart TB
     cache["Daily DB"]
     vunnel --> grypedb --> cache
   end
- 
+
 
   subgraph user["<b>User Environment</b>"]
     targets["Image, filesystem,<br>PURLs, directory, ..."]
     local["DB Cache"]
-    
+
     syft["Syft"]
     sbom["SBOM"]
-    
+
     targets --> syft --> sbom
-    
+
     grype["Grype"]
     vulns["Vulnerability+Package<br>Matches"]
     grant["Grant"]
     licenses["License Compliance<br>Report"]
-    
+
     grype --> vulns
     grant --> licenses
-    
+
     sbom --> grype
     sbom --> grant
     local --> grype
   end
-  
+
   feed1 --> vunnel
   feed2 --> vunnel
   feed3 -.-> vunnel
-  
+
   cache -. "<i>download</i>" .-> local
-  
+
   feed1:::ExternalSource@{ shape: cloud}
   feed2:::ExternalSource@{ shape: cloud}
   feed3:::ExternalSource@{ shape: cloud}
@@ -100,17 +100,17 @@ flowchart TB
   grype:::Application@{ shape: event}
   syft:::Application@{ shape: event}
   grant:::Application@{ shape: event}
-  
+
   targets:::AnalysisInput
   cache:::Database@{ shape: db}
   local:::Database@{ shape: db}
   sbom:::Document@{ shape: doc}
   vulns:::Document@{ shape: doc}
   licenses:::Document@{ shape: doc}
-  
+
   style anchore fill:none, stroke:#333333, stroke-width:2px, stroke-dasharray:5 5
   style user fill:none, stroke:#333333, stroke-width:2px, stroke-dasharray:5 5
-  
+
   classDef AnalysisInput stroke-width:1px, stroke-dasharray:none, stroke:#424242, fill:#f0f8ff, color:#000000
   classDef ExternalSource stroke-width:1px, stroke-dasharray:none, stroke:#424242, fill:#f0f8ff, color:#000000
   classDef Application stroke-width:1px, stroke-dasharray:none, stroke:#424242, fill:#e1ffe1, color:#000000

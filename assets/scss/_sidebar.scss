@@ -72,6 +72,11 @@
   border-right: none !important;
 }
 
+// prevent horizontal scrollbar from negative margins
+#td-sidebar-menu {
+  overflow-x: hidden;
+}
+
 // remove vertical border between main content and right sidebar (TOC)
 .td-sidebar-toc {
   border-left: none !important;

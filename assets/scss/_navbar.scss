@@ -1,5 +1,12 @@
 // Navigation bar styles
 
+// make header sticky so navbar stays at top when scrolling
+.td-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
 // navbar improvements
 .td-navbar {
   // improve logo and site title alignment

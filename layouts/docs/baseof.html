@@ -7,7 +7,7 @@
     {{ partial "head.html" . }}
   </head>
   <body class="td-{{ .Kind }}{{ with .Page.Params.body_class }} {{ . }}{{ end }}">
-    <header>
+    <header class="td-header">
       {{ partial "navbar.html" . }}
     </header>
     <div class="container-fluid td-outer">
