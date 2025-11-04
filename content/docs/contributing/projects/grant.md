@@ -7,6 +7,7 @@ tags = ["grant"]
 type = "docs"
 url = "docs/contributing/grant"
 menu_group = "projects"
+icon_image = "/images/logos/grant/favicon-48x48.png"
 +++
 
 ## Getting started

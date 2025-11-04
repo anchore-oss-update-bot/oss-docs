@@ -61,9 +61,9 @@
 <li class="td-sidebar-nav__section-title td-sidebar-nav__section{{ if $withChild }} with-child{{ else }} without-child{{ end }}{{ if $activePath }} active-path{{ end }}{{ if (not (or $show $p.Site.Params.ui.sidebar_menu_foldable )) }} collapse{{ end }}" id="{{ $mid }}-li">
   {{ if (and $p.Site.Params.ui.sidebar_menu_foldable (ge $ulNr 1)) -}}
   <input type="checkbox" id="{{ $mid }}-check"{{ if $activePath}} checked{{ end }}/>
-  <label for="{{ $mid }}-check"><a href="{{ $manualLink }}"{{ if ne $s.LinkTitle $manualLinkTitle }} title="{{ $manualLinkTitle }}"{{ end }}{{ with $s.Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }} class="align-left ps-0 {{ if $active}} active{{ end }} td-sidebar-link{{ if $s.IsPage }} td-sidebar-link__page{{ else }} td-sidebar-link__section{{ end }}{{ if $treeRoot }} tree-root{{ end }}" id="{{ $mid }}">{{ with $s.Params.Icon}}<i class="{{ . }}"></i>{{ end }}<span class="{{ if $active }}td-sidebar-nav-active-item{{ end }}">{{ $s.LinkTitle }}{{ with $s.Params.sidebar_badge }}<span class="td-sidebar-badge">{{ . }}</span>{{ end }}</span></a></label>
+  <label for="{{ $mid }}-check"><a href="{{ $manualLink }}"{{ if ne $s.LinkTitle $manualLinkTitle }} title="{{ $manualLinkTitle }}"{{ end }}{{ with $s.Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }} class="align-left ps-0 {{ if $active}} active{{ end }} td-sidebar-link{{ if $s.IsPage }} td-sidebar-link__page{{ else }} td-sidebar-link__section{{ end }}{{ if $treeRoot }} tree-root{{ end }}" id="{{ $mid }}">{{ with $s.Params.Icon}}<i class="{{ . }}"></i>{{ end }}<span class="{{ if $active }}td-sidebar-nav-active-item{{ end }}">{{ $s.LinkTitle }}{{ with $s.Params.sidebar_badge }}<span class="td-sidebar-badge">{{ . }}</span>{{ end }}</span>{{ with $s.Params.icon_image }}<img src="{{ . }}" class="td-sidebar-icon" alt="">{{ end }}</a></label>
   {{ else -}}
-  <a href="{{ $manualLink }}"{{ if ne $s.LinkTitle $manualLinkTitle }} title="{{ $manualLinkTitle }}"{{ end }}{{ with $s.Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }} class="align-left ps-0{{ if $active}} active{{ end }} td-sidebar-link{{ if $s.IsPage }} td-sidebar-link__page{{ else }} td-sidebar-link__section{{ end }}{{ if $treeRoot }} tree-root{{ end }}" id="{{ $mid }}">{{ with $s.Params.Icon}}<i class="{{ . }}"></i>{{ end }}<span class="{{ if $active }}td-sidebar-nav-active-item{{ end }}">{{ $s.LinkTitle }}{{ with $s.Params.sidebar_badge }}<span class="td-sidebar-badge">{{ . }}</span>{{ end }}</span></a>
+  <a href="{{ $manualLink }}"{{ if ne $s.LinkTitle $manualLinkTitle }} title="{{ $manualLinkTitle }}"{{ end }}{{ with $s.Params.manualLinkTarget }} target="{{ . }}"{{ if eq . "_blank" }} rel="noopener"{{ end }}{{ end }} class="align-left ps-0{{ if $active}} active{{ end }} td-sidebar-link{{ if $s.IsPage }} td-sidebar-link__page{{ else }} td-sidebar-link__section{{ end }}{{ if $treeRoot }} tree-root{{ end }}" id="{{ $mid }}">{{ with $s.Params.Icon}}<i class="{{ . }}"></i>{{ end }}<span class="{{ if $active }}td-sidebar-nav-active-item{{ end }}">{{ $s.LinkTitle }}{{ with $s.Params.sidebar_badge }}<span class="td-sidebar-badge">{{ . }}</span>{{ end }}</span>{{ with $s.Params.icon_image }}<img src="{{ . }}" class="td-sidebar-icon" alt="">{{ end }}</a>
   {{- end }}
   {{- if $withChild }}
   {{- $ulNr := add $ulNr 1 }}
@@ -77,11 +77,18 @@
 
     {{- /* Build lookup map and sort pages by group order */ -}}
     {{- $p.Scratch.Set $scratchKey dict }}
+    {{- $iconKey := printf "%s_group_icons" (anchorize $s.Title) }}
+    {{- $p.Scratch.Set $iconKey dict }}
     {{- range $idx, $grpCfg := $groupConfigs }}
-      {{- /* Store title for later lookup */ -}}
+      {{- /* Store title and icon for later lookup */ -}}
       {{- $titles := $p.Scratch.Get $scratchKey }}
       {{- $titles = merge $titles (dict $grpCfg.id $grpCfg.title) }}
       {{- $p.Scratch.Set $scratchKey $titles }}
+      {{- if $grpCfg.icon_image }}
+        {{- $icons := $p.Scratch.Get $iconKey }}
+        {{- $icons = merge $icons (dict $grpCfg.id $grpCfg.icon_image) }}
+        {{- $p.Scratch.Set $iconKey $icons }}
+      {{- end }}
 
       {{- /* Collect all pages for this group */ -}}
       {{- range $pages }}
@@ -106,6 +113,7 @@
   <ul class="ul-{{ $ulNr }}{{ if (gt $ulNr 1)}} foldable{{end}}">
     {{ if and $hasGroups $activePath -}}
       {{- $scratchKey := printf "%s_group_titles" (anchorize $s.Title) }}
+      {{- $iconKey := printf "%s_group_icons" (anchorize $s.Title) }}
       {{- $lastGroupKey := printf "%s_lastgroup" (anchorize $s.Title) }}
       {{- $p.Scratch.Set $lastGroupKey "" }}
       {{- range $sortedPages }}
@@ -114,8 +122,10 @@
         {{- $lastGrp := $p.Scratch.Get $lastGroupKey }}
         {{- if and (ne $currentGrp "") (ne $currentGrp $lastGrp) }}
         {{- $titles := $p.Scratch.Get $scratchKey }}
+        {{- $icons := $p.Scratch.Get $iconKey }}
         {{- $displayTitle := index $titles $currentGrp | default $currentGrp }}
-        <li class="td-sidebar-group-header">{{ $displayTitle }}</li>
+        {{- $displayIcon := index $icons $currentGrp }}
+        <li class="td-sidebar-group-header">{{ $displayTitle }}{{ with $displayIcon }}<img src="{{ . }}" class="td-sidebar-icon" alt="">{{ end }}</li>
         {{- end }}
         {{- if ne $currentGrp "" }}
         {{- $p.Scratch.Set $lastGroupKey $currentGrp }}

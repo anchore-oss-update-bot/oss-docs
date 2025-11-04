@@ -4,6 +4,7 @@ description = "Learn how to create a Software Bill of Materials (SBOMs) for cont
 weight = 21
 tags = ["syft", "sbom"]
 url = "docs/guides/sbom"
+icon_image = "/images/logos/syft/favicon-48x48.png"
 +++
 
 An SBOM, or Software Bill of Materials, is a detailed list of all the components, libraries, and modules that make up a piece of software.

@@ -6,6 +6,7 @@ url = "docs/architecture/syft"
 categories = ["architecture"]
 tags = ["syft"]
 menu_group = "projects"
+icon_image = "/images/logos/syft/favicon-48x48.png"
 +++
 
 ## Code organization

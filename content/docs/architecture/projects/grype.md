@@ -1,11 +1,12 @@
 +++
 title = "Grype"
 description = "Architecture and design of the Grype vulnerability scanner"
-weight = 50
+weight = 20
 url = "docs/architecture/grype"
 categories = ["architecture"]
 tags = ["grype"]
 menu_group = "projects"
+icon_image = "/images/logos/grype/favicon-48x48.png"
 +++
 
 ## Overview

@@ -45,6 +45,22 @@ footer {
   }
 }
 
+// sidebar icons for tool/product branding
+.td-sidebar-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+
+  // slightly brighten icon on link hover
+  a:hover & {
+    opacity: 1;
+  }
+}
+
 // sidebar group headers for organizing menu sections
 .td-sidebar-group-header {
   padding: 1rem 0 0.5rem 0;

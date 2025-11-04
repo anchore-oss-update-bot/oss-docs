@@ -6,6 +6,7 @@ categories = ["developer"]
 tags = ["grype"]
 url = "docs/contributing/grype"
 menu_group = "projects"
+icon_image = "/images/logos/grype/favicon-48x48.png"
 +++
 
 ## Getting started

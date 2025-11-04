@@ -1,7 +1,7 @@
 +++
 title = "Grype DB"
 description = "Architecture and design of the Grype vulnerability database build system"
-weight = 20
+weight = 30
 categories = ["architecture"]
 url = "docs/architecture/grype-db"
 tags = ["grype-db", "vunnel"]

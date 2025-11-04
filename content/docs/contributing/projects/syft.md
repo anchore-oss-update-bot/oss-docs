@@ -6,6 +6,7 @@ categories = ["developer"]
 tags = ["syft"]
 url = "docs/contributing/syft"
 menu_group = "projects"
+icon_image = "/images/logos/syft/favicon-48x48.png"
 +++
 
 ## Getting started

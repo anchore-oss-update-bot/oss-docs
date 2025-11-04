@@ -75,10 +75,13 @@ params:
         title: 'General'
       - id: 'syft'
         title: 'Syft'
+        icon_image: '/images/logos/syft/favicon-48x48.png'
       - id: 'grype'
         title: 'Grype'
+        icon_image: '/images/logos/grype/favicon-48x48.png'
       - id: 'grant'
         title: 'Grant'
+        icon_image: '/images/logos/grant/favicon-48x48.png'
   links:
     user:
       - name: OSS Docs home

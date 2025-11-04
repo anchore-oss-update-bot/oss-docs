@@ -1,7 +1,7 @@
 +++
 title = "Vunnel"
 description = "Architecture and design of the Vunnel vulnerability data processing tool"
-weight = 30
+weight = 40
 categories = ["architecture"]
 tags = ["vunnel"]
 url = "docs/architecture/vunnel"
