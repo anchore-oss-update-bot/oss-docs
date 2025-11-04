@@ -1,0 +1,40 @@
+List shows all licenses found in container images, SBOMs, filesystems, and files
+without applying policy evaluation.
+
+Targets can be:
+- Container images: alpine:latest, ubuntu:22.04
+- SBOM files: path/to/sbom.json, path/to/sbom.xml
+- Directories: dir:./project, ./my-app
+- Archive files: project.tar.gz, source.zip
+- License files: LICENSE, COPYING
+- Stdin: - (reads SBOM from stdin)
+
+When no target is specified and stdin is available (piped input), grant will
+automatically read from stdin. This allows usage like:
+  syft -o json dir:. | grant list Apache-2.0
+
+License filtering:
+If license names are provided as additional arguments, only packages with those
+specific licenses will be shown. For example:
+  grant list dir:. "MIT" "Apache-2.0"
+  syft -o json dir:. | grant list "MIT" "Apache-2.0"
+
+This command always returns exit code 0 unless there are processing errors.
+
+Usage:
+  grant list [TARGET] [LICENSE...] [flags]
+
+Flags:
+      --disable-file-search   disable filesystem license file search
+      --group-by string       group results by specified field (risk)
+  -h, --help                  help for list
+      --pkg string            show detailed information for a specific package (requires license filter)
+      --unlicensed            show only packages without licenses
+
+Global Flags:
+  -c, --config string        path to configuration file
+      --no-output            suppress terminal output when writing to file
+  -o, --output string        output format (table, json) (default "table")
+  -f, --output-file string   write JSON output to file (sets output format to json)
+  -q, --quiet                suppress all non-essential output
+  -v, --verbose              enable verbose output

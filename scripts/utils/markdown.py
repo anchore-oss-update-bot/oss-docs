@@ -34,6 +34,7 @@ def generate_front_matter(
     url: str | None = None,
     description: str | None = None,
     aliases: list[str] | None = None,
+    menu_group: str | None = None,
     params: dict[str, Any] | None = None,
 ) -> str:
     """
@@ -93,6 +94,9 @@ def generate_front_matter(
     if aliases is not None:
         aliases_str = ", ".join(f'"{alias}"' for alias in aliases)
         lines.append(f"aliases = [{aliases_str}]")
+
+    if menu_group is not None:
+        lines.append(f'menu_group = "{menu_group}"')
 
     if params is not None:
         for key, value in params.items():

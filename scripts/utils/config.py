@@ -9,6 +9,12 @@ consistent paths, images, and settings across all scripts.
 from dataclasses import dataclass
 from pathlib import Path
 
+# schema processing configuration
+min_schema_major_version = 16
+
+# types to exclude from all schema documentation
+excluded_schema_types = {"MicrosoftKbPatch"}
+
 
 def _get_project_root() -> Path:
     """get the project root directory (parent of scripts/)."""
@@ -170,8 +176,3 @@ docker_images = DockerImages()
 timeouts = Timeouts()
 reference_weights = ReferenceDocWeights()
 
-# schema processing configuration
-min_schema_major_version = 15
-
-# types to exclude from all schema documentation
-excluded_schema_types = {"MicrosoftKbPatch"}

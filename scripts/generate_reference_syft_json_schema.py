@@ -1357,10 +1357,12 @@ def generate_schema_documentation(
     # generate front matter (must be first - no comments before it)
     front_matter_lines = [
         "+++",
-        f'title = "v{major}"',
+        f'title = "Syft v{major}" JSON Schema Reference',
+        f'linkTitle = "v{major}',
         f'description = "Complete reference for Syft JSON schema version `{major}.{minor}.{patch}`"',
         f"weight = {weight}",
         'type = "docs"',
+        'menu_group = "syft"',
         f'url = "/docs/reference/syft/json/{major}"',
     ]
 

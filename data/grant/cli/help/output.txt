@@ -1,0 +1,24 @@
+Grant helps you view licenses for container images, SBOM documents, and filesystems. Apply filters and views that can help you build a picture of licenses in your SBOM.
+
+Usage:
+  grant [command]
+
+Available Commands:
+  check       Check license compliance for one or more targets
+  completion  Generate the autocompletion script for the specified shell
+  config      Generate a comprehensive configuration file
+  help        Help about any command
+  list        List licenses found in one or more targets
+  version     Show the version information for grant
+
+Flags:
+  -c, --config string        path to configuration file
+  -h, --help                 help for grant
+      --no-output            suppress terminal output when writing to file
+  -o, --output string        output format (table, json) (default "table")
+  -f, --output-file string   write JSON output to file (sets output format to json)
+  -q, --quiet                suppress all non-essential output
+  -v, --verbose              enable verbose output
+      --version              version for grant
+
+Use "grant [command] --help" for more information about a command.

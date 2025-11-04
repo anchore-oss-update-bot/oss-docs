@@ -70,6 +70,15 @@ params:
         title: 'General'
       - id: 'projects'
         title: 'Project Specific'
+    Reference:
+      - id: 'general'
+        title: 'General'
+      - id: 'syft'
+        title: 'Syft'
+      - id: 'grype'
+        title: 'Grype'
+      - id: 'grant'
+        title: 'Grant'
   links:
     user:
       - name: OSS Docs home

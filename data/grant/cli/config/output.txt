@@ -1,0 +1,22 @@
+Generate a complete YAML configuration file with all available Grant options.
+
+This command outputs a comprehensive configuration file that includes:
+- License policy options (allow lists, ignore patterns)
+- Command-line options with defaults
+- Detailed comments explaining each option
+
+The generated configuration can be saved to a file and customized as needed.
+
+Usage:
+  grant config [flags]
+
+Flags:
+  -h, --help            help for config
+  -o, --output string   output file path (default: stdout)
+
+Global Flags:
+  -c, --config string        path to configuration file
+      --no-output            suppress terminal output when writing to file
+  -f, --output-file string   write JSON output to file (sets output format to json)
+  -q, --quiet                suppress all non-essential output
+  -v, --verbose              enable verbose output

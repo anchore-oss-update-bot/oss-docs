@@ -129,10 +129,11 @@ def generate_markdown_content(
     weight = config.reference_weights.get_weight(tool_name, "cli")
     content = markdown.generate_front_matter(
         title=f"{tool_display} Command Line Reference",
-        link_title=f"{tool_display} CLI",
+        link_title="Command Line",
         weight=weight,
         tags=[tool_name.lower()],
         categories=["reference"],
+        menu_group=tool_name,
         url=f"docs/reference/{tool_name.lower()}/cli",
     )
 

@@ -103,11 +103,12 @@ def generate_markdown_content(
     # Generate front matter using utility
     weight = config.reference_weights.get_weight(tool_name, "config")
     content = markdown.generate_front_matter(
-        title=f"{tool_display} Default Configuration",
-        link_title=f"{tool_display} Default Config",
+        title=f"{tool_display} Configuration Reference",
+        link_title="Configuration",
         weight=weight,
         tags=[tool_name.lower()],
         categories=["reference"],
+        menu_group=tool_name,
         url=f"docs/reference/{tool_name.lower()}/configuration",
     )
 
