@@ -78,13 +78,15 @@ footer {
 
 #td-sidebar-menu {
   overflow-x: hidden; // prevent horizontal scrollbar from negative margins
-  height: auto; // prevent scrolling to bottom of screen causing the sidebar to unstick
+// TODO: this solves the scroll issue, but breaks when the sidebar is taller than the viewport
+//   height: auto; // prevent scrolling to bottom of screen causing the sidebar to unstick
 }
 
 // remove vertical border between main content and right sidebar (TOC)
 .td-sidebar-toc {
   border-left: none !important;
-  height: auto; // prevent scrolling to bottom of screen causing the sidebar to unstick
+// TODO: this solves the scroll issue, but breaks when the sidebar is taller than the viewport
+//   height: auto; // prevent scrolling to bottom of screen causing the sidebar to unstick
 }
 
 // improved sidebar spacing and typography
