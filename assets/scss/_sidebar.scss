@@ -94,15 +94,15 @@ footer {
 
 #td-sidebar-menu {
   overflow-x: hidden; // prevent horizontal scrollbar from negative margins
-// TODO: this solves the scroll issue, but breaks when the sidebar is taller than the viewport
-//   height: auto; // prevent scrolling to bottom of screen causing the sidebar to unstick
+  // TODO: this solves the scroll issue, but breaks when the sidebar is taller than the viewport
+  //   height: auto; // prevent scrolling to bottom of screen causing the sidebar to unstick
 }
 
 // remove vertical border between main content and right sidebar (TOC)
 .td-sidebar-toc {
   border-left: none !important;
-// TODO: this solves the scroll issue, but breaks when the sidebar is taller than the viewport
-//   height: auto; // prevent scrolling to bottom of screen causing the sidebar to unstick
+  // TODO: this solves the scroll issue, but breaks when the sidebar is taller than the viewport
+  //   height: auto; // prevent scrolling to bottom of screen causing the sidebar to unstick
 }
 
 // improved sidebar spacing and typography
@@ -213,6 +213,18 @@ footer {
             [data-bs-theme='dark'] & {
               color: $primary;
               opacity: 1;
+            }
+          }
+
+          // read state - sections we've already scrolled past
+          &.sidebar-toc-read {
+            [data-bs-theme='light'] & {
+              color: rgba(0, 0, 0, 0.5);
+              opacity: 0.6;
+            }
+            [data-bs-theme='dark'] & {
+              color: rgba(255, 255, 255, 0.5);
+              opacity: 0.6;
             }
           }
 
