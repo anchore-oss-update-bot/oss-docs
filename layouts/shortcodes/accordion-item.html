@@ -1,0 +1,21 @@
+{{- $header := .Get "header" -}}
+{{- $show := .Get "show" | default "false" -}}
+{{- $parent := .Get "parent" -}}
+{{- $id := printf "%s-item%d" $parent (.Ordinal) -}}
+{{- $headingId := printf "heading-%s" $id -}}
+{{- $collapseId := printf "collapse-%s" $id -}}
+{{- $showClass := cond (eq $show "true") "show" "" -}}
+{{- $buttonClass := cond (eq $show "true") "accordion-button" "accordion-button collapsed" -}}
+
+<div class="accordion-item">
+  <h2 class="accordion-header" id="{{ $headingId }}">
+    <button class="{{ $buttonClass }}" type="button" data-bs-toggle="collapse" data-bs-target="#{{ $collapseId }}" aria-expanded="{{ $show }}" aria-controls="{{ $collapseId }}">
+      {{ $header }}
+    </button>
+  </h2>
+  <div id="{{ $collapseId }}" class="accordion-collapse collapse {{ $showClass }}" aria-labelledby="{{ $headingId }}" data-bs-parent="#{{ $parent }}">
+    <div class="accordion-body">
+      {{- .Inner | .Page.RenderString -}}
+    </div>
+  </div>
+</div>

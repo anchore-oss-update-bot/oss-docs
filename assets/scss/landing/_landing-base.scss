@@ -15,6 +15,9 @@
     width: 100%;
   }
 
+  // prevent horizontal scrollbar from footer row negative margins
+  overflow-x: hidden;
+
   // ensure full width for landing page and remove any constraints
   .landing-page {
     @include full-width-override;
@@ -42,6 +45,19 @@
 
     .container {
       background: transparent;
+    }
+
+    // fix footer text visibility in light mode
+    [data-bs-theme='light'] & {
+      color: $landing-dark-bg;
+
+      a {
+        color: $primary;
+
+        &:hover {
+          color: darken($primary, 15%);
+        }
+      }
     }
   }
 }
