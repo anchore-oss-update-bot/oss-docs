@@ -3,7 +3,6 @@ tags = ['grant']
 title = "Grant"
 description = "Installing Grant"
 weight = 30
-url = "docs/installation/grant"
 icon_image = "/images/logos/grant/favicon-48x48.png"
 +++
 
