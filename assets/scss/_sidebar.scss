@@ -90,6 +90,7 @@ footer {
 // remove vertical border between left sidebar and main content
 .td-sidebar {
   border-right: none !important;
+  min-width: 275px;
 }
 
 #td-sidebar-menu {

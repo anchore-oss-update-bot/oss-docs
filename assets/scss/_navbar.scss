@@ -7,8 +7,16 @@
   z-index: 100;
 }
 
+.td-breadcrumb-wrapper {
+  font-family: 'Poppins'; // body already defines good fallbacks
+  letter-spacing: -0.03em;
+  font-weight: 400;
+}
+
 // navbar improvements
 .td-navbar {
+  font-family: 'Poppins'; // body already defines good fallbacks
+  letter-spacing: -0.01em;
   // improve logo and site title alignment
   .navbar-brand {
     display: flex;

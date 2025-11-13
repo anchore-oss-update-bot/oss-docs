@@ -4,41 +4,49 @@ linkTitle = "Open Source"
 weight = 30
 +++
 
-Anchore Open Source Software (OSS) is a suite of tools for Software Bill of Materials (SBOM) Generation, Vulnerability Scanning, License Scanning, and Vulnerability Database management.
+Anchore Open Source Software (OSS) is a suite of tools for Software Bill of Materials (SBOM) Generation, Vulnerability Scanning, and License Scanning.
 
 Start by going to the [project overview]({{< relref "projects" >}}) of Anchore OSS to learn more about the basic concepts and functions.
 
-For information about generating SBOMs:
+<div class="row">
+<div class="col-md-4">
+{{< card >}}
+<div style="text-align: center; font-size: 2rem; margin-bottom: 1rem;">
+  <i class="fas fa-download"></i>
+</div>
+<h3>Installing the Tools</h3>
+<p>The tools are available through official and community curated distribution channels.</p>
+<ul>
+  <li><a href="/docs/installation/syft/">Syft</a></li>
+  <li><a href="/docs/installation/grype/">Grype</a></li>
+  <li><a href="/docs/installation/grant/">Grant</a></li>
+</ul>
+{{< /card >}}
+</div>
 
-- [Generating an SBOM]({{< relref "/docs/guides/sbom/getting-started/" >}})
-- [SBOM File Formats]({{< relref "/docs/guides/sbom/formats/" >}})
-- [Conversion of SBOM Formats]({{< relref "/docs/guides/sbom/conversion/" >}})
+<div class="col-md-4">
+{{< card >}}
+<div style="text-align: center; font-size: 2rem; margin-bottom: 1rem;">
+  <i class="fas fa-book-open"></i>
+</div>
+<h3>Using the Tools</h3>
+<p><b>Step-by-step guides for common use cases</b>:</p>
+<ul>
+  <li><a href="/docs/guides/sbom/getting-started/">SBOM Generation</a></li>
+  <li><a href="/docs/guides/vulnerability/getting-started/">Vulnerability Scanning</a></li>
+  <li><a href="/docs/guides/license/getting-started/">License Scanning</a></li>
+</ul>
+<p>Or checkout the <a href="/docs/reference/">Reference</a> section for CLI and configuration details.</p>
+{{< /card >}}
+</div>
 
-Get started with vulnerability scanning
-
-- [Scanning for Vulnerabilities]({{< relref "/docs/guides/vulnerability/getting-started/" >}})
-- [Vulnerability Data Sources]({{< relref "/docs/guides/vulnerability/data-sources/" >}})
-
-Scan SBOMs or containers for licenses used:
-
-- [Scanning for Licenses Used]({{< relref "/docs/guides/license/" >}})
-
-Reference information
-
-- [Syft command-line options]({{< relref "/docs/reference/syft/cli" >}})
-- [Grype command-line options]({{< relref "/docs/reference/grype/cli" >}})
-- [Organizations/Projects using Anchore OSS]({{< relref "/docs/about/adopters/" >}})
-
-**Note**: Many topics have nested sub-topics in the navigation pane to the left that become visible when you click a topic.
-
-### Installing the Tools
-
-The tools are available in many common distribution channels. The full list of official and community maintained packages can be found on the [installation]({{< relref "/docs/installation" >}}) page.
-
-### Using the Tools
-
-We have "Getting Started" user guides for [SBOM Generation]({{< relref "/docs/guides/sbom/getting-started" >}}) with Syft, [Vulnerability Scanning]({{< relref "/docs/guides/sbom/getting-started" >}}) with Grype, and [License Scanning]({{< relref "/docs/guides/license/getting-started" >}}).
-
-### Developing
-
-Developers also have [Contribution Guides]({{< relref "/docs/contributing/" >}}) for all of our open source tools and libraries.
+<div class="col-md-4">
+{{< card >}}
+<div style="text-align: center; font-size: 2rem; margin-bottom: 1rem;">
+  <i class="fas fa-code"></i>
+</div>
+<h3>Contributing</h3>
+<p><b>Interested in contributing to Anchore OSS?</b> <br><br>Check out the <a href="/docs/contributing/">contribution guides</a> for how to get started!</p>
+{{< /card >}}
+</div>
+</div>

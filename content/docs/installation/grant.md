@@ -1,7 +1,7 @@
 +++
 tags = ['grant']
-title = "Grant"
-description = "Installing Grant"
+title = "Installing Grant"
+linkTitle = "Grant"
 weight = 30
 icon_image = "/images/logos/grant/favicon-48x48.png"
 +++

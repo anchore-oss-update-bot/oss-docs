@@ -1,7 +1,7 @@
 +++
 tags = ['syft']
-title = "Syft"
-description = "Installing Syft"
+title = "Installing Syft"
+linkTitle = "Syft"
 weight = 10
 icon_image = "/images/logos/syft/favicon-48x48.png"
 +++
