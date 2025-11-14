@@ -1,18 +1,25 @@
 /* Schema Reference Tables - Documentation for JSON Schema Types */
 
+/* Schema tables use the shared .table-wrapper from capability_tables.scss */
+
 /* Base table styles */
 .schema-table {
   width: 100%;
   table-layout: fixed;
   border-collapse: separate;
   border-spacing: 0;
-  margin: 1.5rem 0;
+  margin: 1.5rem 0; // fallback for non-wrapped tables
   font-size: 0.875rem;
   line-height: 1.4;
   border: 1px solid #e5e7eb;
   border-radius: 6px;
-  overflow: hidden;
+  overflow: visible; // allow tooltips and scroll in wrapper
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+  // when inside wrapper, remove margin
+  .table-wrapper & {
+    margin: 0;
+  }
 }
 
 .schema-table thead th {
@@ -110,6 +117,24 @@
 }
 
 /* Responsive adjustments */
+
+/* Large tablets to small desktops (768-1199px) - optimize for medium viewports */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .schema-table {
+    // switch to auto layout for better natural sizing at constrained widths
+    table-layout: auto;
+  }
+
+  // reduce aggressive min-widths that cause overflow
+  .schema-table .col-field-name {
+    min-width: 100px; // reduced from 120px
+  }
+
+  .schema-table .col-description {
+    min-width: 160px; // reduced from 200px
+  }
+}
+
 @media (max-width: 1024px) {
   .schema-table {
     font-size: 0.875rem;
@@ -129,19 +154,24 @@
   .schema-table {
     font-size: 0.8125rem;
     margin: 1.5rem 0;
+    // use auto layout on mobile for best fit
+    table-layout: auto;
   }
 
   /* Adjust column widths for smaller screens */
   .schema-table .col-field-name {
     width: 28%;
+    min-width: 0; // let content determine size
   }
 
   .schema-table .col-type {
     width: 22%;
+    min-width: 0;
   }
 
   .schema-table .col-description {
     width: 50%;
+    min-width: 0;
   }
 }
 

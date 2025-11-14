@@ -91,6 +91,20 @@ footer {
 .td-sidebar {
   border-right: none !important;
   min-width: 275px;
+
+  // responsive min-width to prevent content squeeze at medium viewports
+  @media (max-width: 1199px) and (min-width: 768px) {
+    // at md/lg breakpoints, allow sidebar to shrink below 275px
+    // this prevents the sidebar from taking more than its allocated 25% (col-md-3)
+    min-width: 0;
+    // but maintain a reasonable minimum that works with the 25% column
+    min-width: clamp(200px, 25vw, 275px);
+  }
+
+  @media (max-width: 767px) {
+    // on mobile, remove min-width constraint entirely
+    min-width: 0;
+  }
 }
 
 #td-sidebar-menu {
@@ -253,5 +267,65 @@ footer {
         }
       }
     }
+  }
+}
+
+// lg breakpoint optimizations for better content utilization at 992-1199px
+// in this range, the right TOC sidebar is hidden but content still only uses col-md-9 (75%)
+@media (min-width: 992px) and (max-width: 1199px) {
+  // reduce excessive left padding on main content area to give more space
+  .td-content {
+    padding-left: 2rem !important; // reduced from default ps-md-5 (3rem)
+  }
+
+  // optimize sidebar spacing
+  .td-sidebar {
+    padding-right: 1rem;
+  }
+
+  // ensure main content column uses available space efficiently
+  .td-main {
+    main {
+      max-width: 100%; // allow content to breathe in available space
+    }
+  }
+}
+
+// smooth transitions for responsive layout changes
+.td-sidebar,
+.td-content,
+.td-sidebar-toc,
+.td-main main {
+  transition:
+    padding 0.2s ease-in-out,
+    margin 0.2s ease-in-out,
+    max-width 0.2s ease-in-out,
+    min-width 0.2s ease-in-out;
+}
+
+// prevent layout shift flicker during resize
+@media (prefers-reduced-motion: no-preference) {
+  .container-fluid,
+  .row {
+    transition: all 0.15s ease-in-out;
+  }
+}
+
+// ensure content doesn't jump at breakpoint boundaries
+@media (min-width: 767px) and (max-width: 769px) {
+  .td-content {
+    padding-left: 1.5rem !important;
+  }
+}
+
+@media (min-width: 991px) and (max-width: 993px) {
+  .td-content {
+    padding-left: 1.75rem !important;
+  }
+}
+
+@media (min-width: 1199px) and (max-width: 1201px) {
+  .td-content {
+    padding-left: 2.5rem !important;
   }
 }

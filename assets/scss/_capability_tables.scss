@@ -1,17 +1,125 @@
 /* Capability Tables - Modern, Minimal Styling */
 
+/* Table wrapper for better horizontal scroll UX */
+.table-wrapper {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: visible; // allow tooltips to show above
+  margin: 1.5rem 0;
+  border-radius: 6px;
+
+  // styled scrollbar for better visibility
+  &::-webkit-scrollbar {
+    height: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    [data-bs-theme='light'] & {
+      background-color: #f3f4f6;
+    }
+    [data-bs-theme='dark'] & {
+      background-color: #1f2937;
+    }
+    border-radius: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    [data-bs-theme='light'] & {
+      background-color: #d1d5db;
+      border: 2px solid #f3f4f6;
+    }
+    [data-bs-theme='dark'] & {
+      background-color: #4b5563;
+      border: 2px solid #1f2937;
+    }
+    border-radius: 6px;
+
+    &:hover {
+      [data-bs-theme='light'] & {
+        background-color: #9ca3af;
+      }
+      [data-bs-theme='dark'] & {
+        background-color: #6b7280;
+      }
+    }
+  }
+
+  // scroll shadows to indicate more content
+  &::before,
+  &::after {
+    content: '';
+    position: sticky;
+    display: block;
+    width: 30px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 10;
+    transition: opacity 0.3s ease;
+  }
+
+  // left shadow
+  &::before {
+    left: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.1), transparent);
+    opacity: 0;
+  }
+
+  // right shadow
+  &::after {
+    right: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.1), transparent);
+  }
+
+  // show left shadow when scrolled
+  &.scrolled-left::before {
+    opacity: 1;
+  }
+
+  // hide right shadow when at end
+  &.scrolled-right::after {
+    opacity: 0;
+  }
+
+  // smooth scrolling on touch devices
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+
+  // mobile-specific optimizations
+  @media (max-width: 768px) {
+    // larger touch-friendly scrollbar on mobile
+    &::-webkit-scrollbar {
+      height: 8px; // slightly smaller on mobile to save space
+    }
+
+    // add scroll hint indicator on mobile
+    &::after {
+      opacity: 0.8; // more visible on mobile to indicate scroll
+    }
+
+    // improve momentum scrolling
+    scroll-snap-type: x proximity;
+    overscroll-behavior-x: contain;
+  }
+
+  // prevent double-tap zoom on table wrapper
+  touch-action: pan-x pan-y;
+}
+
 /* Base table styles */
 .capability-table {
   width: 100%;
   table-layout: fixed;
   border-collapse: separate;
   border-spacing: 0;
-  margin: 1.5rem 0;
+  margin: 0; // remove margin, wrapper handles it now
   font-size: 0.875rem;
   line-height: 1.4;
   border: 1px solid #e5e7eb;
   border-radius: 6px;
-  overflow: hidden;
+  overflow: visible; // allow tooltips to show
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
@@ -182,6 +290,36 @@ svg use[href='#icon-dash'] {
 }
 
 /* Responsive adjustments */
+
+/* Large tablets to small desktops (768-1199px) - optimize for medium viewports */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .capability-table {
+    // switch to auto layout for better natural sizing at constrained widths
+    table-layout: auto;
+  }
+
+  // reduce aggressive min-widths that cause overflow
+  .capability-table-ecosystem .col-cataloger {
+    min-width: 150px; // reduced from 180px
+  }
+
+  .capability-table-ecosystem .col-evidence {
+    min-width: 200px; // reduced from 240px
+  }
+
+  .capability-table-vulnerability .col-data-source {
+    min-width: 250px; // reduced from 300px
+  }
+
+  .capability-table-vulnerability .col-provider {
+    min-width: 120px; // reduced from 150px
+  }
+
+  .config-table .col-config-key {
+    min-width: 160px; // reduced from 200px
+  }
+}
+
 @media (max-width: 1024px) {
   .capability-table {
     font-size: 0.875rem;
@@ -201,11 +339,39 @@ svg use[href='#icon-dash'] {
   .capability-table {
     font-size: 0.8125rem;
     margin: 1.5rem 0;
+    // use auto layout on mobile for best fit
+    table-layout: auto;
+  }
+
+  // further reduce min-widths on mobile
+  .capability-table-ecosystem .col-cataloger,
+  .capability-table-ecosystem .col-evidence,
+  .capability-table-vulnerability .col-data-source,
+  .capability-table-vulnerability .col-provider,
+  .config-table .col-config-key {
+    min-width: 0; // let content determine size on mobile
   }
 
   .capability-icon {
     width: 18px;
     height: 18px;
+  }
+
+  // improve touch targets on mobile
+  .capability-table a,
+  .capability-table button {
+    min-height: 44px; // WCAG AA touch target size
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem;
+  }
+
+  // increase tap target for tooltips
+  .capability-icon-wrapper,
+  .cataloger-condition-wrapper,
+  .header-help {
+    padding: 0.5rem;
+    margin: -0.5rem;
   }
 }
 
@@ -477,14 +643,7 @@ svg use[href='#icon-help'] {
   visibility: visible;
 }
 
-/* Fix table overflow to allow tooltips to show */
-.capability-table {
-  overflow: visible !important;
-}
-
-.capability-table thead {
-  overflow: visible !important;
-}
+/* Tooltips are now handled by wrapper overflow-y: visible */
 
 /* Adjust positioning for tooltips near right edge */
 th:nth-last-child(-n + 2) .header-help::after {
