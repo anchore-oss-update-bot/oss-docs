@@ -31,15 +31,13 @@ curl -sSfL https://get.anchore.io/syft | sudo sh -s -- -b /usr/local/bin
 
 Check out [installation guide]({{< relref "/docs/installation/syft" >}}) for full list of official and community-maintained packaging options.
 
-## Display the contents of a public container image
+## Find packages within a container image
 
-Run `syft` against a small container image, which will be pulled from DockerHub. The output will be a simple human-readable table.
+Run `syft` against a small container image; the output will be a simple human-readable table of the installed packages found:
 
 ```
 syft alpine:latest
 ```
-
-The output will look similar to the following table.
 
 ```
 NAME                    VERSION      TYPE
@@ -113,7 +111,7 @@ syft <image> --scope all-layers
 ```
 
 {{% alert title="More JSON examples" color="primary" %}}
-For more examples of working with Syft's JSON output using jq, see the [jq recipes]({{< relref "/docs/guides/sbom/syft-json/#jq-recipes" >}}).
+For more examples of working with Syft's JSON output using jq, see the [jq recipes]({{< relref "/docs/guides/sbom/json/#jq-recipes" >}}).
 {{% /alert %}}
 
 ## FAQ
@@ -145,4 +143,4 @@ Now that you've generated your first SBOM, here are additional resources:
 - **Scan for vulnerabilities**: Use [Grype]({{< relref "/docs/guides/vulnerability/getting-started/" >}}) to find security issues in your SBOMs
 - **Check licenses**: Learn about [License Scanning]({{< relref "/docs/guides/license/getting-started/" >}}) to understand dependency licenses
 - **Customize output**: Explore different [Output Formats]({{< relref "/docs/guides/sbom/formats/" >}}) for various tools and workflows
-- **Query SBOM data**: Master [Working with Syft JSON]({{< relref "/docs/guides/sbom/syft-json/" >}}) for advanced data extraction
+- **Query SBOM data**: Master [Working with Syft JSON]({{< relref "/docs/guides/sbom/json/" >}}) for advanced data extraction
