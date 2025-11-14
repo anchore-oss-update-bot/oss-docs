@@ -10,13 +10,21 @@ dependencies = ["click>=8.3.0", "requests>=2.32.5", "rich>=13.0.0", "pyyaml>=6.0
 packages = [] # no Python packages to install - this is a Hugo site with helper scripts
 
 [tool.pytest.ini_options]
-pythonpath = ["scripts"]
+pythonpath = ["src"]
+addopts = [
+  "-ra",                       # show summary of all test results
+  "--strict-markers",          # error on undefined markers
+  "--cov=src",                 # measure coverage for utils modules
+  "--cov-report=term-missing", # show lines missing coverage
+  "--cov-report=html",         # generate HTML coverage report
+]
 
 [dependency-groups]
 dev = [
   "pre-commit>=4.3.0",
   "pyrefly>=0.29.0",
   "pytest>=8.4.1",
+  "pytest-cov>=6.0.0",
   "pytest-snapshot>=0.9.0",
   "pytest-sugar>=1.0.0",
   "ruff>=0.12.7",
@@ -39,6 +47,7 @@ select = [
   "UP", # pyupgrade
 ]
 ignore = [
+  "E402", # module level import not at top of file
   "E501", # line too long, handled by black
   "B008", # do not perform function calls in argument defaults
   "C901", # too complex
@@ -63,6 +72,6 @@ warn_unreachable = true
 strict_equality = true
 
 [tool.ty.environment]
-root = ["scripts"]
+root = ["src"]
 
 [tool.pyrefly]
