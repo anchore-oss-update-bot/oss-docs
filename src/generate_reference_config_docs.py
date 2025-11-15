@@ -234,6 +234,7 @@ def get_config_output(image: str, tool_name: str, update: bool = False) -> str |
         return cached.strip()
 
     # run command
+    # note: HOME is set by default in syft.run() to avoid path mangling
     stdout, stderr, returncode = syft.run(
         syft_image=image,
         args=["config"],

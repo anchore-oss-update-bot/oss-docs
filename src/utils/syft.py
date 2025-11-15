@@ -49,10 +49,15 @@ def run(
     """
     docker_cmd = ["docker", "run", "--pull", "always", "--rm"]
 
-    # add environment variables
+    # always set HOME to avoid path mangling in config output
+    # (e.g., ~/go/pkg/mod becomes ~go~pkg~mod without HOME set)
+    default_env_vars = {"HOME": "/root"}
     if env_vars:
-        for key, value in env_vars.items():
-            docker_cmd.extend(["-e", f"{key}={value}"])
+        default_env_vars.update(env_vars)
+
+    # add environment variables
+    for key, value in default_env_vars.items():
+        docker_cmd.extend(["-e", f"{key}={value}"])
 
     # add volume mounts
     if volumes:

@@ -206,7 +206,7 @@ golang:
   search-local-mod-cache-licenses:
 
   # specify an explicit go mod cache directory, if unset this defaults to $GOPATH/pkg/mod or $HOME/go/pkg/mod (env: SYFT_GOLANG_LOCAL_MOD_CACHE_DIR)
-  local-mod-cache-dir: "~go~pkg~mod"
+  local-mod-cache-dir: "~/go/pkg/mod"
 
   # search for go package licences in the vendor folder on the system running Syft, note that this is outside the
   # container filesystem and potentially outside the root of a local directory scan (env: SYFT_GOLANG_SEARCH_LOCAL_VENDOR_LICENSES)
@@ -253,7 +253,7 @@ java:
 
   # override the default location of the local Maven repository.
   # the default is the subdirectory '.m2/repository' in your home directory (env: SYFT_JAVA_MAVEN_LOCAL_REPOSITORY_DIR)
-  maven-local-repository-dir: "~.m2~repository"
+  maven-local-repository-dir: "~/.m2/repository"
 
   # maven repository to use, defaults to Maven central (env: SYFT_JAVA_MAVEN_URL)
   maven-url: "https://repo1.maven.org/maven2"
@@ -358,7 +358,7 @@ unknowns:
 
 cache:
   # root directory to cache any downloaded content; empty string will use an in-memory cache (env: SYFT_CACHE_DIR)
-  dir: "~.cache~syft"
+  dir: "~/.cache/syft"
 
   # time to live for cached data; setting this to 0 will disable caching entirely (env: SYFT_CACHE_TTL)
   ttl: "7d"

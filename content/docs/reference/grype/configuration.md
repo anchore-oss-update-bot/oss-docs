@@ -235,7 +235,7 @@ timestamp: true
 
 db:
   # location to write the vulnerability database cache (env: GRYPE_DB_CACHE_DIR)
-  cache-dir: "~.cache~grype~db"
+  cache-dir: "~/.cache/grype/db"
 
   # URL of the vulnerability database (env: GRYPE_DB_UPDATE_URL)
   update-url: "https://grype.anchore.io/databases"
