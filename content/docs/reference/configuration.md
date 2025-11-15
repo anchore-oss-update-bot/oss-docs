@@ -14,13 +14,14 @@ When you configure a tool, settings are applied in a specific order. If the same
 
 1. **Command-line arguments** _(highest priority)_
 2. **Environment variables**
-3. **Configuration file**
-4. **Default values** _(lowest priority)_
+3. **Explicit config file** (`-c PATH` or `--config PATH`)
+4. **Auto-discovered configuration file**
+5. **Default values** _(lowest priority)_
 
 For example, if you set the log level using all three methods, the command-line flag overrides the environment variable, which overrides the config file value.
 
 {{% alert title="Tip" %}}
-Running a tool with `--verbose` or `-vv` log level prints the entire active configuration at startup, showing you exactly which values are being used.
+Running a tool with `-vv` log level prints the entire active configuration at startup, showing you exactly which values are being used.
 {{% /alert %}}
 
 ## Viewing your configuration
@@ -32,6 +33,25 @@ To see available configuration options and current settings:
 - `syft config --load` — displays your current active configuration
 
 Replace `syft` with the tool you're using (`grype`, `grant`, etc.).
+
+## Specifying a configuration file
+
+You can explicitly specify a configuration file using the `-c` or `--config` flag,
+which overrides the auto-discovery behavior.
+
+```bash
+syft alpine:latest -c /path/to/config.yaml
+grype alpine:latest --config ~/.grype-custom.yaml
+grant check . -c ./grant-config.yaml
+```
+
+Syft and Grype support multiple configuration files by specifying the flag multiple times:
+
+```bash
+syft alpine:latest -c base.yaml -c overrides.yaml
+```
+
+When multiple files are specified, individual settings from later files override earlier ones.
 
 ## Using environment variables
 
@@ -70,8 +90,9 @@ export GRYPE_OUTPUT=json
 export SYFT_REGISTRY_AUTH_USERNAME=myuser
 ```
 
-## Using a configuration file
+## Configuration file auto-discovery
 
+When you don't specify a configuration file with `-c`, the tool automatically searches for one.
 Configuration files use YAML format. The tool searches these locations in order and uses the first file it finds:
 
 1. `.syft.yaml` (in current directory)
