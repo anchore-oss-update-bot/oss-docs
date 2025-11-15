@@ -32,7 +32,7 @@ def run_docker_command(
         >>> if code == 0:
         ...     print(f"Version: {stdout}")
     """
-    docker_cmd = ["docker", "run", "--rm", image] + cmd_parts
+    docker_cmd = ["docker", "run", "--pull", "always", "--rm", image] + cmd_parts
 
     try:
         result = subprocess.run(

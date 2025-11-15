@@ -47,7 +47,7 @@ def run(
         >>> # Get config
         >>> stdout, stderr, code = syft.run(args=["config"])
     """
-    docker_cmd = ["docker", "run", "--rm"]
+    docker_cmd = ["docker", "run", "--pull", "always", "--rm"]
 
     # add environment variables
     if env_vars:

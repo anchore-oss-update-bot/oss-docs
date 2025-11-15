@@ -203,6 +203,21 @@ This documentation was generated with {tool_display} version `{app_version}`.
     return content
 
 
+def get_cache_path(tool_name: str, command_type: str) -> Path:
+    """
+    get cache file path for a command output.
+
+    Args:
+        tool_name: tool name (e.g., "syft", "grype")
+        command_type: type of command (e.g., "version", "config")
+
+    Returns:
+        Path to cache file
+    """
+    cache_dir = config.paths.reference_cache_dir / tool_name / command_type
+    return cache_dir / "output.txt"
+
+
 def get_cache_path_for_cli(tool_name: str, cmd_parts: list[str]) -> Path:
     """
     get cache file path for a CLI command output.
@@ -310,10 +325,10 @@ def get_subcommands(image: str, cmd_parts, tool_name: str, update: bool = False)
 
 def get_version_info(image: str, tool_name: str, update: bool = False) -> str:
     """Get version information from the app."""
-    cache_path = get_cache_path_for_cli(tool_name, ["version"])
+    cache_path = get_cache_path(tool_name, "version")
     app_version = version.get_app_version(image, tool_name, cache_path, update)
 
-    if app_version is None:
+    if app_version is None or app_version == "unknown":
         raise RuntimeError(f"Failed to retrieve version info from the image '{image}'.")
 
     return app_version
