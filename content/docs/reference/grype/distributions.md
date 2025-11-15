@@ -1,13 +1,13 @@
 +++
-title = "Distribution Support Reference"
+title = "Supported Linux Distributions"
+linktitle = "Linux Distributions"
 description = "Complete list of Linux distributions supported by Grype for vulnerability scanning"
 weight = 10
 type = "docs"
+menu_group = "grype"
 +++
 
 This reference lists all Linux distributions that Grype recognizes and scans for vulnerabilities.
-
-## All supported distributions
 
 <div class="table-responsive">
   <table class="table table-bordered">
@@ -24,145 +24,145 @@ This reference lists all Linux distributions that Grype recognizes and scans for
         <td>AlmaLinux</td>
         <td>Direct</td>
         <td>alma</td>
-        <td>No</td>
+        <td></td>
       </tr>
       <tr>
         <td>Alpine</td>
         <td>Direct</td>
         <td>alpine</td>
-        <td>No</td>
+        <td></td>
       </tr>
       <tr>
         <td>Amazon Linux</td>
         <td>Direct</td>
         <td>amazon</td>
-        <td>No</td>
+        <td></td>
       </tr>
       <tr>
         <td>Arch Linux</td>
         <td>CPE fallback</td>
         <td>nvd</td>
-        <td>No</td>
+        <td></td>
       </tr>
       <tr>
         <td>Azure Linux</td>
         <td>Direct</td>
         <td>mariner</td>
-        <td>Yes</td>
+        <td><svg class="capability-icon"><use href="#icon-check"/></svg></td>
       </tr>
       <tr>
         <td>Busybox</td>
         <td>CPE fallback</td>
         <td>nvd</td>
-        <td>No</td>
+        <td></td>
       </tr>
       <tr>
         <td>CentOS</td>
         <td>Via rhel</td>
         <td>rhel</td>
-        <td>No</td>
+        <td></td>
       </tr>
       <tr>
         <td>Chainguard</td>
         <td>Direct</td>
         <td>chainguard</td>
-        <td>No</td>
+        <td></td>
       </tr>
       <tr>
         <td>Debian</td>
         <td>Direct</td>
         <td>debian</td>
-        <td>Yes</td>
+        <td><svg class="capability-icon"><use href="#icon-check"/></svg></td>
       </tr>
       <tr>
         <td>Echo</td>
         <td>Direct</td>
         <td>echo</td>
-        <td>No</td>
+        <td></td>
       </tr>
       <tr>
         <td>Fedora</td>
         <td>CPE fallback</td>
         <td>nvd</td>
-        <td>No</td>
+        <td></td>
       </tr>
       <tr>
         <td>Gentoo</td>
         <td>CPE fallback</td>
         <td>nvd</td>
-        <td>No</td>
+        <td></td>
       </tr>
       <tr>
         <td>Mariner</td>
         <td>Direct</td>
         <td>mariner</td>
-        <td>Yes</td>
+        <td><svg class="capability-icon"><use href="#icon-check"/></svg></td>
       </tr>
       <tr>
         <td>MinimOS</td>
         <td>Direct</td>
         <td>minimos</td>
-        <td>No</td>
+        <td></td>
       </tr>
       <tr>
         <td>OpenSUSE Leap</td>
         <td>CPE fallback</td>
         <td>nvd</td>
-        <td>No</td>
+        <td></td>
       </tr>
       <tr>
         <td>Oracle Linux</td>
         <td>Direct</td>
         <td>oracle</td>
-        <td>No</td>
+        <td></td>
       </tr>
       <tr>
         <td>Photon OS</td>
         <td>CPE fallback</td>
         <td>nvd</td>
-        <td>No</td>
+        <td></td>
       </tr>
       <tr>
         <td>Raspbian</td>
         <td>Via debian</td>
         <td>debian</td>
-        <td>No</td>
+        <td></td>
       </tr>
       <tr>
         <td>Red Hat Enterprise Linux</td>
         <td>Direct</td>
         <td>rhel</td>
-        <td>Yes</td>
+        <td><svg class="capability-icon"><use href="#icon-check"/></svg></td>
       </tr>
       <tr>
         <td>Rocky Linux</td>
         <td>Direct</td>
         <td>rocky</td>
-        <td>No</td>
+        <td></td>
       </tr>
       <tr>
         <td>SLES</td>
         <td>Direct</td>
         <td>sles</td>
-        <td>No</td>
+        <td></td>
       </tr>
       <tr>
         <td>Ubuntu</td>
         <td>Direct</td>
         <td>ubuntu</td>
-        <td>Yes</td>
+        <td><svg class="capability-icon"><use href="#icon-check"/></svg></td>
       </tr>
       <tr>
         <td>Windows</td>
         <td>Direct</td>
         <td>MSRC</td>
-        <td>No</td>
+        <td></td>
       </tr>
       <tr>
         <td>Wolfi</td>
         <td>Direct</td>
         <td>wolfi</td>
-        <td>No</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -178,13 +178,7 @@ This reference lists all Linux distributions that Grype recognizes and scans for
 
 ## Comprehensive feeds
 
-Distributions marked "Yes" in the Comprehensive Feed column provide both fixed and unfixed vulnerability data. These distributions are:
-
-- Azure Linux
-- Debian
-- Mariner
-- Red Hat Enterprise Linux
-- Ubuntu
+Distributions marked "Yes" in the Comprehensive Feed column provide both fixed and unfixed vulnerability data.
 
 For comprehensive distributions, Grype deduplicates vulnerabilities more aggressively by excluding non-OS packages (binaries, language packages) when they are owned by OS packages via file overlap.
 
