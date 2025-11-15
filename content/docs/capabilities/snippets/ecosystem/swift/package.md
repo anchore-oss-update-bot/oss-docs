@@ -28,7 +28,7 @@
       <td class="col-kinds value">Runtime</td>
       <td class="col-files indicator"></td>
       <td class="col-digests indicator"></td>
-      <td class="col-integrity-hash indicator"><span class="capability-icon-wrapper" data-tooltip="CocoapodsLockEntry.Checksum"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
+      <td class="col-integrity-hash indicator"><span class="capability-icon-wrapper" data-tooltip="CocoaPodfileLockEntry.Checksum"><svg class="capability-icon"><use href="#icon-check"/></svg></span></td>
     </tr>
     <tr>
       <td class="col-cataloger"><div class="cataloger-name">swift-package-manager-cataloger</div><div class="evidence-patterns"><code>Package.resolved</code>, <code>.package.resolved</code></div></td>

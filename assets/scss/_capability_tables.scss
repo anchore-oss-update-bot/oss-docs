@@ -109,7 +109,9 @@
 }
 
 /* Base table styles */
-.td-content table.capability-table {
+.td-content table.capability-table,
+.td-content table.config-table,
+.td-content table.binary-details-table {
   display: table;
   width: auto;
   min-width: 96%;

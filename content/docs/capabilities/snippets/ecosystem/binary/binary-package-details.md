@@ -2,14 +2,16 @@
 
 <!-- NOTE: This table uses SVG icons defined in layouts/partials/hooks/body-end.html -->
 <!-- markdownlint-disable MD013 -->
-<div class="config-table-header">Binary Package Details</div>
+
+<br><div class="config-table-header">Binary Package Details</div>
+
 <table class="capability-table binary-details-table">
   <thead>
     <tr>
-      <th class="{CSSClasses.COL_CLASS}"><abbr class="{CSSClasses.HEADER_HELP}" title="The classification identifier for this binary pattern">Class</abbr></th>
-      <th class="{CSSClasses.COL_CRITERIA}"><abbr class="{CSSClasses.HEADER_HELP}" title="The glob patterns used to identify this binary">Criteria</abbr></th>
-      <th class="{CSSClasses.COL_PURL}"><abbr class="{CSSClasses.HEADER_HELP}" title="The Package URL identifier for packages matching this pattern">PURL</abbr></th>
-      <th class="{CSSClasses.COL_CPES}"><abbr class="{CSSClasses.HEADER_HELP}" title="Common Platform Enumeration identifiers associated with this package">CPEs</abbr></th>
+      <th class="col-class"><abbr class="header-help" title="The classification identifier for this binary pattern">Class</abbr></th>
+      <th class="col-criteria"><abbr class="header-help" title="The glob patterns used to identify this binary">Criteria</abbr></th>
+      <th class="col-purl"><abbr class="header-help" title="The Package URL identifier for packages matching this pattern">PURL</abbr></th>
+      <th class="col-cpes"><abbr class="header-help" title="Common Platform Enumeration identifiers associated with this package">CPEs</abbr></th>
     </tr>
   </thead>
   <tbody>
@@ -54,6 +56,18 @@
       <td class="col-criteria"><code>dart</code></td>
       <td class="col-purl"><code>pkg:generic/dart</code></td>
       <td class="col-cpes"><code>cpe:2.3:a:dart:dart_software_development_kit:*:*:*:*:*:*:*:*</code></td>
+    </tr>
+    <tr>
+      <td class="col-class">elixir-binary</td>
+      <td class="col-criteria"><code>elixir</code></td>
+      <td class="col-purl"><code>pkg:generic/elixir</code></td>
+      <td class="col-cpes"><code>cpe:2.3:a:elixir-lang:elixir:*:*:*:*:*:*:*:*</code></td>
+    </tr>
+    <tr>
+      <td class="col-class">elixir-library</td>
+      <td class="col-criteria"><code>elixir/ebin/elixir.app</code></td>
+      <td class="col-purl"><code>pkg:generic/elixir</code></td>
+      <td class="col-cpes"><code>cpe:2.3:a:elixir-lang:elixir:*:*:*:*:*:*:*:*</code></td>
     </tr>
     <tr>
       <td class="col-class">erlang-alpine-binary</td>

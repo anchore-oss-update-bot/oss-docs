@@ -2,7 +2,9 @@
 
 <!-- NOTE: This table uses SVG icons defined in layouts/partials/hooks/body-end.html -->
 <!-- markdownlint-disable MD013 -->
-<div class="config-table-header">Syft Configuration</div>
+
+<br><div class="config-table-header">Syft Configuration</div>
+
 <table class="config-table syft-config-table">
   <thead>
     <tr>

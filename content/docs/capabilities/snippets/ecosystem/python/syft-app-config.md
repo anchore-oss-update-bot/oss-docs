@@ -2,7 +2,9 @@
 
 <!-- NOTE: This table uses SVG icons defined in layouts/partials/hooks/body-end.html -->
 <!-- markdownlint-disable MD013 -->
-<div class="config-table-header">Syft Configuration</div>
+
+<br><div class="config-table-header">Syft Configuration</div>
+
 <table class="config-table syft-config-table">
   <thead>
     <tr>
@@ -14,6 +16,14 @@
     <tr>
       <td class="col-config-key"><code>python.guess-unpinned-requirements</code></td>
       <td class="col-description">Attempts to infer package versions from version constraints when no explicit version is specified in requirements files.</td>
+    </tr>
+    <tr>
+      <td class="col-config-key"><code>python.pypi-base-url</code></td>
+      <td class="col-description">Specifies the base URL for the Pypi registry API used when searching for remote license information.</td>
+    </tr>
+    <tr>
+      <td class="col-config-key"><code>python.search-remote-licenses</code></td>
+      <td class="col-description">Enables querying the NPM registry API to retrieve license information for packages that are missing license data in their local metadata.</td>
     </tr>
   </tbody>
 </table>

@@ -754,7 +754,7 @@ def generate_app_config_snippet(
     html_lines = []
 
     # table header text
-    html_lines.append('<div class="config-table-header">Syft Configuration</div>')
+    html_lines.append('<br><div class="config-table-header">Syft Configuration</div>')
 
     # table header
     html_lines.append('<table class="config-table syft-config-table">')
@@ -1254,7 +1254,9 @@ def generate_binary_package_details_table(
     html_lines = []
 
     # table header text
-    html_lines.append('<div class="config-table-header">Binary Package Details</div>')
+    html_lines.append(
+        '<br><div class="config-table-header">Binary Package Details</div>'
+    )
 
     # table header
     html_lines.append(
@@ -1263,16 +1265,16 @@ def generate_binary_package_details_table(
     html_lines.append("  <thead>")
     html_lines.append("    <tr>")
     html_lines.append(
-        '      <th class="{CSSClasses.COL_CLASS}"><abbr class="{CSSClasses.HEADER_HELP}" title="The classification identifier for this binary pattern">Class</abbr></th>'
+        f'      <th class="{CSSClasses.COL_CLASS}"><abbr class="{CSSClasses.HEADER_HELP}" title="The classification identifier for this binary pattern">Class</abbr></th>'
     )
     html_lines.append(
-        '      <th class="{CSSClasses.COL_CRITERIA}"><abbr class="{CSSClasses.HEADER_HELP}" title="The glob patterns used to identify this binary">Criteria</abbr></th>'
+        f'      <th class="{CSSClasses.COL_CRITERIA}"><abbr class="{CSSClasses.HEADER_HELP}" title="The glob patterns used to identify this binary">Criteria</abbr></th>'
     )
     html_lines.append(
-        '      <th class="{CSSClasses.COL_PURL}"><abbr class="{CSSClasses.HEADER_HELP}" title="The Package URL identifier for packages matching this pattern">PURL</abbr></th>'
+        f'      <th class="{CSSClasses.COL_PURL}"><abbr class="{CSSClasses.HEADER_HELP}" title="The Package URL identifier for packages matching this pattern">PURL</abbr></th>'
     )
     html_lines.append(
-        '      <th class="{CSSClasses.COL_CPES}"><abbr class="{CSSClasses.HEADER_HELP}" title="Common Platform Enumeration identifiers associated with this package">CPEs</abbr></th>'
+        f'      <th class="{CSSClasses.COL_CPES}"><abbr class="{CSSClasses.HEADER_HELP}" title="Common Platform Enumeration identifiers associated with this package">CPEs</abbr></th>'
     )
     html_lines.append("    </tr>")
     html_lines.append("  </thead>")

@@ -31,11 +31,21 @@
       <td class="col-integrity-hash indicator"></td>
     </tr>
     <tr>
+      <td class="col-cataloger"><div class="cataloger-name">python-package-cataloger</div><div class="evidence-patterns"><code>pdm.lock</code></div></td>
+      <td class="col-license indicator"></td>
+      <td class="col-depth value">Transitive</td>
+      <td class="col-edges value">Complete</td>
+      <td class="col-kinds value">Runtime, Dev, Optional</td>
+      <td class="col-files indicator"></td>
+      <td class="col-digests indicator"></td>
+      <td class="col-integrity-hash indicator"></td>
+    </tr>
+    <tr>
       <td class="col-cataloger"><div class="cataloger-name">python-package-cataloger</div><div class="evidence-patterns"><code>uv.lock</code></div></td>
       <td class="col-license indicator"></td>
       <td class="col-depth value">Transitive</td>
       <td class="col-edges value">Complete</td>
-      <td class="col-kinds value">Dev, Optional</td>
+      <td class="col-kinds value">Runtime, Dev, Optional</td>
       <td class="col-files indicator"></td>
       <td class="col-digests indicator"></td>
       <td class="col-integrity-hash indicator"></td>
@@ -65,7 +75,7 @@
       <td class="col-license indicator"></td>
       <td class="col-depth value">Transitive</td>
       <td class="col-edges value">Complete</td>
-      <td class="col-kinds value">Dev, Optional</td>
+      <td class="col-kinds value">Runtime, Dev, Optional</td>
       <td class="col-files indicator"></td>
       <td class="col-digests indicator"></td>
       <td class="col-integrity-hash indicator"></td>
