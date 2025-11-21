@@ -57,12 +57,6 @@ apk add syft
 
 Thanks to [Michał Polański](https://pkgs.alpinelinux.org/packages?name=&branch=edge&repo=&arch=&maintainer=Micha%C5%82%20Pola%C5%84ski) for maintaining this package.
 
-### Chocolatey
-
-```
-choco install syft -y
-```
-
 ### Homebrew
 
 ```
@@ -99,21 +93,22 @@ Alternatively, just try it out in an ephemeral nix shell.
 nix-shell -p syft
 ```
 
-### Scoop
-
-```
-scoop install syft
-```
-
 ### WinGet
 
 ```
-nuget install Anchore.syft
+winget install Anchore.syft
 ```
 
 - [WinGet packaging for Syft](https://github.com/microsoft/winget-pkgs/tree/master/manifests/a/Anchore/Syft)
 
 Thanks to [Alan Pope](https://github.com/popey) for maintaining this package.
+
+### Scoop
+
+```powershell
+scoop bucket add main
+scoop install main/syft
+```
 
 ### Snapcraft
 
