@@ -6,6 +6,7 @@ Provides common functionality for scripts that need to run commands
 inside Docker containers.
 """
 
+import os
 import subprocess
 
 from .config import timeouts
@@ -31,8 +32,16 @@ def run_docker_command(
         >>> stdout, stderr, code = run_docker_command("anchore/syft:latest", ["version"])
         >>> if code == 0:
         ...     print(f"Version: {stdout}")
+
+    Environment Variables:
+        DOCKER_PULL_POLICY: Docker pull policy (default: "always")
+            - "always": Always pull the latest image from registry
+            - "never": Only use local images (useful for development)
+            - "missing": Pull only if image doesn't exist locally
     """
-    docker_cmd = ["docker", "run", "--pull", "always", "--rm", image] + cmd_parts
+    # Allow override of pull policy for local development
+    pull_policy = os.environ.get("DOCKER_PULL_POLICY", "always")
+    docker_cmd = ["docker", "run", "--pull", pull_policy, "--rm", image] + cmd_parts
 
     try:
         result = subprocess.run(

@@ -6,6 +6,7 @@ Provides common functionality for scripts that need to run Syft,
 including template execution, format generation, and config-based scanning.
 """
 
+import os
 import subprocess
 from pathlib import Path
 
@@ -46,12 +47,26 @@ def run(
         >>>
         >>> # Get config
         >>> stdout, stderr, code = syft.run(args=["config"])
+
+    Environment Variables:
+        DOCKER_PULL_POLICY: Docker pull policy (default: "always")
+            - "always": Always pull the latest image from registry
+            - "never": Only use local images (useful for development)
+            - "missing": Pull only if image doesn't exist locally
     """
-    docker_cmd = ["docker", "run", "--pull", "always", "--rm"]
+    # Allow override of pull policy for local development
+    pull_policy = os.environ.get("DOCKER_PULL_POLICY", "always")
+    docker_cmd = ["docker", "run", "--pull", pull_policy, "--rm"]
 
     # always set HOME to avoid path mangling in config output
     # (e.g., ~/go/pkg/mod becomes ~go~pkg~mod without HOME set)
     default_env_vars = {"HOME": "/root"}
+
+    # pass through SYFT_* environment variables for feature flags
+    for key, value in os.environ.items():
+        if key.startswith("SYFT_"):
+            default_env_vars[key] = value
+
     if env_vars:
         default_env_vars.update(env_vars)
 
