@@ -129,7 +129,7 @@ def save_json_data(formats, output_path: Path, logger: Logger) -> None:
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     # add auto-generated comment as a special field
-    comment = config.get_generated_comment("src/generate_format_versions.py", "json")
+    comment = config.get_generated_comment(__file__, "json")
     data = {"_comment": comment, **formats}
 
     with open(output_path, "w") as f:
@@ -154,7 +154,7 @@ def generate_markdown_snippet(formats, output_path: Path, logger: Logger) -> Non
         return
 
     # add auto-generated comment
-    comment = config.get_generated_comment("src/generate_format_versions.py", "html")
+    comment = config.get_generated_comment(__file__, "html")
 
     # generate markdown list only
     lines = []

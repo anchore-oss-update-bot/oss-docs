@@ -206,9 +206,7 @@ def load_cataloger_data(update: bool = False) -> dict:
 
         # save to cache
         cache_file.parent.mkdir(parents=True, exist_ok=True)
-        comment = config.get_generated_comment(
-            "scripts/generate_capability_tables.py", "json"
-        )
+        comment = config.get_generated_comment(__file__, "json")
         cache_data = {"_comment": comment, **data}
 
         with open(cache_file, "w") as f:

@@ -139,9 +139,7 @@ def generate_markdown_content(
     )
 
     # Add auto-generated comment
-    content += config.get_generated_comment(
-        "src/generate_reference_cli_docs.py", "html"
-    )
+    content += config.get_generated_comment(__file__, "html")
 
     # Add version info block at the top
     app_version = get_version_info(image, tool_name, update)

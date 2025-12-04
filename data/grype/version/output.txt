@@ -1,8 +1,8 @@
 Application:         grype
-Version:             0.104.0
-BuildDate:           2025-11-17T22:23:36Z
-GitCommit:           b1706ca14e88428cddb30ef72a09867b9df09851
-GitDescription:      v0.104.0
+Version:             0.104.1
+BuildDate:           2025-11-24T16:11:42Z
+GitCommit:           39f7fa17af2739cafe9b27176d4a68f7c05f21c1
+GitDescription:      v0.104.1
 Platform:            linux/arm64
 GoVersion:           go1.25.4
 Compiler:            gc

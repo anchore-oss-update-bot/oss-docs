@@ -1377,9 +1377,7 @@ def generate_schema_documentation(
     front_matter_lines.append("+++")
 
     # generate comment (after front matter)
-    comment = config.get_generated_comment(
-        "src/generate_reference_syft_json_schema.py", "html"
-    )
+    comment = config.get_generated_comment(__file__, "html")
     comment += "<!-- markdownlint-disable MD013 MD033 -->\n"
 
     # generate content sections

@@ -746,7 +746,7 @@ def generate_app_config_snippet(
     output_file = ecosystem_dir / "syft-app-config.md"
 
     # generate comment
-    comment = config.get_generated_comment("src/generate_capability_tables.py", "html")
+    comment = config.get_generated_comment(__file__, "html")
     comment += "<!-- NOTE: This table uses SVG icons defined in layouts/partials/hooks/body-end.html -->\n"
     comment += "<!-- markdownlint-disable MD013 -->\n\n"
 
@@ -954,7 +954,7 @@ def generate_overview_table(
     rowspans = _calculate_rowspans_for_overview(sorted_rows)
 
     # generate comment
-    comment = config.get_generated_comment("src/generate_capability_tables.py", "html")
+    comment = config.get_generated_comment(__file__, "html")
     comment += "<!-- NOTE: This table uses SVG icons defined in layouts/partials/hooks/body-end.html -->\n"
     comment += "<!-- markdownlint-disable MD013 -->\n"
 
@@ -1082,7 +1082,7 @@ def generate_ecosystem_table(
     sorted_rows = sorted(ecosystem_rows, key=lambda r: r.cataloger_name)
 
     # generate comment
-    comment = config.get_generated_comment("src/generate_capability_tables.py", "html")
+    comment = config.get_generated_comment(__file__, "html")
     comment += "<!-- NOTE: This table uses SVG icons defined in layouts/partials/hooks/body-end.html -->\n"
     comment += "<!-- markdownlint-disable MD013 -->\n"
 
@@ -1249,7 +1249,7 @@ def generate_binary_package_details_table(
     output_file = binary_dir / "binary-package-details.md"
 
     # generate comment
-    comment = config.get_generated_comment("src/generate_capability_tables.py", "html")
+    comment = config.get_generated_comment(__file__, "html")
     comment += "<!-- NOTE: This table uses SVG icons defined in layouts/partials/hooks/body-end.html -->\n"
     comment += "<!-- markdownlint-disable MD013 -->\n\n"
 

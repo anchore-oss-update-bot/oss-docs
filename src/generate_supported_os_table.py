@@ -93,7 +93,7 @@ def generate_overview_os_table(
     all_os_names = set(os_by_name.keys())
 
     # generate comment
-    comment = config.get_generated_comment("src/generate_supported_os_table.py", "html")
+    comment = config.get_generated_comment(__file__, "html")
     comment += "\n<!-- NOTE: This table uses SVG icons defined in layouts/partials/hooks/body-end.html -->\n"
 
     # build HTML lines
