@@ -3,8 +3,8 @@
 ```
 [Image]
  Layer:   0
- Digest:  sha256:1a382740c5642e4607412a341df3716c22287ffa6adf92eaff54e079a1902f05
- Size:   4170774
+ Digest:  sha256:495ba00f2547448d629ce0ff451b352b878d4e3616fc2434585952dbc2bbf029
+ Size:   4425270
  MediaType:  application/vnd.oci.image.layer.v1.tar+gzip
 
 [busybox]

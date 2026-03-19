@@ -5,124 +5,124 @@ SPDXVersion: SPDX-2.3
 DataLicense: CC0-1.0
 SPDXID: SPDXRef-DOCUMENT
 DocumentName: busybox
-DocumentNamespace: https://anchore.com/syft/image/busybox-c3730e42-f643-42c5-96ab-136c5ca1de53
-LicenseListVersion: 3.27
+DocumentNamespace: https://anchore.com/syft/image/busybox-a742f259-890b-4321-a742-b834ddea20c4
+LicenseListVersion: 3.28
 Creator: Organization: Anchore, Inc
-Creator: Tool: syft-1.38.0
-Created: 2025-12-04T14:30:26Z
+Creator: Tool: syft-1.42.2
+Created: 2026-03-19T02:59:43Z
 
 ##### Unpackaged files
 
 FileName: bin/[
-SPDXID: SPDXRef-File-bin---3a6b3df220691408
+SPDXID: SPDXRef-File-bin---d314844960140844
 FileType: APPLICATION
 FileType: BINARY
-FileChecksum: SHA1: 5231d5d79cb52f3581f9c137396e7d9df7aa6d6b
-FileChecksum: SHA256: f19470457088612bc3285404783d9f93533d917e869050aca13a4139b937c0a5
+FileChecksum: SHA1: 8dd52ce79dfc02f4af697c25783fbf34e334fd97
+FileChecksum: SHA256: 786295804cdc6f04ce18325a96b2a7bf17ecc29d89fbb76d23b6f46370deb451
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:1a382740c5642e4607412a341df3716c22287ffa6adf92eaff54e079a1902f05
+FileComment: layerID: sha256:495ba00f2547448d629ce0ff451b352b878d4e3616fc2434585952dbc2bbf029
 
 FileName: bin/getconf
-SPDXID: SPDXRef-File-bin-getconf-eab1ede6d517d844
+SPDXID: SPDXRef-File-bin-getconf-d8b4b0ee50a72f84
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:1a382740c5642e4607412a341df3716c22287ffa6adf92eaff54e079a1902f05
+FileComment: layerID: sha256:495ba00f2547448d629ce0ff451b352b878d4e3616fc2434585952dbc2bbf029
 
-FileName: lib/ld-linux-aarch64.so.1
-SPDXID: SPDXRef-File-lib-ld-linux-aarch64.so.1-9c61e609f3b76f4a
+FileName: lib/ld-linux-x86-64.so.2
+SPDXID: SPDXRef-File-lib-ld-linux-x86-64.so.2-6681d507794b7a47
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:1a382740c5642e4607412a341df3716c22287ffa6adf92eaff54e079a1902f05
+FileComment: layerID: sha256:495ba00f2547448d629ce0ff451b352b878d4e3616fc2434585952dbc2bbf029
 
 FileName: lib/libc.so.6
-SPDXID: SPDXRef-File-lib-libc.so.6-456b7910a9499337
+SPDXID: SPDXRef-File-lib-libc.so.6-fa1a2820b33b12fb
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:1a382740c5642e4607412a341df3716c22287ffa6adf92eaff54e079a1902f05
+FileComment: layerID: sha256:495ba00f2547448d629ce0ff451b352b878d4e3616fc2434585952dbc2bbf029
 
 FileName: lib/libm.so.6
-SPDXID: SPDXRef-File-lib-libm.so.6-9376910c472a1ddd
+SPDXID: SPDXRef-File-lib-libm.so.6-99390ad40b63cca1
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:1a382740c5642e4607412a341df3716c22287ffa6adf92eaff54e079a1902f05
+FileComment: layerID: sha256:495ba00f2547448d629ce0ff451b352b878d4e3616fc2434585952dbc2bbf029
 
 FileName: lib/libnss_compat.so.2
-SPDXID: SPDXRef-File-lib-libnss-compat.so.2-383904be0603bd22
+SPDXID: SPDXRef-File-lib-libnss-compat.so.2-508efbee2c64181a
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:1a382740c5642e4607412a341df3716c22287ffa6adf92eaff54e079a1902f05
+FileComment: layerID: sha256:495ba00f2547448d629ce0ff451b352b878d4e3616fc2434585952dbc2bbf029
 
 FileName: lib/libnss_dns.so.2
-SPDXID: SPDXRef-File-lib-libnss-dns.so.2-324828ff45e1fc0b
+SPDXID: SPDXRef-File-lib-libnss-dns.so.2-e26d861c3630126f
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:1a382740c5642e4607412a341df3716c22287ffa6adf92eaff54e079a1902f05
+FileComment: layerID: sha256:495ba00f2547448d629ce0ff451b352b878d4e3616fc2434585952dbc2bbf029
 
 FileName: lib/libnss_files.so.2
-SPDXID: SPDXRef-File-lib-libnss-files.so.2-9a791682497737bd
+SPDXID: SPDXRef-File-lib-libnss-files.so.2-27d8277367f5811d
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:1a382740c5642e4607412a341df3716c22287ffa6adf92eaff54e079a1902f05
+FileComment: layerID: sha256:495ba00f2547448d629ce0ff451b352b878d4e3616fc2434585952dbc2bbf029
 
 FileName: lib/libnss_hesiod.so.2
-SPDXID: SPDXRef-File-lib-libnss-hesiod.so.2-c6f668db34996e30
+SPDXID: SPDXRef-File-lib-libnss-hesiod.so.2-4e738b5ae019acd0
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:1a382740c5642e4607412a341df3716c22287ffa6adf92eaff54e079a1902f05
+FileComment: layerID: sha256:495ba00f2547448d629ce0ff451b352b878d4e3616fc2434585952dbc2bbf029
 
 FileName: lib/libpthread.so.0
-SPDXID: SPDXRef-File-lib-libpthread.so.0-d5aa00430d994aa8
+SPDXID: SPDXRef-File-lib-libpthread.so.0-8fd2d779fbd33180
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:1a382740c5642e4607412a341df3716c22287ffa6adf92eaff54e079a1902f05
+FileComment: layerID: sha256:495ba00f2547448d629ce0ff451b352b878d4e3616fc2434585952dbc2bbf029
 
 FileName: lib/libresolv.so.2
-SPDXID: SPDXRef-File-lib-libresolv.so.2-5804ce9e713c7582
+SPDXID: SPDXRef-File-lib-libresolv.so.2-4ddab587142f1aa2
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:1a382740c5642e4607412a341df3716c22287ffa6adf92eaff54e079a1902f05
+FileComment: layerID: sha256:495ba00f2547448d629ce0ff451b352b878d4e3616fc2434585952dbc2bbf029
 
 ##### Package: busybox
 
 PackageName: busybox
 SPDXID: SPDXRef-DocumentRoot-Image-busybox
-PackageVersion: sha256:396fa78f221c72de93053a00e33e3d69b5bdfa80131777e6ea518eb9a1af3f3b
+PackageVersion: sha256:70ce0a747f09cd7c09c2d6eaeab69d60adb0398f569296e8c0e844599388ebd6
 PackageSupplier: NOASSERTION
 PackageDownloadLocation: NOASSERTION
 PrimaryPackagePurpose: CONTAINER
 FilesAnalyzed: false
-PackageChecksum: SHA256: 396fa78f221c72de93053a00e33e3d69b5bdfa80131777e6ea518eb9a1af3f3b
+PackageChecksum: SHA256: 70ce0a747f09cd7c09c2d6eaeab69d60adb0398f569296e8c0e844599388ebd6
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
-ExternalRef: PACKAGE-MANAGER purl pkg:oci/busybox@sha256%3A396fa78f221c72de93053a00e33e3d69b5bdfa80131777e6ea518eb9a1af3f3b?arch=arm64&tag=latest
+ExternalRef: PACKAGE-MANAGER purl pkg:oci/busybox@sha256%3A70ce0a747f09cd7c09c2d6eaeab69d60adb0398f569296e8c0e844599388ebd6?arch=amd64&tag=latest
 
 ##### Package: busybox
 
 PackageName: busybox
-SPDXID: SPDXRef-Package-binary-busybox-fe44cee3fe279dfa
+SPDXID: SPDXRef-Package-binary-busybox-4bab6ea0b54dbcb0
 PackageVersion: 1.37.0
 PackageSupplier: NOASSERTION
 PackageDownloadLocation: NOASSERTION
@@ -136,8 +136,8 @@ ExternalRef: PACKAGE-MANAGER purl pkg:generic/busybox@1.37.0
 
 ##### Relationships
 
-Relationship: SPDXRef-Package-binary-busybox-fe44cee3fe279dfa OTHER SPDXRef-File-bin---3a6b3df220691408
+Relationship: SPDXRef-Package-binary-busybox-4bab6ea0b54dbcb0 OTHER SPDXRef-File-bin---d314844960140844
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-DocumentRoot-Image-busybox CONTAINS SPDXRef-Package-binary-busybox-fe44cee3fe279dfa
+Relationship: SPDXRef-DocumentRoot-Image-busybox CONTAINS SPDXRef-Package-binary-busybox-4bab6ea0b54dbcb0
 Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-DocumentRoot-Image-busybox
 ```

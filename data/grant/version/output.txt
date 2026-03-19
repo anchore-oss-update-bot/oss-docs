@@ -1,8 +1,8 @@
 Application:    grant
-Version:        0.5.1
-BuildDate:      2025-11-17T22:26:55Z
-GitCommit:      22a4f2a99e6e4359e172d7b43b423fcc3ad8734d
-GitDescription: v0.5.1
-Platform:       linux/arm64
-GoVersion:      go1.24.10
+Version:        0.6.3
+BuildDate:      2026-03-09T19:06:16Z
+GitCommit:      f57f2c5530f4e90c2108bcbd19ed13f7ee19d98f
+GitDescription: v0.6.3
+Platform:       linux/amd64
+GoVersion:      go1.25.8
 Compiler:       gc
