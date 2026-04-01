@@ -3,7 +3,7 @@ Version:             0.110.0
 BuildDate:           2026-03-19T18:01:59Z
 GitCommit:           dee8de483dfba5b4e0bc0aa8e4ab2ce52137e490
 GitDescription:      v0.110.0
-Platform:            linux/arm64
+Platform:            linux/amd64
 GoVersion:           go1.25.8
 Compiler:            gc
 Syft Version:        v1.42.3

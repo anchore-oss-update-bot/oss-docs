@@ -3,7 +3,7 @@ Version:       1.42.3
 BuildDate:     2026-03-19T17:00:58Z
 GitCommit:     860126c650c2d05b63b83a3895e41268162315a3
 GitDescription: v1.42.3
-Platform:      linux/arm64
+Platform:      linux/amd64
 GoVersion:     go1.26.1
 Compiler:      gc
 SchemaVersion: 16.1.3

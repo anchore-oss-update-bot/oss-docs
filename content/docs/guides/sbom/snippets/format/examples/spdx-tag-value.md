@@ -5,124 +5,124 @@ SPDXVersion: SPDX-2.3
 DataLicense: CC0-1.0
 SPDXID: SPDXRef-DOCUMENT
 DocumentName: busybox
-DocumentNamespace: https://anchore.com/syft/image/busybox-336e932f-b62f-4188-8001-06dc3da6c9ce
+DocumentNamespace: https://anchore.com/syft/image/busybox-a646e211-1b04-44d4-9a4b-e404c1efd937
 LicenseListVersion: 3.28
 Creator: Organization: Anchore, Inc
 Creator: Tool: syft-1.42.3
-Created: 2026-03-20T12:38:45Z
+Created: 2026-04-01T03:01:08Z
 
 ##### Unpackaged files
 
 FileName: bin/[
-SPDXID: SPDXRef-File-bin---55ff7bb58de38199
+SPDXID: SPDXRef-File-bin---569d4a1b976fac79
 FileType: APPLICATION
 FileType: BINARY
-FileChecksum: SHA1: 5231d5d79cb52f3581f9c137396e7d9df7aa6d6b
-FileChecksum: SHA256: f19470457088612bc3285404783d9f93533d917e869050aca13a4139b937c0a5
+FileChecksum: SHA1: 8dd52ce79dfc02f4af697c25783fbf34e334fd97
+FileChecksum: SHA256: 786295804cdc6f04ce18325a96b2a7bf17ecc29d89fbb76d23b6f46370deb451
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7
+FileComment: layerID: sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927
 
 FileName: bin/getconf
-SPDXID: SPDXRef-File-bin-getconf-e0ed012dbfe876e1
+SPDXID: SPDXRef-File-bin-getconf-8ded473355030b29
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7
+FileComment: layerID: sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927
 
-FileName: lib/ld-linux-aarch64.so.1
-SPDXID: SPDXRef-File-lib-ld-linux-aarch64.so.1-db64fb8f8a5ca3fb
+FileName: lib/ld-linux-x86-64.so.2
+SPDXID: SPDXRef-File-lib-ld-linux-x86-64.so.2-7cb3ec0980b305ea
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7
+FileComment: layerID: sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927
 
 FileName: lib/libc.so.6
-SPDXID: SPDXRef-File-lib-libc.so.6-702d7f4d4e0d51ae
+SPDXID: SPDXRef-File-lib-libc.so.6-721fdb92ef105572
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7
+FileComment: layerID: sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927
 
 FileName: lib/libm.so.6
-SPDXID: SPDXRef-File-lib-libm.so.6-d5a2b244e5702e74
+SPDXID: SPDXRef-File-lib-libm.so.6-78daafc7b39b7f14
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7
+FileComment: layerID: sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927
 
 FileName: lib/libnss_compat.so.2
-SPDXID: SPDXRef-File-lib-libnss-compat.so.2-3ad0188c01cb01ef
+SPDXID: SPDXRef-File-lib-libnss-compat.so.2-1a1b10daf314c367
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7
+FileComment: layerID: sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927
 
 FileName: lib/libnss_dns.so.2
-SPDXID: SPDXRef-File-lib-libnss-dns.so.2-937c9069f7be83d6
+SPDXID: SPDXRef-File-lib-libnss-dns.so.2-b13fe055c85111aa
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7
+FileComment: layerID: sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927
 
 FileName: lib/libnss_files.so.2
-SPDXID: SPDXRef-File-lib-libnss-files.so.2-c452469c5ef63264
+SPDXID: SPDXRef-File-lib-libnss-files.so.2-20e1607c1af76f1c
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7
+FileComment: layerID: sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927
 
 FileName: lib/libnss_hesiod.so.2
-SPDXID: SPDXRef-File-lib-libnss-hesiod.so.2-fb93554ae88ca5d5
+SPDXID: SPDXRef-File-lib-libnss-hesiod.so.2-60b37632c882b7b5
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7
+FileComment: layerID: sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927
 
 FileName: lib/libpthread.so.0
-SPDXID: SPDXRef-File-lib-libpthread.so.0-5ae601af03b99555
+SPDXID: SPDXRef-File-lib-libpthread.so.0-3b2c5f079a592915
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7
+FileComment: layerID: sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927
 
 FileName: lib/libresolv.so.2
-SPDXID: SPDXRef-File-lib-libresolv.so.2-c6ad3fd5f26bb1b7
+SPDXID: SPDXRef-File-lib-libresolv.so.2-d83b2e68ea6e74d7
 FileChecksum: SHA1: 0000000000000000000000000000000000000000
 LicenseConcluded: NOASSERTION
 LicenseInfoInFile: NOASSERTION
 FileCopyrightText: NOASSERTION
-FileComment: layerID: sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7
+FileComment: layerID: sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927
 
 ##### Package: busybox
 
 PackageName: busybox
 SPDXID: SPDXRef-DocumentRoot-Image-busybox
-PackageVersion: sha256:bf9536d50cebf4337eb4a802e4786f25a9068665385d82a780d210316b818cf8
+PackageVersion: sha256:b8d1827e38a1d49cd17217efd7b07d689e4ea1744e39c7dcbb95533d175bea65
 PackageSupplier: NOASSERTION
 PackageDownloadLocation: NOASSERTION
 PrimaryPackagePurpose: CONTAINER
 FilesAnalyzed: false
-PackageChecksum: SHA256: bf9536d50cebf4337eb4a802e4786f25a9068665385d82a780d210316b818cf8
+PackageChecksum: SHA256: b8d1827e38a1d49cd17217efd7b07d689e4ea1744e39c7dcbb95533d175bea65
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
-ExternalRef: PACKAGE-MANAGER purl pkg:oci/busybox@sha256%3Abf9536d50cebf4337eb4a802e4786f25a9068665385d82a780d210316b818cf8?arch=arm64&tag=latest
+ExternalRef: PACKAGE-MANAGER purl pkg:oci/busybox@sha256%3Ab8d1827e38a1d49cd17217efd7b07d689e4ea1744e39c7dcbb95533d175bea65?arch=amd64&tag=latest
 
 ##### Package: busybox
 
 PackageName: busybox
-SPDXID: SPDXRef-Package-binary-busybox-7020dfe7743f6dfc
+SPDXID: SPDXRef-Package-binary-busybox-b902c455ac608569
 PackageVersion: 1.37.0
 PackageSupplier: NOASSERTION
 PackageDownloadLocation: NOASSERTION
@@ -136,8 +136,8 @@ ExternalRef: PACKAGE-MANAGER purl pkg:generic/busybox@1.37.0
 
 ##### Relationships
 
-Relationship: SPDXRef-Package-binary-busybox-7020dfe7743f6dfc OTHER SPDXRef-File-bin---55ff7bb58de38199
+Relationship: SPDXRef-Package-binary-busybox-b902c455ac608569 OTHER SPDXRef-File-bin---569d4a1b976fac79
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-DocumentRoot-Image-busybox CONTAINS SPDXRef-Package-binary-busybox-7020dfe7743f6dfc
+Relationship: SPDXRef-DocumentRoot-Image-busybox CONTAINS SPDXRef-Package-binary-busybox-b902c455ac608569
 Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-DocumentRoot-Image-busybox
 ```
