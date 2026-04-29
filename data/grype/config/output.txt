@@ -9,7 +9,7 @@ log:
   file: ''
 
 dev:
-  # capture resource profiling data (available: [cpu, mem]) (env: GRYPE_DEV_PROFILE)
+  # capture resource profiling data (available: [cpu, mem, ...]) (env: GRYPE_DEV_PROFILE)
   profile: ''
 
   db:

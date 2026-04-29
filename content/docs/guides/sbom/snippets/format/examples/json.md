@@ -4,7 +4,7 @@
 {
   "artifacts": [
     {
-      "id": "7020dfe7743f6dfc",
+      "id": "b902c455ac608569",
       "name": "busybox",
       "version": "1.37.0",
       "type": "binary",
@@ -12,7 +12,7 @@
       "locations": [
         {
           "path": "/bin/[",
-          "layerID": "sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7",
+          "layerID": "sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927",
           "accessPath": "/bin/busybox",
           "annotations": {
             "evidence": "primary"
@@ -35,7 +35,7 @@
             "classifier": "busybox-binary",
             "location": {
               "path": "/bin/[",
-              "layerID": "sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7",
+              "layerID": "sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927",
               "accessPath": "/bin/busybox",
               "annotations": {
                 "evidence": "primary"
@@ -48,25 +48,25 @@
   ],
   "artifactRelationships": [
     {
-      "parent": "7020dfe7743f6dfc",
-      "child": "55ff7bb58de38199",
+      "parent": "856e919a38bedacb74216a16f2bb66f585893a51248a640b5fa56d34a3e58351",
+      "child": "b902c455ac608569",
+      "type": "contains"
+    },
+    {
+      "parent": "b902c455ac608569",
+      "child": "569d4a1b976fac79",
       "type": "evident-by",
       "metadata": {
         "kind": "primary"
       }
-    },
-    {
-      "parent": "bf9536d50cebf4337eb4a802e4786f25a9068665385d82a780d210316b818cf8",
-      "child": "7020dfe7743f6dfc",
-      "type": "contains"
     }
   ],
   "files": [
     {
-      "id": "55ff7bb58de38199",
+      "id": "569d4a1b976fac79",
       "location": {
         "path": "/bin/[",
-        "layerID": "sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7"
+        "layerID": "sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927"
       },
       "metadata": {
         "mode": 755,
@@ -74,16 +74,16 @@
         "userID": 0,
         "groupID": 0,
         "mimeType": "application/x-sharedlib",
-        "size": 1119808
+        "size": 1017416
       },
       "digests": [
         {
           "algorithm": "sha1",
-          "value": "5231d5d79cb52f3581f9c137396e7d9df7aa6d6b"
+          "value": "8dd52ce79dfc02f4af697c25783fbf34e334fd97"
         },
         {
           "algorithm": "sha256",
-          "value": "f19470457088612bc3285404783d9f93533d917e869050aca13a4139b937c0a5"
+          "value": "786295804cdc6f04ce18325a96b2a7bf17ecc29d89fbb76d23b6f46370deb451"
         }
       ],
       "executable": {
@@ -103,10 +103,10 @@
       }
     },
     {
-      "id": "e0ed012dbfe876e1",
+      "id": "8ded473355030b29",
       "location": {
         "path": "/bin/getconf",
-        "layerID": "sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7"
+        "layerID": "sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927"
       },
       "executable": {
         "format": "elf",
@@ -126,10 +126,10 @@
       "unknowns": ["unknowns-labeler: no package identified in executable file"]
     },
     {
-      "id": "db64fb8f8a5ca3fb",
+      "id": "7cb3ec0980b305ea",
       "location": {
-        "path": "/lib/ld-linux-aarch64.so.1",
-        "layerID": "sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7"
+        "path": "/lib/ld-linux-x86-64.so.2",
+        "layerID": "sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927"
       },
       "executable": {
         "format": "elf",
@@ -138,7 +138,7 @@
         "importedLibraries": [],
         "elfSecurityFeatures": {
           "symbolTableStripped": true,
-          "stackCanary": true,
+          "stackCanary": false,
           "nx": true,
           "relRO": "full",
           "pie": false,
@@ -149,16 +149,16 @@
       "unknowns": ["unknowns-labeler: no package identified in executable file"]
     },
     {
-      "id": "702d7f4d4e0d51ae",
+      "id": "721fdb92ef105572",
       "location": {
         "path": "/lib/libc.so.6",
-        "layerID": "sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7"
+        "layerID": "sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927"
       },
       "executable": {
         "format": "elf",
         "hasExports": true,
         "hasEntrypoint": true,
-        "importedLibraries": ["ld-linux-aarch64.so.1"],
+        "importedLibraries": ["ld-linux-x86-64.so.2"],
         "elfSecurityFeatures": {
           "symbolTableStripped": true,
           "stackCanary": true,
@@ -172,16 +172,16 @@
       "unknowns": ["unknowns-labeler: no package identified in executable file"]
     },
     {
-      "id": "d5a2b244e5702e74",
+      "id": "78daafc7b39b7f14",
       "location": {
         "path": "/lib/libm.so.6",
-        "layerID": "sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7"
+        "layerID": "sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927"
       },
       "executable": {
         "format": "elf",
         "hasExports": true,
         "hasEntrypoint": false,
-        "importedLibraries": ["libc.so.6", "ld-linux-aarch64.so.1"],
+        "importedLibraries": ["libc.so.6", "ld-linux-x86-64.so.2"],
         "elfSecurityFeatures": {
           "symbolTableStripped": true,
           "stackCanary": true,
@@ -195,16 +195,16 @@
       "unknowns": ["unknowns-labeler: no package identified in executable file"]
     },
     {
-      "id": "3ad0188c01cb01ef",
+      "id": "1a1b10daf314c367",
       "location": {
         "path": "/lib/libnss_compat.so.2",
-        "layerID": "sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7"
+        "layerID": "sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927"
       },
       "executable": {
         "format": "elf",
         "hasExports": true,
         "hasEntrypoint": false,
-        "importedLibraries": ["libc.so.6", "ld-linux-aarch64.so.1"],
+        "importedLibraries": ["libc.so.6"],
         "elfSecurityFeatures": {
           "symbolTableStripped": true,
           "stackCanary": true,
@@ -218,10 +218,10 @@
       "unknowns": ["unknowns-labeler: no package identified in executable file"]
     },
     {
-      "id": "937c9069f7be83d6",
+      "id": "b13fe055c85111aa",
       "location": {
         "path": "/lib/libnss_dns.so.2",
-        "layerID": "sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7"
+        "layerID": "sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927"
       },
       "executable": {
         "format": "elf",
@@ -241,10 +241,10 @@
       "unknowns": ["unknowns-labeler: no package identified in executable file"]
     },
     {
-      "id": "c452469c5ef63264",
+      "id": "20e1607c1af76f1c",
       "location": {
         "path": "/lib/libnss_files.so.2",
-        "layerID": "sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7"
+        "layerID": "sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927"
       },
       "executable": {
         "format": "elf",
@@ -264,16 +264,16 @@
       "unknowns": ["unknowns-labeler: no package identified in executable file"]
     },
     {
-      "id": "fb93554ae88ca5d5",
+      "id": "60b37632c882b7b5",
       "location": {
         "path": "/lib/libnss_hesiod.so.2",
-        "layerID": "sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7"
+        "layerID": "sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927"
       },
       "executable": {
         "format": "elf",
         "hasExports": true,
         "hasEntrypoint": false,
-        "importedLibraries": ["libresolv.so.2", "libc.so.6", "ld-linux-aarch64.so.1"],
+        "importedLibraries": ["libresolv.so.2", "libc.so.6"],
         "elfSecurityFeatures": {
           "symbolTableStripped": true,
           "stackCanary": true,
@@ -287,10 +287,10 @@
       "unknowns": ["unknowns-labeler: no package identified in executable file"]
     },
     {
-      "id": "5ae601af03b99555",
+      "id": "3b2c5f079a592915",
       "location": {
         "path": "/lib/libpthread.so.0",
-        "layerID": "sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7"
+        "layerID": "sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927"
       },
       "executable": {
         "format": "elf",
@@ -310,16 +310,16 @@
       "unknowns": ["unknowns-labeler: no package identified in executable file"]
     },
     {
-      "id": "c6ad3fd5f26bb1b7",
+      "id": "d83b2e68ea6e74d7",
       "location": {
         "path": "/lib/libresolv.so.2",
-        "layerID": "sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7"
+        "layerID": "sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927"
       },
       "executable": {
         "format": "elf",
         "hasExports": true,
         "hasEntrypoint": false,
-        "importedLibraries": ["libc.so.6", "ld-linux-aarch64.so.1"],
+        "importedLibraries": ["libc.so.6"],
         "elfSecurityFeatures": {
           "symbolTableStripped": true,
           "stackCanary": true,
@@ -334,30 +334,28 @@
     }
   ],
   "source": {
-    "id": "bf9536d50cebf4337eb4a802e4786f25a9068665385d82a780d210316b818cf8",
+    "id": "856e919a38bedacb74216a16f2bb66f585893a51248a640b5fa56d34a3e58351",
     "name": "busybox",
-    "version": "sha256:bf9536d50cebf4337eb4a802e4786f25a9068665385d82a780d210316b818cf8",
+    "version": "sha256:856e919a38bedacb74216a16f2bb66f585893a51248a640b5fa56d34a3e58351",
     "type": "image",
     "metadata": {
       "userInput": "busybox:latest",
-      "imageID": "sha256:cd9176cd36f99ec4cae927afa38448e8a9592e5277252f62926defa6aafad0f5",
-      "manifestDigest": "sha256:bf9536d50cebf4337eb4a802e4786f25a9068665385d82a780d210316b818cf8",
-      "mediaType": "application/vnd.oci.image.manifest.v1+json",
-      "tags": [],
-      "imageSize": 4105238,
+      "imageID": "sha256:925ff61909aebae4bcc9bc04bb96a8bd15cd2271f13159fe95ce4338824531dd",
+      "manifestDigest": "sha256:856e919a38bedacb74216a16f2bb66f585893a51248a640b5fa56d34a3e58351",
+      "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+      "tags": ["busybox:latest"],
+      "imageSize": 4421246,
       "layers": [
         {
-          "mediaType": "application/vnd.oci.image.layer.v1.tar+gzip",
-          "digest": "sha256:43f051b5fedf83ee1f8a54fa2fc1d1b85d7cf88b69b2604bc76d679c4fe0a9b7",
-          "size": 4105238
+          "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+          "digest": "sha256:7f74ca72855668453fc4207c1e5c50bb5653e72bb9939eb1d5512c001624e927",
+          "size": 4421246
         }
       ],
-      "manifest": "ewoJInNjaGVtYVZlcnNpb24iOiAyLAoJIm1lZGlhVHlwZSI6ICJhcHBsaWNhdGlvbi92bmQub2NpLmltYWdlLm1hbmlmZXN0LnYxK2pzb24iLAoJImNvbmZpZyI6IHsKCQkibWVkaWFUeXBlIjogImFwcGxpY2F0aW9uL3ZuZC5vY2kuaW1hZ2UuY29uZmlnLnYxK2pzb24iLAoJCSJkaWdlc3QiOiAic2hhMjU2OmNkOTE3NmNkMzZmOTllYzRjYWU5MjdhZmEzODQ0OGU4YTk1OTJlNTI3NzI1MmY2MjkyNmRlZmE2YWFmYWQwZjUiLAoJCSJzaXplIjogNDc3Cgl9LAoJImxheWVycyI6IFsKCQl7CgkJCSJtZWRpYVR5cGUiOiAiYXBwbGljYXRpb24vdm5kLm9jaS5pbWFnZS5sYXllci52MS50YXIrZ3ppcCIsCgkJCSJkaWdlc3QiOiAic2hhMjU2OmI4NTc1N2E1Y2ExYWM4ZTNmMjVlMGVkYWZkZTcxNjdkYTE4MzBjZjRlNzkzN2YzN2VhZjgzOTJjNjQ1OGQ3NjgiLAoJCQkic2l6ZSI6IDE5MDA4NDUKCQl9CgldLAoJImFubm90YXRpb25zIjogewoJCSJvcmcub3BlbmNvbnRhaW5lcnMuaW1hZ2UudXJsIjogImh0dHBzOi8vZ2l0aHViLmNvbS9kb2NrZXItbGlicmFyeS9idXN5Ym94IiwKCQkib3JnLm9wZW5jb250YWluZXJzLmltYWdlLnZlcnNpb24iOiAiMS4zNy4wLWdsaWJjIgoJfQp9Cg==",
-      "config": "ewoJImNvbmZpZyI6IHsKCQkiQ21kIjogWwoJCQkic2giCgkJXSwKCQkiRW52IjogWwoJCQkiUEFUSD0vdXNyL2xvY2FsL3NiaW46L3Vzci9sb2NhbC9iaW46L3Vzci9zYmluOi91c3IvYmluOi9zYmluOi9iaW4iCgkJXQoJfSwKCSJjcmVhdGVkIjogIjIwMjQtMDktMjZUMjE6MzE6NDJaIiwKCSJoaXN0b3J5IjogWwoJCXsKCQkJImNyZWF0ZWQiOiAiMjAyNC0wOS0yNlQyMTozMTo0MloiLAoJCQkiY3JlYXRlZF9ieSI6ICJCdXN5Qm94IDEuMzcuMCAoZ2xpYmMpLCBEZWJpYW4gMTMiCgkJfQoJXSwKCSJyb290ZnMiOiB7CgkJInR5cGUiOiAibGF5ZXJzIiwKCQkiZGlmZl9pZHMiOiBbCgkJCSJzaGEyNTY6NDNmMDUxYjVmZWRmODNlZTFmOGE1NGZhMmZjMWQxYjg1ZDdjZjg4YjY5YjI2MDRiYzc2ZDY3OWM0ZmUwYTliNyIKCQldCgl9LAoJImFyY2hpdGVjdHVyZSI6ICJhcm02NCIsCgkib3MiOiAibGludXgiLAoJInZhcmlhbnQiOiAidjgiCn0K",
-      "repoDigests": [
-        "index.docker.io/library/busybox@sha256:b3255e7dfbcd10cb367af0d409747d511aeb66dfac98cf30e97e87e4207dd76f"
-      ],
-      "architecture": "arm64",
+      "manifest": "eyJzY2hlbWFWZXJzaW9uIjoyLCJtZWRpYVR5cGUiOiJhcHBsaWNhdGlvbi92bmQuZG9ja2VyLmRpc3RyaWJ1dGlvbi5tYW5pZmVzdC52Mitqc29uIiwiY29uZmlnIjp7Im1lZGlhVHlwZSI6ImFwcGxpY2F0aW9uL3ZuZC5kb2NrZXIuY29udGFpbmVyLmltYWdlLnYxK2pzb24iLCJzaXplIjo0NTksImRpZ2VzdCI6InNoYTI1Njo5MjVmZjYxOTA5YWViYWU0YmNjOWJjMDRiYjk2YThiZDE1Y2QyMjcxZjEzMTU5ZmU5NWNlNDMzODgyNDUzMWRkIn0sImxheWVycyI6W3sibWVkaWFUeXBlIjoiYXBwbGljYXRpb24vdm5kLmRvY2tlci5pbWFnZS5yb290ZnMuZGlmZi50YXIuZ3ppcCIsInNpemUiOjQ2NTkyMDAsImRpZ2VzdCI6InNoYTI1Njo3Zjc0Y2E3Mjg1NTY2ODQ1M2ZjNDIwN2MxZTVjNTBiYjU2NTNlNzJiYjk5MzllYjFkNTUxMmMwMDE2MjRlOTI3In1dfQ==",
+      "config": "ewoJImNvbmZpZyI6IHsKCQkiQ21kIjogWwoJCQkic2giCgkJXSwKCQkiRW52IjogWwoJCQkiUEFUSD0vdXNyL2xvY2FsL3NiaW46L3Vzci9sb2NhbC9iaW46L3Vzci9zYmluOi91c3IvYmluOi9zYmluOi9iaW4iCgkJXQoJfSwKCSJjcmVhdGVkIjogIjIwMjQtMDktMjZUMjE6MzE6NDJaIiwKCSJoaXN0b3J5IjogWwoJCXsKCQkJImNyZWF0ZWQiOiAiMjAyNC0wOS0yNlQyMTozMTo0MloiLAoJCQkiY3JlYXRlZF9ieSI6ICJCdXN5Qm94IDEuMzcuMCAoZ2xpYmMpLCBEZWJpYW4gMTMiCgkJfQoJXSwKCSJyb290ZnMiOiB7CgkJInR5cGUiOiAibGF5ZXJzIiwKCQkiZGlmZl9pZHMiOiBbCgkJCSJzaGEyNTY6N2Y3NGNhNzI4NTU2Njg0NTNmYzQyMDdjMWU1YzUwYmI1NjUzZTcyYmI5OTM5ZWIxZDU1MTJjMDAxNjI0ZTkyNyIKCQldCgl9LAoJImFyY2hpdGVjdHVyZSI6ICJhbWQ2NCIsCgkib3MiOiAibGludXgiCn0K",
+      "repoDigests": ["busybox@sha256:1487d0af5f52b4ba31c7e465126ee2123fe3f2305d638e7827681e7cf6c83d5e"],
+      "architecture": "amd64",
       "os": "linux"
     }
   },
@@ -371,7 +369,7 @@
   },
   "descriptor": {
     "name": "syft",
-    "version": "1.42.3",
+    "version": "1.43.0",
     "configuration": {
       "catalogers": {
         "requested": {
@@ -464,6 +462,7 @@
           "erlang-library",
           "swipl-binary",
           "dart-binary",
+          "deno-binary",
           "haskell-ghc-binary",
           "haskell-cabal-binary",
           "haskell-stack-binary",
@@ -472,6 +471,7 @@
           "nginx-binary",
           "bash-binary",
           "openssl-binary",
+          "openldap-search-binary",
           "qt-qtbase-lib",
           "gcc-binary",
           "fluent-bit-binary",
