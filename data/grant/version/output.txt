@@ -3,6 +3,6 @@ Version:        0.6.4
 BuildDate:      2026-03-19T17:51:10Z
 GitCommit:      fb326cd3bcc197210e9458e8790d4b867c9d2839
 GitDescription: v0.6.4
-Platform:       linux/arm64
+Platform:       linux/amd64
 GoVersion:      go1.25.8
 Compiler:       gc

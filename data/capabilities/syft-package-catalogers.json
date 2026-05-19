@@ -964,6 +964,29 @@
         {
           "method": "glob",
           "criteria": [
+            "**/deno"
+          ],
+          "packages": [
+            {
+              "class": "deno-binary",
+              "name": "deno",
+              "purl": "pkg:generic/deno",
+              "cpes": [
+                "cpe:2.3:a:deno:deno:*:*:*:*:*:*:*:*"
+              ],
+              "type": "BinaryPkg"
+            }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
+          ]
+        },
+        {
+          "method": "glob",
+          "criteria": [
             "**/ghc*"
           ],
           "packages": [
@@ -1135,6 +1158,29 @@
               "purl": "pkg:generic/openssl",
               "cpes": [
                 "cpe:2.3:a:openssl:openssl:*:*:*:*:*:*:*:*"
+              ],
+              "type": "BinaryPkg"
+            }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
+          ]
+        },
+        {
+          "method": "glob",
+          "criteria": [
+            "**/ldapsearch"
+          ],
+          "packages": [
+            {
+              "class": "openldap-search-binary",
+              "name": "openldap",
+              "purl": "pkg:generic/openldap",
+              "cpes": [
+                "cpe:2.3:a:openldap:openldap:*:*:*:*:*:*:*:*"
               ],
               "type": "BinaryPkg"
             }
@@ -4428,6 +4474,10 @@
             "**/vmlinux-*",
             "**/vmlinuz",
             "**/vmlinuz-*",
+            "**/bzImage",
+            "**/bzImage-*",
+            "**/zImage",
+            "**/zImage-*",
             "**/lib/modules/**/*.ko"
           ],
           "package_types": [

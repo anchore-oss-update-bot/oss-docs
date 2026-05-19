@@ -58,6 +58,12 @@
       <td class="col-cpes"><code>cpe:2.3:a:dart:dart_software_development_kit:*:*:*:*:*:*:*:*</code></td>
     </tr>
     <tr>
+      <td class="col-class">deno-binary</td>
+      <td class="col-criteria"><code>deno</code></td>
+      <td class="col-purl"><code>pkg:generic/deno</code></td>
+      <td class="col-cpes"><code>cpe:2.3:a:deno:deno:*:*:*:*:*:*:*:*</code></td>
+    </tr>
+    <tr>
       <td class="col-class">elixir-binary</td>
       <td class="col-criteria"><code>elixir</code></td>
       <td class="col-purl"><code>pkg:generic/elixir</code></td>
@@ -278,6 +284,12 @@
       <td class="col-criteria"><code>node</code></td>
       <td class="col-purl"><code>pkg:generic/node</code></td>
       <td class="col-cpes"><code>cpe:2.3:a:nodejs:node.js:*:*:*:*:*:*:*:*</code></td>
+    </tr>
+    <tr>
+      <td class="col-class">openldap-search-binary</td>
+      <td class="col-criteria"><code>ldapsearch</code></td>
+      <td class="col-purl"><code>pkg:generic/openldap</code></td>
+      <td class="col-cpes"><code>cpe:2.3:a:openldap:openldap:*:*:*:*:*:*:*:*</code></td>
     </tr>
     <tr>
       <td class="col-class">openssl-binary</td>
