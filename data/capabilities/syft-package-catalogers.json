@@ -337,6 +337,29 @@
         {
           "method": "glob",
           "criteria": [
+            "**/julia"
+          ],
+          "packages": [
+            {
+              "class": "julia-binary",
+              "name": "julia",
+              "purl": "pkg:generic/julia",
+              "cpes": [
+                "cpe:2.3:a:julialang:julia:*:*:*:*:*:*:*:*"
+              ],
+              "type": "BinaryPkg"
+            }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
+          ]
+        },
+        {
+          "method": "glob",
+          "criteria": [
             "**/helm"
           ],
           "packages": [
@@ -734,6 +757,150 @@
         {
           "method": "glob",
           "criteria": [
+            "**/mysqld"
+          ],
+          "packages": [
+            {
+              "class": "mysqld-mysql-cluster-legacy-binary",
+              "name": "mysql-server",
+              "purl": "pkg:generic/mysql-server",
+              "cpes": [
+                "cpe:2.3:a:oracle:mysql:*:*:*:*:*:*:*:*",
+                "cpe:2.3:a:oracle:mysql_server:*:*:*:*:*:*:*:*"
+              ],
+              "type": "BinaryPkg"
+            }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
+          ]
+        },
+        {
+          "method": "glob",
+          "criteria": [
+            "**/mysqld"
+          ],
+          "packages": [
+            {
+              "class": "mysqld-binary",
+              "name": "",
+              "purl": "pkg:/",
+              "cpes": [],
+              "type": "BinaryPkg"
+            },
+            {
+              "class": "mysqld-mysql-cluster-legacy-binary",
+              "name": "mysql-cluster",
+              "purl": "pkg:generic/mysql-cluster",
+              "cpes": [
+                "cpe:2.3:a:oracle:mysql_cluster:*:*:*:*:*:*:*:*"
+              ],
+              "type": "BinaryPkg"
+            },
+            {
+              "class": "mysqld-mysql-cluster-binary",
+              "name": "mysql-cluster",
+              "purl": "pkg:generic/mysql-cluster",
+              "cpes": [
+                "cpe:2.3:a:oracle:mysql:*:*:*:*:*:*:*:*",
+                "cpe:2.3:a:oracle:mysql_server:*:*:*:*:*:*:*:*",
+                "cpe:2.3:a:oracle:mysql_cluster:*:*:*:*:*:*:*:*"
+              ],
+              "type": "BinaryPkg"
+            },
+            {
+              "class": "mysqld-mysql-server-binary",
+              "name": "mysql-server",
+              "purl": "pkg:generic/mysql-server",
+              "cpes": [
+                "cpe:2.3:a:oracle:mysql:*:*:*:*:*:*:*:*",
+                "cpe:2.3:a:oracle:mysql_server:*:*:*:*:*:*:*:*"
+              ],
+              "type": "BinaryPkg"
+            }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
+          ]
+        },
+        {
+          "method": "glob",
+          "criteria": [
+            "**/ndbd"
+          ],
+          "packages": [
+            {
+              "class": "ndbd-binary",
+              "name": "mysql-cluster",
+              "purl": "pkg:generic/mysql-cluster",
+              "cpes": [
+                "cpe:2.3:a:oracle:mysql_cluster:*:*:*:*:*:*:*:*"
+              ],
+              "type": "BinaryPkg"
+            }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
+          ]
+        },
+        {
+          "method": "glob",
+          "criteria": [
+            "**/ndbmtd"
+          ],
+          "packages": [
+            {
+              "class": "ndbmtd-binary",
+              "name": "mysql-cluster",
+              "purl": "pkg:generic/mysql-cluster",
+              "cpes": [
+                "cpe:2.3:a:oracle:mysql_cluster:*:*:*:*:*:*:*:*"
+              ],
+              "type": "BinaryPkg"
+            }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
+          ]
+        },
+        {
+          "method": "glob",
+          "criteria": [
+            "**/ndb_mgmd"
+          ],
+          "packages": [
+            {
+              "class": "ndb_mgmd-binary",
+              "name": "mysql-cluster",
+              "purl": "pkg:generic/mysql-cluster",
+              "cpes": [
+                "cpe:2.3:a:oracle:mysql_cluster:*:*:*:*:*:*:*:*"
+              ],
+              "type": "BinaryPkg"
+            }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
+          ]
+        },
+        {
+          "method": "glob",
+          "criteria": [
             "**/xtrabackup"
           ],
           "packages": [
@@ -964,6 +1131,29 @@
         {
           "method": "glob",
           "criteria": [
+            "**/deno"
+          ],
+          "packages": [
+            {
+              "class": "deno-binary",
+              "name": "deno",
+              "purl": "pkg:generic/deno",
+              "cpes": [
+                "cpe:2.3:a:deno:deno:*:*:*:*:*:*:*:*"
+              ],
+              "type": "BinaryPkg"
+            }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
+          ]
+        },
+        {
+          "method": "glob",
+          "criteria": [
             "**/ghc*"
           ],
           "packages": [
@@ -1131,10 +1321,49 @@
           "packages": [
             {
               "class": "openssl-binary",
+              "name": "",
+              "purl": "pkg:/",
+              "cpes": [],
+              "type": "BinaryPkg"
+            },
+            {
+              "class": "openssl-binary-aws-lc",
+              "name": "aws-lc",
+              "purl": "pkg:generic/aws-lc",
+              "cpes": [
+                "cpe:2.3:a:amazon:aws_libcrypto:*:*:*:*:*:*:*:*"
+              ],
+              "type": "BinaryPkg"
+            },
+            {
+              "class": "openssl-binary",
               "name": "openssl",
               "purl": "pkg:generic/openssl",
               "cpes": [
                 "cpe:2.3:a:openssl:openssl:*:*:*:*:*:*:*:*"
+              ],
+              "type": "BinaryPkg"
+            }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
+          ]
+        },
+        {
+          "method": "glob",
+          "criteria": [
+            "**/ldapsearch"
+          ],
+          "packages": [
+            {
+              "class": "openldap-search-binary",
+              "name": "openldap",
+              "purl": "pkg:generic/openldap",
+              "cpes": [
+                "cpe:2.3:a:openldap:openldap:*:*:*:*:*:*:*:*"
               ],
               "type": "BinaryPkg"
             }
@@ -1688,6 +1917,29 @@
               "purl": "pkg:generic/mongodb",
               "cpes": [
                 "cpe:2.3:a:mongodb:mongodb:*:*:*:*:*:*:*:*"
+              ],
+              "type": "BinaryPkg"
+            }
+          ],
+          "package_types": [
+            "binary"
+          ],
+          "json_schema_types": [
+            "BinarySignature"
+          ]
+        },
+        {
+          "method": "glob",
+          "criteria": [
+            "**/nginx-ingress-controller"
+          ],
+          "packages": [
+            {
+              "class": "ingress-nginx-binary",
+              "name": "nginx-ingress-controller",
+              "purl": "pkg:generic/nginx-ingress-controller",
+              "cpes": [
+                "cpe:2.3:a:kubernetes:ingress-nginx:*:*:*:*:*:*:*:*"
               ],
               "type": "BinaryPkg"
             }
@@ -4428,7 +4680,14 @@
             "**/vmlinux-*",
             "**/vmlinuz",
             "**/vmlinuz-*",
-            "**/lib/modules/**/*.ko"
+            "**/bzImage",
+            "**/bzImage-*",
+            "**/zImage",
+            "**/zImage-*",
+            "**/lib/modules/**/*.ko",
+            "**/lib/modules/**/*.ko.gz",
+            "**/lib/modules/**/*.ko.xz",
+            "**/lib/modules/**/*.ko.zst"
           ],
           "package_types": [
             "linux-kernel",
@@ -4475,7 +4734,7 @@
         "fields": [
           {
             "key": "CatalogModules",
-            "description": "CatalogModules enables cataloging linux kernel modules (`*.ko` files) in addition to the kernel itself.",
+            "description": "CatalogModules enables cataloging linux kernel modules (`*.ko` and compressed `*.ko.gz`, `*.ko.xz`, `*.ko.zst` files) in addition to the kernel itself.",
             "app_key": "linux-kernel.catalog-modules"
           }
         ]

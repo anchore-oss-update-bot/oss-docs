@@ -58,6 +58,12 @@
       <td class="col-cpes"><code>cpe:2.3:a:dart:dart_software_development_kit:*:*:*:*:*:*:*:*</code></td>
     </tr>
     <tr>
+      <td class="col-class">deno-binary</td>
+      <td class="col-criteria"><code>deno</code></td>
+      <td class="col-purl"><code>pkg:generic/deno</code></td>
+      <td class="col-cpes"><code>cpe:2.3:a:deno:deno:*:*:*:*:*:*:*:*</code></td>
+    </tr>
+    <tr>
       <td class="col-class">elixir-binary</td>
       <td class="col-criteria"><code>elixir</code></td>
       <td class="col-purl"><code>pkg:generic/elixir</code></td>
@@ -190,6 +196,12 @@
       <td class="col-cpes"><code>cpe:2.3:a:apache:http_server:*:*:*:*:*:*:*:*</code></td>
     </tr>
     <tr>
+      <td class="col-class">ingress-nginx-binary</td>
+      <td class="col-criteria"><code>nginx-ingress-controller</code></td>
+      <td class="col-purl"><code>pkg:generic/nginx-ingress-controller</code></td>
+      <td class="col-cpes"><code>cpe:2.3:a:kubernetes:ingress-nginx:*:*:*:*:*:*:*:*</code></td>
+    </tr>
+    <tr>
       <td class="col-class">istio-binary</td>
       <td class="col-criteria"><code>pilot-discovery</code></td>
       <td class="col-purl"><code>pkg:generic/istio</code></td>
@@ -222,6 +234,12 @@
     <tr>
       <td class="col-class">julia-binary</td>
       <td class="col-criteria"><code>libjulia-internal.so</code></td>
+      <td class="col-purl"><code>pkg:generic/julia</code></td>
+      <td class="col-cpes"><code>cpe:2.3:a:julialang:julia:*:*:*:*:*:*:*:*</code></td>
+    </tr>
+    <tr>
+      <td class="col-class">julia-binary</td>
+      <td class="col-criteria"><code>julia</code></td>
       <td class="col-purl"><code>pkg:generic/julia</code></td>
       <td class="col-cpes"><code>cpe:2.3:a:julialang:julia:*:*:*:*:*:*:*:*</code></td>
     </tr>
@@ -268,6 +286,36 @@
       <td class="col-cpes"><code>cpe:2.3:a:oracle:mysql:*:*:*:*:*:*:*:*</code><br><code>cpe:2.3:a:percona:percona_server:*:*:*:*:*:*:*:*</code><br><code>cpe:2.3:a:percona:xtradb_cluster:*:*:*:*:*:*:*:*</code></td>
     </tr>
     <tr>
+      <td class="col-class">mysqld-binary</td>
+      <td class="col-criteria"><code>mysqld</code></td>
+      <td class="col-purl"><code>pkg:generic/mysql-cluster</code><br><code>pkg:generic/mysql-cluster</code><br><code>pkg:generic/mysql-server</code></td>
+      <td class="col-cpes"><code>cpe:2.3:a:oracle:mysql_cluster:*:*:*:*:*:*:*:*</code><br><code>cpe:2.3:a:oracle:mysql:*:*:*:*:*:*:*:*</code><br><code>cpe:2.3:a:oracle:mysql_server:*:*:*:*:*:*:*:*</code><br><code>cpe:2.3:a:oracle:mysql_cluster:*:*:*:*:*:*:*:*</code><br><code>cpe:2.3:a:oracle:mysql:*:*:*:*:*:*:*:*</code><br><code>cpe:2.3:a:oracle:mysql_server:*:*:*:*:*:*:*:*</code></td>
+    </tr>
+    <tr>
+      <td class="col-class">mysqld-mysql-cluster-legacy-binary</td>
+      <td class="col-criteria"><code>mysqld</code></td>
+      <td class="col-purl"><code>pkg:generic/mysql-server</code></td>
+      <td class="col-cpes"><code>cpe:2.3:a:oracle:mysql:*:*:*:*:*:*:*:*</code><br><code>cpe:2.3:a:oracle:mysql_server:*:*:*:*:*:*:*:*</code></td>
+    </tr>
+    <tr>
+      <td class="col-class">ndb_mgmd-binary</td>
+      <td class="col-criteria"><code>ndb_mgmd</code></td>
+      <td class="col-purl"><code>pkg:generic/mysql-cluster</code></td>
+      <td class="col-cpes"><code>cpe:2.3:a:oracle:mysql_cluster:*:*:*:*:*:*:*:*</code></td>
+    </tr>
+    <tr>
+      <td class="col-class">ndbd-binary</td>
+      <td class="col-criteria"><code>ndbd</code></td>
+      <td class="col-purl"><code>pkg:generic/mysql-cluster</code></td>
+      <td class="col-cpes"><code>cpe:2.3:a:oracle:mysql_cluster:*:*:*:*:*:*:*:*</code></td>
+    </tr>
+    <tr>
+      <td class="col-class">ndbmtd-binary</td>
+      <td class="col-criteria"><code>ndbmtd</code></td>
+      <td class="col-purl"><code>pkg:generic/mysql-cluster</code></td>
+      <td class="col-cpes"><code>cpe:2.3:a:oracle:mysql_cluster:*:*:*:*:*:*:*:*</code></td>
+    </tr>
+    <tr>
       <td class="col-class">nginx-binary</td>
       <td class="col-criteria"><code>nginx</code></td>
       <td class="col-purl"><code>pkg:generic/nginx</code></td>
@@ -280,10 +328,16 @@
       <td class="col-cpes"><code>cpe:2.3:a:nodejs:node.js:*:*:*:*:*:*:*:*</code></td>
     </tr>
     <tr>
+      <td class="col-class">openldap-search-binary</td>
+      <td class="col-criteria"><code>ldapsearch</code></td>
+      <td class="col-purl"><code>pkg:generic/openldap</code></td>
+      <td class="col-cpes"><code>cpe:2.3:a:openldap:openldap:*:*:*:*:*:*:*:*</code></td>
+    </tr>
+    <tr>
       <td class="col-class">openssl-binary</td>
       <td class="col-criteria"><code>openssl</code></td>
-      <td class="col-purl"><code>pkg:generic/openssl</code></td>
-      <td class="col-cpes"><code>cpe:2.3:a:openssl:openssl:*:*:*:*:*:*:*:*</code></td>
+      <td class="col-purl"><code>pkg:generic/aws-lc</code><br><code>pkg:generic/openssl</code></td>
+      <td class="col-cpes"><code>cpe:2.3:a:amazon:aws_libcrypto:*:*:*:*:*:*:*:*</code><br><code>cpe:2.3:a:openssl:openssl:*:*:*:*:*:*:*:*</code></td>
     </tr>
     <tr>
       <td class="col-class">perl-binary</td>
