@@ -369,7 +369,7 @@
   },
   "descriptor": {
     "name": "syft",
-    "version": "1.46.0",
+    "version": "1.49.0",
     "configuration": {
       "catalogers": {
         "requested": {
@@ -378,6 +378,7 @@
         "used": [
           "alpm-db-cataloger",
           "apk-db-cataloger",
+          "apple-app-bundle-cataloger",
           "binary-classifier-cataloger",
           "bitnami-cataloger",
           "cargo-auditable-binary-cataloger",
@@ -409,6 +410,7 @@
           "r-package-cataloger",
           "rpm-db-cataloger",
           "ruby-installed-gemspec-cataloger",
+          "safetensors-cataloger",
           "snap-cataloger",
           "wordpress-plugins-cataloger"
         ]
@@ -491,6 +493,7 @@
           "sqlcipher-binary",
           "jq-binary",
           "chrome-binary",
+          "firefox-binary",
           "ffmpeg-binary",
           "ffmpeg-library",
           "ffmpeg-library",
@@ -509,9 +512,14 @@
           "packetbeat-binary",
           "auditbeat-binary",
           "elastic-agent-binary",
+          "krb5-library",
+          "heimdal-krb5-library",
           "java-binary",
           "java-jdb-binary"
         ],
+        "cpp": {
+          "vcpkg-allow-git-clone": false
+        },
         "dotnet": {
           "dep-packages-must-claim-dll": true,
           "dep-packages-must-have-dll": false,
@@ -520,6 +528,7 @@
           "relax-dll-claims-when-bundling-detected": true
         },
         "golang": {
+          "capture-symbols": "none",
           "local-mod-cache-dir": "/root/go/pkg/mod",
           "local-vendor-dir": "",
           "main-module-version": {
@@ -571,8 +580,8 @@
     }
   },
   "schema": {
-    "version": "16.1.5",
-    "url": "https://raw.githubusercontent.com/anchore/syft/main/schema/json/schema-16.1.5.json"
+    "version": "16.1.10",
+    "url": "https://raw.githubusercontent.com/anchore/syft/main/schema/json/schema-16.1.10.json"
   }
 }
 ```
