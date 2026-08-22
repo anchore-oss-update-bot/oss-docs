@@ -6,21 +6,21 @@
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
   "name": "busybox",
-  "documentNamespace": "https://anchore.com/syft/image/busybox-6232bd28-e515-4154-9f76-aa191da626ed",
+  "documentNamespace": "https://anchore.com/syft/image/busybox-970bc0d8-e1c8-4e43-af34-027319c174c7",
   "creationInfo": {
     "licenseListVersion": "3.28",
-    "creators": ["Organization: Anchore, Inc", "Tool: syft-1.50.0"],
-    "created": "2026-08-04T03:03:17Z"
+    "creators": ["Organization: Anchore, Inc", "Tool: syft-1.51.0"],
+    "created": "2026-08-22T02:24:33Z"
   },
   "packages": [
     {
       "name": "busybox",
-      "SPDXID": "SPDXRef-Package-binary-busybox-5a5ba7c7211dc63a",
+      "SPDXID": "SPDXRef-Package-binary-busybox-df8a74ed44ba5a45",
       "versionInfo": "1.38.0",
       "supplier": "NOASSERTION",
       "downloadLocation": "NOASSERTION",
       "filesAnalyzed": false,
-      "sourceInfo": "acquired package info from the following paths: /bin/[",
+      "sourceInfo": "acquired package info from the following paths: /bin/busybox",
       "licenseConcluded": "NOASSERTION",
       "licenseDeclared": "NOASSERTION",
       "copyrightText": "NOASSERTION",
@@ -67,6 +67,20 @@
     {
       "fileName": "bin/[",
       "SPDXID": "SPDXRef-File-bin---4707db691d76c753",
+      "checksums": [
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "0000000000000000000000000000000000000000"
+        }
+      ],
+      "licenseConcluded": "NOASSERTION",
+      "licenseInfoInFiles": ["NOASSERTION"],
+      "copyrightText": "NOASSERTION",
+      "comment": "layerID: sha256:0958e0fef2d6a31e1325b8bfecd99dead933363682d69850a7606599023751bc"
+    },
+    {
+      "fileName": "bin/busybox",
+      "SPDXID": "SPDXRef-File-bin-busybox-d80578b9d872e0a1",
       "fileTypes": ["APPLICATION", "BINARY"],
       "checksums": [
         {
@@ -226,14 +240,14 @@
   ],
   "relationships": [
     {
-      "spdxElementId": "SPDXRef-Package-binary-busybox-5a5ba7c7211dc63a",
-      "relatedSpdxElement": "SPDXRef-File-bin---4707db691d76c753",
+      "spdxElementId": "SPDXRef-Package-binary-busybox-df8a74ed44ba5a45",
+      "relatedSpdxElement": "SPDXRef-File-bin-busybox-d80578b9d872e0a1",
       "relationshipType": "OTHER",
       "comment": "evident-by: indicates the package's existence is evident by the given file"
     },
     {
       "spdxElementId": "SPDXRef-DocumentRoot-Image-busybox",
-      "relatedSpdxElement": "SPDXRef-Package-binary-busybox-5a5ba7c7211dc63a",
+      "relatedSpdxElement": "SPDXRef-Package-binary-busybox-df8a74ed44ba5a45",
       "relationshipType": "CONTAINS"
     },
     {

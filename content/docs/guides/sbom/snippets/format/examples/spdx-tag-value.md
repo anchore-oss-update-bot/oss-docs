@@ -5,16 +5,24 @@ SPDXVersion: SPDX-2.3
 DataLicense: CC0-1.0
 SPDXID: SPDXRef-DOCUMENT
 DocumentName: busybox
-DocumentNamespace: https://anchore.com/syft/image/busybox-a24d8d68-b170-4c76-b013-4ea2f7615490
+DocumentNamespace: https://anchore.com/syft/image/busybox-fa1b0f7f-8105-41da-9fe1-6a70980be1ac
 LicenseListVersion: 3.28
 Creator: Organization: Anchore, Inc
-Creator: Tool: syft-1.50.0
-Created: 2026-08-04T03:03:18Z
+Creator: Tool: syft-1.51.0
+Created: 2026-08-22T02:24:34Z
 
 ##### Unpackaged files
 
 FileName: bin/[
 SPDXID: SPDXRef-File-bin---4707db691d76c753
+FileChecksum: SHA1: 0000000000000000000000000000000000000000
+LicenseConcluded: NOASSERTION
+LicenseInfoInFile: NOASSERTION
+FileCopyrightText: NOASSERTION
+FileComment: layerID: sha256:0958e0fef2d6a31e1325b8bfecd99dead933363682d69850a7606599023751bc
+
+FileName: bin/busybox
+SPDXID: SPDXRef-File-bin-busybox-d80578b9d872e0a1
 FileType: APPLICATION
 FileType: BINARY
 FileChecksum: SHA1: ad043255229d0a1f0a99e1cebaf70d32914c50e1
@@ -122,12 +130,12 @@ ExternalRef: PACKAGE-MANAGER purl pkg:oci/busybox@sha256%3Ab61e4fb577abc534e8c01
 ##### Package: busybox
 
 PackageName: busybox
-SPDXID: SPDXRef-Package-binary-busybox-5a5ba7c7211dc63a
+SPDXID: SPDXRef-Package-binary-busybox-df8a74ed44ba5a45
 PackageVersion: 1.38.0
 PackageSupplier: NOASSERTION
 PackageDownloadLocation: NOASSERTION
 FilesAnalyzed: false
-PackageSourceInfo: acquired package info from the following paths: /bin/[
+PackageSourceInfo: acquired package info from the following paths: /bin/busybox
 PackageLicenseConcluded: NOASSERTION
 PackageLicenseDeclared: NOASSERTION
 PackageCopyrightText: NOASSERTION
@@ -136,8 +144,8 @@ ExternalRef: PACKAGE-MANAGER purl pkg:generic/busybox@1.38.0
 
 ##### Relationships
 
-Relationship: SPDXRef-Package-binary-busybox-5a5ba7c7211dc63a OTHER SPDXRef-File-bin---4707db691d76c753
+Relationship: SPDXRef-Package-binary-busybox-df8a74ed44ba5a45 OTHER SPDXRef-File-bin-busybox-d80578b9d872e0a1
 RelationshipComment: evident-by: indicates the package's existence is evident by the given file
-Relationship: SPDXRef-DocumentRoot-Image-busybox CONTAINS SPDXRef-Package-binary-busybox-5a5ba7c7211dc63a
+Relationship: SPDXRef-DocumentRoot-Image-busybox CONTAINS SPDXRef-Package-binary-busybox-df8a74ed44ba5a45
 Relationship: SPDXRef-DOCUMENT DESCRIBES SPDXRef-DocumentRoot-Image-busybox
 ```

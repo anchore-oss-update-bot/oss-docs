@@ -4,14 +4,14 @@
 {
   "artifacts": [
     {
-      "id": "5a5ba7c7211dc63a",
+      "id": "df8a74ed44ba5a45",
       "name": "busybox",
       "version": "1.38.0",
       "type": "binary",
       "foundBy": "binary-classifier-cataloger",
       "locations": [
         {
-          "path": "/bin/[",
+          "path": "/bin/busybox",
           "layerID": "sha256:0958e0fef2d6a31e1325b8bfecd99dead933363682d69850a7606599023751bc",
           "accessPath": "/bin/busybox",
           "annotations": {
@@ -34,7 +34,7 @@
           {
             "classifier": "busybox-binary",
             "location": {
-              "path": "/bin/[",
+              "path": "/bin/busybox",
               "layerID": "sha256:0958e0fef2d6a31e1325b8bfecd99dead933363682d69850a7606599023751bc",
               "accessPath": "/bin/busybox",
               "annotations": {
@@ -48,17 +48,17 @@
   ],
   "artifactRelationships": [
     {
-      "parent": "5a5ba7c7211dc63a",
-      "child": "4707db691d76c753",
+      "parent": "b61e4fb577abc534e8c017e596db6919ce93ebce6590df836dbf8c9caa631f6f",
+      "child": "df8a74ed44ba5a45",
+      "type": "contains"
+    },
+    {
+      "parent": "df8a74ed44ba5a45",
+      "child": "d80578b9d872e0a1",
       "type": "evident-by",
       "metadata": {
         "kind": "primary"
       }
-    },
-    {
-      "parent": "b61e4fb577abc534e8c017e596db6919ce93ebce6590df836dbf8c9caa631f6f",
-      "child": "5a5ba7c7211dc63a",
-      "type": "contains"
     }
   ],
   "files": [
@@ -66,6 +66,29 @@
       "id": "4707db691d76c753",
       "location": {
         "path": "/bin/[",
+        "layerID": "sha256:0958e0fef2d6a31e1325b8bfecd99dead933363682d69850a7606599023751bc"
+      },
+      "executable": {
+        "format": "elf",
+        "hasExports": true,
+        "hasEntrypoint": true,
+        "importedLibraries": ["libm.so.6", "libresolv.so.2", "libc.so.6"],
+        "elfSecurityFeatures": {
+          "symbolTableStripped": true,
+          "stackCanary": false,
+          "nx": true,
+          "relRO": "partial",
+          "pie": true,
+          "dso": true,
+          "safeStack": false
+        }
+      },
+      "unknowns": ["unknowns-labeler: no package identified in executable file"]
+    },
+    {
+      "id": "d80578b9d872e0a1",
+      "location": {
+        "path": "/bin/busybox",
         "layerID": "sha256:0958e0fef2d6a31e1325b8bfecd99dead933363682d69850a7606599023751bc"
       },
       "metadata": {
@@ -85,22 +108,7 @@
           "algorithm": "sha256",
           "value": "c849b73ca587db87c78f3fefce435c9ead2bbd0f3bb66257531eb8235a41ec45"
         }
-      ],
-      "executable": {
-        "format": "elf",
-        "hasExports": true,
-        "hasEntrypoint": true,
-        "importedLibraries": ["libm.so.6", "libresolv.so.2", "libc.so.6"],
-        "elfSecurityFeatures": {
-          "symbolTableStripped": true,
-          "stackCanary": false,
-          "nx": true,
-          "relRO": "partial",
-          "pie": true,
-          "dso": true,
-          "safeStack": false
-        }
-      }
+      ]
     },
     {
       "id": "af6602274c595b5b",
@@ -369,7 +377,7 @@
   },
   "descriptor": {
     "name": "syft",
-    "version": "1.50.0",
+    "version": "1.51.0",
     "configuration": {
       "catalogers": {
         "requested": {
