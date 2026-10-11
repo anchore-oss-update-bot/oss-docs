@@ -5,17 +5,17 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:6cbd8e76-ae8c-4e65-8bd9-e8d5a8bb53ff",
+  "serialNumber": "urn:uuid:610c1d1a-7c47-48c5-958a-0a6c7ed295f4",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-02T02:15:52Z",
+    "timestamp": "2026-10-11T02:20:52Z",
     "tools": {
       "components": [
         {
           "type": "application",
           "author": "anchore",
           "name": "syft",
-          "version": "1.54.0"
+          "version": "1.54.1"
         }
       ]
     },
